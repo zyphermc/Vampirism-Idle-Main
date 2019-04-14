@@ -24,14 +24,14 @@ public class VampireManager : MonoBehaviour
     public double[] vampires_maximumBloodGather;
     public double[] vampires_baseCost_sharpenFangs;
     public double[] vampires_baseCost_trainAgility;
-    public double[] vampires_Cost_sharpenFangs;
-    public double[] vampires_Cost_trainAgility;
-    public int[] vampires_level_sharpenFangs;
-    public int[] vampires_level_trainAgility;
-    public int[] vampires_amount_Total;
-    public int[] vampires_amount_Used_Total;
-    public int[] vampires_amount_Used_Feed;
-    public int[] vampires_amount_Used_Infect;
+    [HideInInspector] public double[] vampires_Cost_sharpenFangs;
+    [HideInInspector] public double[] vampires_Cost_trainAgility;
+    [HideInInspector] public int[] vampires_level_sharpenFangs;
+    [HideInInspector] public int[] vampires_level_trainAgility;
+    [HideInInspector] public int[] vampires_amount_Total;
+    [HideInInspector] public int[] vampires_amount_Used_Total;
+    [HideInInspector] public int[] vampires_amount_Used_Feed;
+    [HideInInspector] public int[] vampires_amount_Used_Infect;
 
     private void Start()
     {

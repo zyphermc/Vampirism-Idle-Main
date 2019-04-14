@@ -347,6 +347,132 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26088359}
   m_CullTransparentMesh: 0
+--- !u!1 &49179240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 49179242}
+  - component: {fileID: 49179241}
+  m_Layer: 0
+  m_Name: Vampire Manager [Vamp Stats]
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &49179241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49179240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98945c7f4ebf80747bee7a2204559085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vampires_name:
+  - Fledgeling
+  - Vampling
+  - Lesser Vampire
+  - Greater Vampire
+  - Coven Lord
+  - Necromancer
+  - Highborne
+  - Royal Guard
+  - Blood King
+  - The Father
+  vampires_bloodEfficiency:
+  - 75
+  - 70
+  - 65
+  - 60
+  - 55
+  - 50
+  - 45
+  - 40
+  - 35
+  - 30
+  vampires_maximumBloodGather:
+  - 1000
+  - 7000
+  - 30000
+  - 110000
+  - 800000
+  - 1600000
+  - 23000000
+  - 130000000
+  - 700000000
+  - 2000000000
+  vampires_baseCost_sharpenFangs:
+  - 10000
+  - 100000
+  - 1000000
+  - 10000000
+  - 100000000
+  - 1000000000
+  - 10000000000
+  - 100000000000
+  - 1000000000000
+  - 10000000000000
+  vampires_baseCost_trainAgility:
+  - 10000
+  - 100000
+  - 1000000
+  - 10000000
+  - 100000000
+  - 1000000000
+  - 10000000000
+  - 100000000000
+  - 1000000000000
+  - 10000000000000
+  vampires_Cost_sharpenFangs:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  vampires_Cost_trainAgility:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  vampires_level_sharpenFangs: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  vampires_level_trainAgility: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  vampires_amount_Total: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  vampires_amount_Used_Total: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  vampires_amount_Used_Feed: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  vampires_amount_Used_Infect: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+--- !u!4 &49179242
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49179240}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 486.14844, y: 314.33896, z: -3.875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &67110890
 GameObject:
   m_ObjectHideFlags: 0
@@ -3926,6 +4052,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 608325293}
   m_CullTransparentMesh: 0
+--- !u!1 &612896272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 612896274}
+  - component: {fileID: 612896273}
+  m_Layer: 0
+  m_Name: Game Manager [UI]
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &612896273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612896272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 314da2a357ae0484d93c51a497b57a76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  res_blood: 0
+  res_wood: 0
+  res_stone: 0
+  res_humanPop: 0
+--- !u!4 &612896274
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612896272}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 486.14844, y: 314.33896, z: -3.875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &683670908
 GameObject:
   m_ObjectHideFlags: 0
