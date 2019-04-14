@@ -1,16 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour //Persistent
 {
     /*Declaration of Variables*/
 
+    //Game Objects
+    public TextMeshProUGUI textBox_Blood;
+    public TextMeshProUGUI textBox_HumanPop;
+
+
     //Resources
-    public double res_blood;
-    public double res_wood;
-    public double res_stone;
-    public double res_humanPop;
+    public double res_Blood;
+    public double res_Wood;
+    public double res_Stone;
+    public double res_HumanPop;
     
     
 
@@ -18,12 +26,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        textBox_Blood.text = Math.Floor(res_Blood).ToString();
+        textBox_HumanPop.text = Math.Floor(res_HumanPop).ToString();
     }
 }
