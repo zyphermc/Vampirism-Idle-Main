@@ -589,15 +589,15 @@ MonoBehaviour:
   - 0
   vampires_infectionChance:
   - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
+  - 10
+  - 9
+  - 8
+  - 7
+  - 6
+  - 5
+  - 4
+  - 3
+  - 2
   vampires_currentProgress:
   - 0
   - 0
@@ -4546,12 +4546,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VampireManager: {fileID: 49179241}
   StatisticsWindow: {fileID: 1915239686}
+  tab_killMethods: {fileID: 1179300216}
+  tab_efficiencyUpgrades: {fileID: 1752193511}
   textBox_vampTitle: {fileID: 1837396195}
   textBox_vampQuote: {fileID: 67110892}
   textBox_vampDesc: {fileID: 1298032236}
   textBox_vampAvailable: {fileID: 1222024864}
   textBox_vampStats: {fileID: 646766800}
+  textBox_infectTitle: {fileID: 1791444465}
+  slider_Feed: {fileID: 2009482288}
+  slider_Infect: {fileID: 1114724419}
+  inputField_Feed: {fileID: 580282258}
+  inputField_Infect: {fileID: 1513442364}
   vampIndex: -1
+  page: 0
 --- !u!1 &591987546
 GameObject:
   m_ObjectHideFlags: 0
@@ -6781,7 +6789,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 939376180}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 582645739}
+        m_MethodName: SwitchPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &939376180
@@ -8058,7 +8077,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1041699343}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 582645739}
+        m_MethodName: SwitchPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1041699343

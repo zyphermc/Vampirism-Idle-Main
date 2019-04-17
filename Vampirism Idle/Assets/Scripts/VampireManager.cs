@@ -63,7 +63,9 @@ public class VampireManager : MonoBehaviour //Persistent
 
         vampires_maximumBloodGather[0] = 1000;
         vampires_bloodEfficiency[0] = 75; //out of 100
-        vampires_infectionChance[0] = 10; //out of 100
+        //vampires_infectionChance[0] = 10; //out of 100
+        vampires_speed[0] = 1;
+        vampires_completionTime[0] = 10;
 
         vampires_baseCost_sharpenFangs[0] = 5000;
         vampires_baseCost_trainAgility[0] = 7500;
@@ -78,6 +80,7 @@ public class VampireManager : MonoBehaviour //Persistent
         vampires_amount_Used_Total[0] = vampires_amount_Used_Feed[0] + vampires_amount_Used_Infect[0];
         vampires_amount_Used_Feed[0] = 0;
         vampires_amount_Used_Infect[0] = 0;
+        //////////////////////////////////////////////////////////////////////////////////////////////
 
         //Vampling Initial Stats
         vampires_name[1] = "Vampling";
@@ -87,6 +90,8 @@ public class VampireManager : MonoBehaviour //Persistent
         vampires_maximumBloodGather[1] = 7000;
         vampires_bloodEfficiency[1] = 70; //out of 100
         vampires_infectionChance[1] = 10; //out of 100
+        vampires_speed[1] = 1;
+        vampires_completionTime[1] = 20;
 
         vampires_baseCost_sharpenFangs[1] = 100000;
         vampires_baseCost_trainAgility[1] = 100000;
@@ -101,13 +106,42 @@ public class VampireManager : MonoBehaviour //Persistent
         vampires_amount_Used_Total[1] = vampires_amount_Used_Feed[1] + vampires_amount_Used_Infect[1];
         vampires_amount_Used_Feed[1] = 0;
         vampires_amount_Used_Infect[1] = 0;
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
+        //Lesser Vampire Initial Stats
+        vampires_name[2] = "Lesser Vampire";
+        vampires_quote[2] = "Eyy I'm a Lesser Vampire, sounds like a fire pyre, but more dangerous.";
+        vampires_desc[2] = "This is the next step to human evolution.";
+
+        vampires_maximumBloodGather[2] = 30000;
+        vampires_bloodEfficiency[2] = 65; //out of 100
+        vampires_infectionChance[2] = 9; //out of 100
+        vampires_speed[2] = 1;
+        vampires_completionTime[2] = 30;
+
+        vampires_baseCost_sharpenFangs[2] = 1000000;
+        vampires_baseCost_trainAgility[2] = 1000000;
+
+        vampires_Cost_sharpenFangs[2] = 0;
+        vampires_Cost_trainAgility[2] = 0;
+        vampires_level_sharpenFangs[2] = 0;
+        vampires_level_trainAgility[2] = 0;
+
+        vampires_amount_Total[2] = 0;
+        vampires_amount_Available_Total[2] = vampires_amount_Total[2] - vampires_amount_Used_Total[2];
+        vampires_amount_Used_Total[2] = vampires_amount_Used_Feed[2] + vampires_amount_Used_Infect[2];
+        vampires_amount_Used_Feed[2] = 0;
+        vampires_amount_Used_Infect[2] = 0;
+        //////////////////////////////////////////////////////////////////////////////////////////////
     }
 
     private void Update()
     {
-        //Update Progress Bar for all available vamps
+        //Update all vamps
         for (int a = 0; a < 10; a++)
         {
+
+            //Update Progress Bar for all available vamps
             if (vampires_amount_Total[a] > 0)
             {
                 vampires_progress[a] = (vampires_currentProgress[a] / vampires_completionTime[a]); //update the progress of completion in lair
@@ -123,14 +157,14 @@ public class VampireManager : MonoBehaviour //Persistent
                     Lair_ProgressBars[a].SetText((vampires_progress[a] * 100).ToString("F0") + "%");
                 }
             }
+
+            //Update Vampire Stats
+
+            vampires_bloodPerKill[a] = vampires_maximumBloodGather[a] * (vampires_bloodEfficiency[a] / 100f);
+            vampires_bloodPerInfect[a] = vampires_maximumBloodGather[a] * (10f / 100f); //only 10% of max blood gather
         }
 
-        //Update Vampire Stats
-        vampires_bloodPerKill[0] = vampires_maximumBloodGather[0] * (vampires_bloodEfficiency[0] / 100f);
-        vampires_bloodPerInfect[0] = vampires_maximumBloodGather[0] * (10f / 100f); //only 10% of max blood gather
-
-        vampires_bloodPerKill[1] = vampires_maximumBloodGather[1] * (vampires_bloodEfficiency[1] / 100f);
-        vampires_bloodPerInfect[1] = vampires_maximumBloodGather[1] * (10f / 100f); //only 10% of max blood gather
+       
     }
 
     private IEnumerator UpdateVampProgress()
