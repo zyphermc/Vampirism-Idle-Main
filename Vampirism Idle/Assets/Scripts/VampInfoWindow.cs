@@ -11,6 +11,7 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
 
     //Tabs
     public GameObject tab_killMethods;
+
     public GameObject tab_efficiencyUpgrades;
 
     //Textboxes
@@ -25,10 +26,10 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
 
     //Sliders and Input Fields
     public Slider slider_Feed;
+
     public Slider slider_Infect;
     public TMP_InputField inputField_Feed;
     public TMP_InputField inputField_Infect;
-    
 
     public int vampIndex;
     [HideInInspector] public int page;
@@ -47,7 +48,7 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
             textBox_vampTitle.text = VampireManager.vampires_name[vampIndex];
             textBox_vampQuote.text = VampireManager.vampires_quote[vampIndex];
             textBox_vampDesc.text = VampireManager.vampires_desc[vampIndex];
-            
+
             if (page == 1) //kill methods page
             {
                 textBox_vampAvailable.text = "Available: " + VampireManager.vampires_amount_Available_Total[vampIndex].ToString(); //update available vamps
@@ -59,7 +60,8 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
                     + "Infection Chance: " + VampireManager.vampires_infectionChance[vampIndex] + "%" + "\n"
                     + "Efficiency: " + VampireManager.vampires_bloodEfficiency[vampIndex] + "%" + "\n"
                     + "Speed: " + VampireManager.vampires_completionTime[vampIndex] + " seconds";
-                }else if(vampIndex == 0)
+                }
+                else if (vampIndex == 0)
                 {
                     textBox_vampStats.text = "Blood per Feed: " + VampireManager.vampires_bloodPerKill[vampIndex].ToString("F2") + "\n"
                     + "Efficiency: " + VampireManager.vampires_bloodEfficiency[vampIndex] + "%" + "\n"
@@ -73,31 +75,28 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
                     inputField_Infect.gameObject.SetActive(false);
                     textBox_infectTitle.gameObject.SetActive(false);
                 }
-                else if(vampIndex >= 1)
+                else if (vampIndex >= 1)
                 {
                     slider_Infect.gameObject.SetActive(true);
                     inputField_Infect.gameObject.SetActive(true);
                     textBox_infectTitle.gameObject.SetActive(true);
                 }
             }
-            else 
-            if(page == 2) //efficiency upgrades page
+            else
+            if (page == 2) //efficiency upgrades page
             {
                 //insert description of buttons when hovered here
-            }  
+            }
         }
-
-        
     }
 
     public void SwitchPage()
     {
-        if(page == 1)
+        if (page == 1)
         {
             page = 2;
             tab_killMethods.SetActive(false);
             tab_efficiencyUpgrades.SetActive(true);
-            
         }
         else
         {

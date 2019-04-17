@@ -76,8 +76,6 @@ public class VampireManager : MonoBehaviour //Persistent
         vampires_level_trainAgility[0] = 0;
 
         vampires_amount_Total[0] = 0;
-        vampires_amount_Available_Total[0] = vampires_amount_Total[0] - vampires_amount_Used_Total[0];
-        vampires_amount_Used_Total[0] = vampires_amount_Used_Feed[0] + vampires_amount_Used_Infect[0];
         vampires_amount_Used_Feed[0] = 0;
         vampires_amount_Used_Infect[0] = 0;
         //////////////////////////////////////////////////////////////////////////////////////////////
@@ -102,8 +100,6 @@ public class VampireManager : MonoBehaviour //Persistent
         vampires_level_trainAgility[1] = 0;
 
         vampires_amount_Total[1] = 0;
-        vampires_amount_Available_Total[1] = vampires_amount_Total[1] - vampires_amount_Used_Total[1];
-        vampires_amount_Used_Total[1] = vampires_amount_Used_Feed[1] + vampires_amount_Used_Infect[1];
         vampires_amount_Used_Feed[1] = 0;
         vampires_amount_Used_Infect[1] = 0;
         //////////////////////////////////////////////////////////////////////////////////////////////
@@ -128,8 +124,6 @@ public class VampireManager : MonoBehaviour //Persistent
         vampires_level_trainAgility[2] = 0;
 
         vampires_amount_Total[2] = 0;
-        vampires_amount_Available_Total[2] = vampires_amount_Total[2] - vampires_amount_Used_Total[2];
-        vampires_amount_Used_Total[2] = vampires_amount_Used_Feed[2] + vampires_amount_Used_Infect[2];
         vampires_amount_Used_Feed[2] = 0;
         vampires_amount_Used_Infect[2] = 0;
         //////////////////////////////////////////////////////////////////////////////////////////////
@@ -140,7 +134,6 @@ public class VampireManager : MonoBehaviour //Persistent
         //Update all vamps
         for (int a = 0; a < 10; a++)
         {
-
             //Update Progress Bar for all available vamps
             if (vampires_amount_Total[a] > 0)
             {
@@ -159,12 +152,12 @@ public class VampireManager : MonoBehaviour //Persistent
             }
 
             //Update Vampire Stats
+            vampires_amount_Available_Total[a] = vampires_amount_Total[a] - vampires_amount_Used_Total[a];
+            vampires_amount_Used_Total[a] = vampires_amount_Used_Feed[a] + vampires_amount_Used_Infect[a];
 
             vampires_bloodPerKill[a] = vampires_maximumBloodGather[a] * (vampires_bloodEfficiency[a] / 100f);
             vampires_bloodPerInfect[a] = vampires_maximumBloodGather[a] * (10f / 100f); //only 10% of max blood gather
         }
-
-       
     }
 
     private IEnumerator UpdateVampProgress()

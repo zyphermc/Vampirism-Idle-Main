@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour //Persistent
             addHumans();
             yield return new WaitForSeconds(1f);
         }
-        
     }
 
     public void addHumans()
