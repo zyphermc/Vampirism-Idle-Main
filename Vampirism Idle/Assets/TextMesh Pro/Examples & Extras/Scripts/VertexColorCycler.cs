@@ -1,32 +1,27 @@
-﻿using UnityEngine;
-using System.Collections;
-
+﻿using System.Collections;
+using UnityEngine;
 
 namespace TMPro.Examples
 {
-
     public class VertexColorCycler : MonoBehaviour
     {
-
         private TMP_Text m_TextComponent;
 
-        void Awake()
+        private void Awake()
         {
             m_TextComponent = GetComponent<TMP_Text>();
         }
 
-
-        void Start()
+        private void Start()
         {
             StartCoroutine(AnimateVertexColors());
         }
-
 
         /// <summary>
         /// Method to animate vertex colors of a TMP Text object.
         /// </summary>
         /// <returns></returns>
-        IEnumerator AnimateVertexColors()
+        private IEnumerator AnimateVertexColors()
         {
             TMP_TextInfo textInfo = m_TextComponent.textInfo;
             int currentCharacter = 0;
@@ -76,6 +71,5 @@ namespace TMPro.Examples
                 yield return new WaitForSeconds(0.05f);
             }
         }
-
     }
 }

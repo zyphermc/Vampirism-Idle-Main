@@ -1,9 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using System;
+using System.Collections;
 using TMPro;
-using System;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour //Persistent
 {
@@ -11,28 +9,41 @@ public class GameManager : MonoBehaviour //Persistent
 
     //Game Objects
     public TextMeshProUGUI textBox_Blood;
-    public TextMeshProUGUI textBox_HumanPop;
 
+    public TextMeshProUGUI textBox_HumanPop;
 
     //Resources
     public double res_Blood;
+
     public double res_Wood;
     public double res_Stone;
     public double res_HumanPop;
-    
-    
-
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-
+        StartCoroutine("UpdateResources");
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         textBox_Blood.text = Math.Floor(res_Blood).ToString();
         textBox_HumanPop.text = Math.Floor(res_HumanPop).ToString();
+    }
+
+    private IEnumerator UpdateResources()
+    {
+        while (true)
+        {
+            addHumans();
+            yield return new WaitForSeconds(1f);
+        }
+        
+    }
+
+    public void addHumans()
+    {
+        res_HumanPop += 1;
     }
 }

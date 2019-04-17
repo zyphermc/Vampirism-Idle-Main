@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class VampButton : MonoBehaviour //Local
@@ -10,7 +8,6 @@ public class VampButton : MonoBehaviour //Local
 
     public Button vampButton;
     public int vampInfoNum;
-
 
     public void openVampInfo()
     {
@@ -23,12 +20,12 @@ public class VampButton : MonoBehaviour //Local
         else
         {
             VampInfoWindow.vampIndex = vampInfoNum;
-        }  
+        }
     }
 
     private void Update()
     {
-        if(VampInfoWindow.vampIndex == vampInfoNum)
+        if (VampInfoWindow.vampIndex == vampInfoNum)
         {
             vampButton.interactable = false;
         }
