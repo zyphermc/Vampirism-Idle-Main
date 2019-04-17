@@ -499,28 +499,6 @@ MonoBehaviour:
   - 
   - 
   - 
-  vampires_bloodEfficiency:
-  - 75
-  - 70
-  - 65
-  - 60
-  - 55
-  - 50
-  - 45
-  - 40
-  - 35
-  - 30
-  vampires_maximumBloodGather:
-  - 1000
-  - 7000
-  - 30000
-  - 110000
-  - 800000
-  - 1600000
-  - 23000000
-  - 130000000
-  - 700000000
-  - 2000000000
   vampires_baseCost_sharpenFangs:
   - 10000
   - 100000
@@ -565,6 +543,61 @@ MonoBehaviour:
   - 80
   - 90
   - 100
+  vampires_bloodEfficiency:
+  - 75
+  - 70
+  - 65
+  - 60
+  - 55
+  - 50
+  - 45
+  - 40
+  - 35
+  - 30
+  vampires_maximumBloodGather:
+  - 1000
+  - 7000
+  - 30000
+  - 110000
+  - 800000
+  - 1600000
+  - 23000000
+  - 130000000
+  - 700000000
+  - 2000000000
+  vampires_bloodPerKill:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  vampires_bloodPerInfect:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  vampires_infectionChance:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   vampires_currentProgress:
   - 0
   - 0
@@ -4044,7 +4077,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -1.04, y: 0}
   m_SizeDelta: {x: 17.93, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4434,7 +4467,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &582645736
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4934,8 +4967,9 @@ MonoBehaviour:
 
     Speed:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 633afc4650fefac48a27c5ba16a2042b, type: 2}
+  m_sharedMaterial: {fileID: 21590787880589010, guid: 633afc4650fefac48a27c5ba16a2042b,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4960,12 +4994,12 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 12
+  m_fontSize: 14.55
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 6
-  m_fontSizeMax: 12
+  m_fontSizeMin: 12
+  m_fontSizeMax: 16
   m_fontStyle: 0
   m_textAlignment: 513
   m_characterSpacing: 0
@@ -11516,7 +11550,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -1.04, y: 0}
   m_SizeDelta: {x: 17.93, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15656,7 +15690,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1915239683
 RectTransform:
   m_ObjectHideFlags: 0

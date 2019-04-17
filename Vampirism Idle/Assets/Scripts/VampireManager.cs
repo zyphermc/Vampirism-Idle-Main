@@ -22,15 +22,23 @@ public class VampireManager : MonoBehaviour //Persistent
     public string[] vampires_name;
     public string[] vampires_quote;
     public string[] vampires_desc;
-    public double[] vampires_bloodEfficiency;
-    public double[] vampires_maximumBloodGather;
+
     public double[] vampires_baseCost_sharpenFangs;
     public double[] vampires_baseCost_trainAgility;
+
     public double[] vampires_speed; // value to add per second
     public double[] vampires_completionTime; //Time it takes to complete a cycle
+
+    public double[] vampires_bloodEfficiency;
+    public double[] vampires_maximumBloodGather;
+
+    [HideInInspector] public double[] vampires_bloodPerKill; //blood you get per kill
+    [HideInInspector] public double[] vampires_bloodPerInfect; //blood you get when infecting humans (lower than per kill)
+    public double[] vampires_infectionChance; //chance you infect someone and turn it into a vamp one tier below
+
     [HideInInspector] public double[] vampires_currentProgress;
-    [HideInInspector] public double[] vampires_Cost_sharpenFangs;
-    [HideInInspector] public double[] vampires_Cost_trainAgility;
+    [HideInInspector] public double[] vampires_Cost_sharpenFangs; //cost after calculation
+    [HideInInspector] public double[] vampires_Cost_trainAgility; //cost after calculation
     [HideInInspector] public double[] vampires_progress;
     [HideInInspector] public int[] vampires_level_sharpenFangs;
     [HideInInspector] public int[] vampires_level_trainAgility;
@@ -54,7 +62,9 @@ public class VampireManager : MonoBehaviour //Persistent
         vampires_desc[0] = "Basically a freshly turned vampire.";
 
         vampires_maximumBloodGather[0] = 1000;
-        vampires_bloodEfficiency[0] = 75 / 100;
+        vampires_bloodEfficiency[0] = 75; //out of 100
+        vampires_infectionChance[0] = 10; //out of 100
+
         vampires_baseCost_sharpenFangs[0] = 5000;
         vampires_baseCost_trainAgility[0] = 7500;
 
@@ -63,19 +73,21 @@ public class VampireManager : MonoBehaviour //Persistent
         vampires_level_sharpenFangs[0] = 0;
         vampires_level_trainAgility[0] = 0;
 
-        vampires_amount_Total[0] = 1;
+        vampires_amount_Total[0] = 0;
         vampires_amount_Available_Total[0] = vampires_amount_Total[0] - vampires_amount_Used_Total[0];
         vampires_amount_Used_Total[0] = vampires_amount_Used_Feed[0] + vampires_amount_Used_Infect[0];
         vampires_amount_Used_Feed[0] = 0;
         vampires_amount_Used_Infect[0] = 0;
 
-        //Vampling
+        //Vampling Initial Stats
         vampires_name[1] = "Vampling";
         vampires_quote[1] = "Eyy I'm a vampling, sounds like a dumpling, but more dangerous.";
         vampires_desc[1] = "This is the next step to human evolution.";
 
         vampires_maximumBloodGather[1] = 7000;
-        vampires_bloodEfficiency[1] = 70 / 100;
+        vampires_bloodEfficiency[1] = 70; //out of 100
+        vampires_infectionChance[1] = 10; //out of 100
+
         vampires_baseCost_sharpenFangs[1] = 100000;
         vampires_baseCost_trainAgility[1] = 100000;
 
@@ -112,6 +124,13 @@ public class VampireManager : MonoBehaviour //Persistent
                 }
             }
         }
+
+        //Update Vampire Stats
+        vampires_bloodPerKill[0] = vampires_maximumBloodGather[0] * (vampires_bloodEfficiency[0] / 100f);
+        vampires_bloodPerInfect[0] = vampires_maximumBloodGather[0] * (10f / 100f); //only 10% of max blood gather
+
+        vampires_bloodPerKill[1] = vampires_maximumBloodGather[1] * (vampires_bloodEfficiency[1] / 100f);
+        vampires_bloodPerInfect[1] = vampires_maximumBloodGather[1] * (10f / 100f); //only 10% of max blood gather
     }
 
     private IEnumerator UpdateVampProgress()
