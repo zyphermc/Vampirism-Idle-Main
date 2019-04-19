@@ -447,6 +447,7 @@ GameObject:
   m_Component:
   - component: {fileID: 49179242}
   - component: {fileID: 49179241}
+  - component: {fileID: 49179243}
   m_Layer: 0
   m_Name: Vampire Manager [Vamp Related]
   m_TagString: Untagged
@@ -466,6 +467,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98945c7f4ebf80747bee7a2204559085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BloodGatherManager: {fileID: 49179243}
+  Lair_ProgressBars:
+  - {fileID: 197027908}
+  - {fileID: 503793416}
+  - {fileID: 1261810507}
+  - {fileID: 1696930692}
+  - {fileID: 1214910073}
+  - {fileID: 20933661}
+  - {fileID: 1585729605}
+  - {fileID: 1857366014}
+  - {fileID: 1220134104}
+  - {fileID: 1945708525}
   vampires_name:
   - Fledgeling
   - Vampling
@@ -554,6 +567,17 @@ MonoBehaviour:
   - 40
   - 35
   - 30
+  vampires_infectEfficiency:
+  - 0
+  - 10
+  - 9
+  - 8
+  - 7
+  - 6
+  - 5
+  - 4
+  - 3
+  - 2
   vampires_maximumBloodGather:
   - 1000
   - 7000
@@ -649,17 +673,6 @@ MonoBehaviour:
   vampires_amount_Used_Total: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   vampires_amount_Used_Feed: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   vampires_amount_Used_Infect: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
-  Lair_ProgressBars:
-  - {fileID: 197027908}
-  - {fileID: 503793416}
-  - {fileID: 1261810507}
-  - {fileID: 1696930692}
-  - {fileID: 1214910073}
-  - {fileID: 20933661}
-  - {fileID: 1585729605}
-  - {fileID: 1857366014}
-  - {fileID: 1220134104}
-  - {fileID: 1945708525}
   slider_maxValue: 100
   slider_savedMaxValueFeed:
   - 0
@@ -699,6 +712,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &49179243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 49179240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d4c775ff5c0a542b864c6d19873061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameManager: {fileID: 612896273}
+  VampireManager: {fileID: 49179241}
+  vampIndex: 0
 --- !u!1 &67110890
 GameObject:
   m_ObjectHideFlags: 0
@@ -4102,7 +4130,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -1.04, y: 0}
   m_SizeDelta: {x: 17.93, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4492,7 +4520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &582645736
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11641,7 +11669,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -1.04, y: 0}
   m_SizeDelta: {x: 17.93, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15834,7 +15862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1915239683
 RectTransform:
   m_ObjectHideFlags: 0

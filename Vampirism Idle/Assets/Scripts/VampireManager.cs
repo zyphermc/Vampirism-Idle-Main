@@ -36,6 +36,8 @@ public class VampireManager : MonoBehaviour //Persistent
     public double[] vampires_completionTime; //Time it takes to complete a cycle
 
     public double[] vampires_bloodEfficiency;
+    public double[] vampires_infectEfficiency;
+
     public double[] vampires_maximumBloodGather;
 
     [HideInInspector] public double[] vampires_bloodPerKill; //blood you get per kill
@@ -74,6 +76,7 @@ public class VampireManager : MonoBehaviour //Persistent
         vampires_maximumBloodGather[0] = 1000;
         vampires_bloodEfficiency[0] = 75; //out of 100
         //vampires_infectionChance[0] = 10; //out of 100
+        //vampires_infectEfficiency[0] = 10;
         vampires_speed[0] = 1;
         vampires_completionTime[0] = 10;
 
@@ -99,6 +102,7 @@ public class VampireManager : MonoBehaviour //Persistent
         vampires_maximumBloodGather[1] = 7000;
         vampires_bloodEfficiency[1] = 70; //out of 100
         vampires_infectionChance[1] = 10; //out of 100
+        vampires_infectEfficiency[1] = 10;
         vampires_speed[1] = 1;
         vampires_completionTime[1] = 20;
 
@@ -124,6 +128,7 @@ public class VampireManager : MonoBehaviour //Persistent
         vampires_maximumBloodGather[2] = 30000;
         vampires_bloodEfficiency[2] = 65; //out of 100
         vampires_infectionChance[2] = 9; //out of 100
+        vampires_infectEfficiency[2] = 9;
         vampires_speed[2] = 1;
         vampires_completionTime[2] = 30;
 
@@ -175,7 +180,7 @@ public class VampireManager : MonoBehaviour //Persistent
             vampires_amount_Used_Total[a] = vampires_amount_Used_Feed[a] + vampires_amount_Used_Infect[a];
 
             vampires_bloodPerKill[a] = vampires_maximumBloodGather[a] * (vampires_bloodEfficiency[a] / 100f);
-            vampires_bloodPerInfect[a] = vampires_maximumBloodGather[a] * (10f / 100f); //only 10% of max blood gather
+            vampires_bloodPerInfect[a] = vampires_maximumBloodGather[a] * (vampires_infectEfficiency[a] / 100f); //only 10% of max blood gather
         }
     }
 
