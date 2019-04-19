@@ -660,6 +660,9 @@ MonoBehaviour:
   - {fileID: 1857366014}
   - {fileID: 1220134104}
   - {fileID: 1945708525}
+  slider_maxValue: 100
+  slider_usedFeed: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  slider_usedInfect: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!4 &49179242
 Transform:
   m_ObjectHideFlags: 0
@@ -1493,10 +1496,10 @@ MonoBehaviour:
   m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 6
+  m_fontSizeMax: 12
   m_fontStyle: 0
-  m_textAlignment: 513
+  m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -4313,14 +4316,14 @@ MonoBehaviour:
   m_VerticalScrollbar: {fileID: 0}
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 2
   m_RegexValue: 
   m_GlobalPointSize: 14
   m_CharacterLimit: 0
@@ -4820,6 +4823,7 @@ MonoBehaviour:
   res_Wood: 0
   res_Stone: 0
   res_HumanPop: 0
+  cooldownTick: 0
 --- !u!4 &612896274
 Transform:
   m_ObjectHideFlags: 0
@@ -5721,8 +5725,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -104.62, y: 0.000012636}
-  m_SizeDelta: {x: 63.38, y: 35.76}
+  m_AnchoredPosition: {x: -106.7, y: 0.000012636}
+  m_SizeDelta: {x: 70.18, y: 35.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &761570932
 MonoBehaviour:
@@ -5773,14 +5777,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 13
+  m_fontSizeBase: 13
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 514
+  m_textAlignment: 513
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -6988,6 +6992,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VampInfoWindow: {fileID: 582645739}
   StatisticsWindow: {fileID: 1915239686}
+  VampInputManager_Feed: {fileID: 2009482289}
+  VampInputManager_Infect: {fileID: 1114724420}
+  slider_Feed: {fileID: 2009482288}
+  slider_Infect: {fileID: 1114724419}
+  VampireManager: {fileID: 49179241}
   vampButton: {fileID: 943618467}
   vampInfoNum: 7
 --- !u!1 &946862164
@@ -7723,7 +7732,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.34, y: 0.65}
+  m_AnchoredPosition: {x: -0.33999634, y: 0.6499996}
   m_SizeDelta: {x: -34.87, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1013734434
@@ -7995,6 +8004,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VampInfoWindow: {fileID: 582645739}
   StatisticsWindow: {fileID: 1915239686}
+  VampInputManager_Feed: {fileID: 2009482289}
+  VampInputManager_Infect: {fileID: 1114724420}
+  slider_Feed: {fileID: 2009482288}
+  slider_Infect: {fileID: 1114724419}
+  VampireManager: {fileID: 49179241}
   vampButton: {fileID: 1016222257}
   vampInfoNum: 3
 --- !u!1 &1041699340
@@ -8853,6 +8867,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1114724418}
   - component: {fileID: 1114724419}
+  - component: {fileID: 1114724420}
   m_Layer: 5
   m_Name: Infect Amount Slider
   m_TagString: Untagged
@@ -8926,13 +8941,32 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1114724420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114724417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4ae9cc294aa6b46a7d03ee26bd8d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameManager: {fileID: 612896273}
+  VampireManager: {fileID: 49179241}
+  slider: {fileID: 1114724419}
+  inputField: {fileID: 1513442364}
+  killMethod: 1
+  vampIndex: 0
+  textBox_TitlePercentage: {fileID: 1791444465}
 --- !u!1 &1144448007
 GameObject:
   m_ObjectHideFlags: 0
@@ -11545,6 +11579,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VampInfoWindow: {fileID: 582645739}
   StatisticsWindow: {fileID: 1915239686}
+  VampInputManager_Feed: {fileID: 2009482289}
+  VampInputManager_Infect: {fileID: 1114724420}
+  slider_Feed: {fileID: 2009482288}
+  slider_Infect: {fileID: 1114724419}
+  VampireManager: {fileID: 49179241}
   vampButton: {fileID: 1401233914}
   vampInfoNum: 6
 --- !u!1 &1413157819
@@ -12243,6 +12282,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VampInfoWindow: {fileID: 582645739}
   StatisticsWindow: {fileID: 1915239686}
+  VampInputManager_Feed: {fileID: 2009482289}
+  VampInputManager_Infect: {fileID: 1114724420}
+  slider_Feed: {fileID: 2009482288}
+  slider_Infect: {fileID: 1114724419}
+  VampireManager: {fileID: 49179241}
   vampButton: {fileID: 1469916255}
   vampInfoNum: 9
 --- !u!1 &1470863950
@@ -12393,6 +12437,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VampInfoWindow: {fileID: 582645739}
   StatisticsWindow: {fileID: 1915239686}
+  VampInputManager_Feed: {fileID: 2009482289}
+  VampInputManager_Infect: {fileID: 1114724420}
+  slider_Feed: {fileID: 2009482288}
+  slider_Infect: {fileID: 1114724419}
+  VampireManager: {fileID: 49179241}
   vampButton: {fileID: 1470863952}
   vampInfoNum: 4
 --- !u!1 &1513442362
@@ -12480,14 +12529,14 @@ MonoBehaviour:
   m_VerticalScrollbar: {fileID: 0}
   m_VerticalScrollbarEventHandler: {fileID: 0}
   m_ScrollSensitivity: 1
-  m_ContentType: 0
+  m_ContentType: 2
   m_InputType: 0
   m_AsteriskChar: 42
-  m_KeyboardType: 0
+  m_KeyboardType: 4
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 0
+  m_CharacterValidation: 2
   m_RegexValue: 
   m_GlobalPointSize: 14
   m_CharacterLimit: 0
@@ -12821,10 +12870,10 @@ MonoBehaviour:
   m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMin: 6
+  m_fontSizeMax: 12
   m_fontStyle: 0
-  m_textAlignment: 513
+  m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -13037,6 +13086,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VampInfoWindow: {fileID: 582645739}
   StatisticsWindow: {fileID: 1915239686}
+  VampInputManager_Feed: {fileID: 2009482289}
+  VampInputManager_Infect: {fileID: 1114724420}
+  slider_Feed: {fileID: 2009482288}
+  slider_Infect: {fileID: 1114724419}
+  VampireManager: {fileID: 49179241}
   vampButton: {fileID: 1568572906}
   vampInfoNum: 1
 --- !u!1 &1576113606
@@ -14139,7 +14193,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1697732248}
-        m_MethodName: biteHuman
+        m_MethodName: BiteHuman
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14709,8 +14763,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -104.62, y: 0.000015259}
-  m_SizeDelta: {x: 64.64, y: 35.76}
+  m_AnchoredPosition: {x: -106.700005, y: 0.000015259}
+  m_SizeDelta: {x: 71.58, y: 35.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1791444465
 MonoBehaviour:
@@ -14761,14 +14815,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 13
+  m_fontSizeBase: 13
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 514
+  m_textAlignment: 513
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -15228,6 +15282,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VampInfoWindow: {fileID: 582645739}
   StatisticsWindow: {fileID: 1915239686}
+  VampInputManager_Feed: {fileID: 2009482289}
+  VampInputManager_Infect: {fileID: 1114724420}
+  slider_Feed: {fileID: 2009482288}
+  slider_Infect: {fileID: 1114724419}
+  VampireManager: {fileID: 49179241}
   vampButton: {fileID: 1843745754}
   vampInfoNum: 8
 --- !u!1 &1854880315
@@ -15728,6 +15787,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VampInfoWindow: {fileID: 582645739}
   StatisticsWindow: {fileID: 1915239686}
+  VampInputManager_Feed: {fileID: 2009482289}
+  VampInputManager_Infect: {fileID: 1114724420}
+  slider_Feed: {fileID: 2009482288}
+  slider_Infect: {fileID: 1114724419}
+  VampireManager: {fileID: 49179241}
   vampButton: {fileID: 1892336289}
   vampInfoNum: 5
 --- !u!1 &1915239682
@@ -16548,6 +16612,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2009482287}
   - component: {fileID: 2009482288}
+  - component: {fileID: 2009482289}
   m_Layer: 5
   m_Name: Feed Amount Slider
   m_TagString: Untagged
@@ -16621,13 +16686,43 @@ MonoBehaviour:
   m_Direction: 0
   m_MinValue: 0
   m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_WholeNumbers: 1
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2009482289}
+        m_MethodName: ShowValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &2009482289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2009482286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e4ae9cc294aa6b46a7d03ee26bd8d40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameManager: {fileID: 612896273}
+  VampireManager: {fileID: 49179241}
+  slider: {fileID: 2009482288}
+  inputField: {fileID: 580282258}
+  killMethod: 0
+  vampIndex: 0
+  textBox_TitlePercentage: {fileID: 761570932}
 --- !u!1 &2012886423
 GameObject:
   m_ObjectHideFlags: 0
@@ -16807,6 +16902,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VampInfoWindow: {fileID: 582645739}
   StatisticsWindow: {fileID: 1915239686}
+  VampInputManager_Feed: {fileID: 2009482289}
+  VampInputManager_Infect: {fileID: 1114724420}
+  slider_Feed: {fileID: 2009482288}
+  slider_Infect: {fileID: 1114724419}
+  VampireManager: {fileID: 49179241}
   vampButton: {fileID: 2025995276}
   vampInfoNum: 2
 --- !u!1 &2032279862
@@ -17265,6 +17365,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VampInfoWindow: {fileID: 582645739}
   StatisticsWindow: {fileID: 1915239686}
+  VampInputManager_Feed: {fileID: 2009482289}
+  VampInputManager_Infect: {fileID: 1114724420}
+  slider_Feed: {fileID: 2009482288}
+  slider_Infect: {fileID: 1114724419}
+  VampireManager: {fileID: 49179241}
   vampButton: {fileID: 2098891290}
   vampInfoNum: 0
 --- !u!1 &2122330881

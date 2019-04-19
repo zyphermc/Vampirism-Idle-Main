@@ -51,6 +51,11 @@ public class VampireManager : MonoBehaviour //Persistent
     //Vampire Progress Bars (Lair)
     [HideInInspector] public TextMeshProUGUI[] Lair_ProgressBars;
 
+    //Vampire Slider Values (Lair)
+    public int slider_maxValue;
+    public int[] slider_usedFeed;
+    public int[] slider_usedInfect;
+
     private void Start()
     {
         //Start Coroutines
@@ -76,6 +81,7 @@ public class VampireManager : MonoBehaviour //Persistent
         vampires_level_trainAgility[0] = 0;
 
         vampires_amount_Total[0] = 0;
+        vampires_amount_Used_Total[0] = 0;
         vampires_amount_Used_Feed[0] = 0;
         vampires_amount_Used_Infect[0] = 0;
         //////////////////////////////////////////////////////////////////////////////////////////////
@@ -99,7 +105,8 @@ public class VampireManager : MonoBehaviour //Persistent
         vampires_level_sharpenFangs[1] = 0;
         vampires_level_trainAgility[1] = 0;
 
-        vampires_amount_Total[1] = 0;
+        vampires_amount_Total[1] = 10;
+        vampires_amount_Used_Total[1] = 0;
         vampires_amount_Used_Feed[1] = 0;
         vampires_amount_Used_Infect[1] = 0;
         //////////////////////////////////////////////////////////////////////////////////////////////
@@ -124,6 +131,7 @@ public class VampireManager : MonoBehaviour //Persistent
         vampires_level_trainAgility[2] = 0;
 
         vampires_amount_Total[2] = 0;
+        vampires_amount_Used_Total[2] = 0;
         vampires_amount_Used_Feed[2] = 0;
         vampires_amount_Used_Infect[2] = 0;
         //////////////////////////////////////////////////////////////////////////////////////////////
@@ -132,10 +140,10 @@ public class VampireManager : MonoBehaviour //Persistent
     private void Update()
     {
         //Update all vamps
-        for (int a = 0; a < 10; a++)
+        for (int a = 0; a < 10; a++) //10 types of vamps currently
         {
             //Update Progress Bar for all available vamps
-            if (vampires_amount_Total[a] > 0)
+            if (vampires_amount_Used_Total[a] > 0)
             {
                 vampires_progress[a] = (vampires_currentProgress[a] / vampires_completionTime[a]); //update the progress of completion in lair
 

@@ -11,9 +11,8 @@ public class BiteButton : MonoBehaviour //Local
     public TextMeshProUGUI textBox_biteButton;
 
     private bool cooldown = false;
-    private int ticks = 11;
 
-    public void biteHuman()
+    public void BiteHuman()
     {
         if (GameManager.res_HumanPop > 0)
         {
@@ -26,14 +25,14 @@ public class BiteButton : MonoBehaviour //Local
 
     IEnumerator BiteCooldown()
     {
-        ticks = 11;
+        GameManager.cooldownTick = 11;
         button_biteButton.interactable = false;
 
         while (true)
         {
-            ticks--;
+            GameManager.cooldownTick--;
 
-            if(ticks <= 0)
+            if(GameManager.cooldownTick <= 0)
             {
                 cooldown = false;
                 button_biteButton.interactable = true;
@@ -53,7 +52,7 @@ public class BiteButton : MonoBehaviour //Local
         }
         else
         {
-            textBox_biteButton.text = ticks + "s";
+            textBox_biteButton.text = GameManager.cooldownTick + "s";
         }
         
     }
