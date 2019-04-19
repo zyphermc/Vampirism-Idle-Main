@@ -46,9 +46,4 @@ public class VampInputManager : MonoBehaviour //Local (Slider and Input field fo
         }
         
     }
-
-    public void ShowValue()
-    {
-        Debug.Log("Value: " + slider.value);
-    }
 }

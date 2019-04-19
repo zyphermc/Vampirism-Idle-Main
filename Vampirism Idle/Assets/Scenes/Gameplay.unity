@@ -5748,7 +5748,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Feed
+  m_text: Feed (43%)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 45608aef0d1bb07419f5c6eeef37d52e, type: 2}
   m_sharedMaterial: {fileID: 21606359063040468, guid: 45608aef0d1bb07419f5c6eeef37d52e,
@@ -5818,10 +5818,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 761570932}
-    characterCount: 4
+    characterCount: 10
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -14786,7 +14786,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: Infect
+  m_text: Infect (84%)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 45608aef0d1bb07419f5c6eeef37d52e, type: 2}
   m_sharedMaterial: {fileID: 21606359063040468, guid: 45608aef0d1bb07419f5c6eeef37d52e,
@@ -14856,10 +14856,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1791444465}
-    characterCount: 6
+    characterCount: 12
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
     lineCount: 1
     pageCount: 1
