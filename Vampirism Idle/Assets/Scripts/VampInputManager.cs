@@ -63,12 +63,5 @@ public class VampInputManager : MonoBehaviour //Local (Slider and Input field fo
         {
             inputField.text = VampireManager.vampires_amount_Used_Infect[vampIndex].ToString();
         }
-
-    }
-
-    public void UpdateInputField()
-    {
-        
-
     }
 }
