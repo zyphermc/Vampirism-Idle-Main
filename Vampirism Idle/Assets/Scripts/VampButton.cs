@@ -41,7 +41,10 @@ public class VampButton : MonoBehaviour //Local
             VampInputManager_Infect.vampIndex = vampInfoNum;
 
             //Set the saved value to the sliders
+            slider_Feed.maxValue = VampireManager.slider_savedMaxValueFeed[vampInfoNum]; 
             slider_Feed.value = VampireManager.slider_usedFeed[vampInfoNum];
+
+            slider_Infect.maxValue = VampireManager.slider_savedMaxValueInfect[vampInfoNum];
             slider_Infect.value = VampireManager.slider_usedInfect[vampInfoNum];
         }
     }

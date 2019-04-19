@@ -53,6 +53,8 @@ public class VampireManager : MonoBehaviour //Persistent
 
     //Vampire Slider Values (Lair)
     public int slider_maxValue;
+    public float[] slider_savedMaxValueFeed;
+    public float[] slider_savedMaxValueInfect;
     public int[] slider_usedFeed;
     public int[] slider_usedInfect;
 

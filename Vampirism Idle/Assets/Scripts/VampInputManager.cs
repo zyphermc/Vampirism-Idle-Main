@@ -30,6 +30,7 @@ public class VampInputManager : MonoBehaviour //Local (Slider and Input field fo
 
             slider.maxValue = VampireManager.slider_maxValue - VampireManager.slider_usedInfect[vampIndex]; //set the max value possible
 
+            VampireManager.slider_savedMaxValueFeed[vampIndex] = slider.maxValue; //save the max value
             VampireManager.slider_usedFeed[vampIndex] = (int)slider.value; //update the set percentage in vamp manager
 
             //Set vampires used for feeding in vamp manager
@@ -43,6 +44,7 @@ public class VampInputManager : MonoBehaviour //Local (Slider and Input field fo
         {
             slider.maxValue = VampireManager.slider_maxValue - VampireManager.slider_usedFeed[vampIndex]; //set the max value possible
 
+            VampireManager.slider_savedMaxValueInfect[vampIndex] = slider.maxValue; //save the max value
             VampireManager.slider_usedInfect[vampIndex] = (int)slider.value; //update the set percentage in vamp manager
 
             //Set vampires used for feeding in vamp manager
