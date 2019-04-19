@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 using TMPro;
 
 public class VampInputManager : MonoBehaviour //Local (Slider and Input field for Lair Tab)
@@ -31,6 +32,9 @@ public class VampInputManager : MonoBehaviour //Local (Slider and Input field fo
 
             VampireManager.slider_usedFeed[vampIndex] = (int)slider.value; //update the set percentage in vamp manager
 
+            //Set vampires used for feeding in vamp manager
+            VampireManager.vampires_amount_Used_Feed[vampIndex] = Mathf.FloorToInt(VampireManager.vampires_amount_Total[vampIndex] * (slider.value / 100));
+
             //Set the percentage text
             textBox_TitlePercentage.text = "Feed (" + slider.value + "%)";
         }
@@ -41,9 +45,28 @@ public class VampInputManager : MonoBehaviour //Local (Slider and Input field fo
 
             VampireManager.slider_usedInfect[vampIndex] = (int)slider.value; //update the set percentage in vamp manager
 
+            //Set vampires used for feeding in vamp manager
+            VampireManager.vampires_amount_Used_Infect[vampIndex] = Mathf.FloorToInt(VampireManager.vampires_amount_Total[vampIndex] * (slider.value / 100));
+
             //Set the percentage text
             textBox_TitlePercentage.text = "Infect (" + slider.value + "%)";
         }
+
+        if (killMethod == 0)
+        {
+            inputField.text = VampireManager.vampires_amount_Used_Feed[vampIndex].ToString();
+        }
+        else
+        if (killMethod == 1)
+        {
+            inputField.text = VampireManager.vampires_amount_Used_Infect[vampIndex].ToString();
+        }
+
+    }
+
+    public void UpdateInputField()
+    {
         
+
     }
 }

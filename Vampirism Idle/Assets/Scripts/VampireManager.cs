@@ -105,7 +105,7 @@ public class VampireManager : MonoBehaviour //Persistent
         vampires_level_sharpenFangs[1] = 0;
         vampires_level_trainAgility[1] = 0;
 
-        vampires_amount_Total[1] = 10;
+        vampires_amount_Total[1] = 100;
         vampires_amount_Used_Total[1] = 0;
         vampires_amount_Used_Feed[1] = 0;
         vampires_amount_Used_Infect[1] = 0;
