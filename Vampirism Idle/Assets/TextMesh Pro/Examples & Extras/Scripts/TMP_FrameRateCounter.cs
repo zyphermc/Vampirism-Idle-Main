@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
+using System.Collections;
+
 
 namespace TMPro.Examples
 {
+    
     public class TMP_FrameRateCounter : MonoBehaviour
     {
         public float UpdateInterval = 5.0f;
@@ -21,7 +24,7 @@ namespace TMPro.Examples
 
         private FpsCounterAnchorPositions last_AnchorPosition;
 
-        private void Awake()
+        void Awake()
         {
             if (!enabled)
                 return;
@@ -34,6 +37,7 @@ namespace TMPro.Examples
             m_TextMeshPro = frameCounter.AddComponent<TextMeshPro>();
             m_TextMeshPro.font = Resources.Load<TMP_FontAsset>("Fonts & Materials/LiberationSans SDF");
             m_TextMeshPro.fontSharedMaterial = Resources.Load<Material>("Fonts & Materials/LiberationSans SDF - Overlay");
+
 
             m_frameCounter_transform = frameCounter.transform;
             m_frameCounter_transform.SetParent(m_camera.transform);
@@ -53,15 +57,17 @@ namespace TMPro.Examples
 
             Set_FrameCounter_Position(AnchorPosition);
             last_AnchorPosition = AnchorPosition;
+
+
         }
 
-        private void Start()
+        void Start()
         {
             m_LastInterval = Time.realtimeSinceStartup;
             m_Frames = 0;
         }
 
-        private void Update()
+        void Update()
         {
             if (AnchorPosition != last_AnchorPosition)
                 Set_FrameCounter_Position(AnchorPosition);
@@ -93,7 +99,8 @@ namespace TMPro.Examples
             }
         }
 
-        private void Set_FrameCounter_Position(FpsCounterAnchorPositions anchor_position)
+
+        void Set_FrameCounter_Position(FpsCounterAnchorPositions anchor_position)
         {
             //Debug.Log("Changing frame counter anchor position.");
             m_TextMeshPro.margin = new Vector4(1f, 1f, 1f, 1f);
@@ -105,19 +112,16 @@ namespace TMPro.Examples
                     m_TextMeshPro.rectTransform.pivot = new Vector2(0, 1);
                     m_frameCounter_transform.position = m_camera.ViewportToWorldPoint(new Vector3(0, 1, 100.0f));
                     break;
-
                 case FpsCounterAnchorPositions.BottomLeft:
                     m_TextMeshPro.alignment = TextAlignmentOptions.BottomLeft;
                     m_TextMeshPro.rectTransform.pivot = new Vector2(0, 0);
                     m_frameCounter_transform.position = m_camera.ViewportToWorldPoint(new Vector3(0, 0, 100.0f));
                     break;
-
                 case FpsCounterAnchorPositions.TopRight:
                     m_TextMeshPro.alignment = TextAlignmentOptions.TopRight;
                     m_TextMeshPro.rectTransform.pivot = new Vector2(1, 1);
                     m_frameCounter_transform.position = m_camera.ViewportToWorldPoint(new Vector3(1, 1, 100.0f));
                     break;
-
                 case FpsCounterAnchorPositions.BottomRight:
                     m_TextMeshPro.alignment = TextAlignmentOptions.BottomRight;
                     m_TextMeshPro.rectTransform.pivot = new Vector2(1, 0);

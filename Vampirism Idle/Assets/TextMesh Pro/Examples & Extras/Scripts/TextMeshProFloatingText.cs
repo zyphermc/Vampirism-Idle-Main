@@ -1,8 +1,10 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
+
 
 namespace TMPro.Examples
 {
+    
     public class TextMeshProFloatingText : MonoBehaviour
     {
         public Font TheFont;
@@ -15,14 +17,14 @@ namespace TMPro.Examples
         private Transform m_floatingText_Transform;
         private Transform m_cameraTransform;
 
-        private Vector3 lastPOS = Vector3.zero;
-        private Quaternion lastRotation = Quaternion.identity;
+        Vector3 lastPOS = Vector3.zero;
+        Quaternion lastRotation = Quaternion.identity;
 
         public int SpawnType;
 
         //private int m_frame = 0;
 
-        private void Awake()
+        void Awake()
         {
             m_transform = transform;
             m_floatingText = new GameObject(this.name + " floating text");
@@ -34,14 +36,14 @@ namespace TMPro.Examples
             m_cameraTransform = Camera.main.transform;
         }
 
-        private void Start()
+        void Start()
         {
             if (SpawnType == 0)
             {
                 // TextMesh Pro Implementation
                 m_textMeshPro = m_floatingText.AddComponent<TextMeshPro>();
                 m_textMeshPro.rectTransform.sizeDelta = new Vector2(3, 3);
-
+                
                 m_floatingText_Transform = m_floatingText.transform;
                 m_floatingText_Transform.position = m_transform.position + new Vector3(0, 15f, 0);
 
@@ -76,8 +78,11 @@ namespace TMPro.Examples
             }
             else if (SpawnType == 2)
             {
+
             }
+
         }
+
 
         //void Update()
         //{
@@ -93,9 +98,10 @@ namespace TMPro.Examples
 
         //}
 
+
         public IEnumerator DisplayTextMeshProFloatingText()
         {
-            float CountDuration = 2.0f; // How long is the countdown alive.
+            float CountDuration = 2.0f; // How long is the countdown alive.    
             float starting_Count = Random.Range(5f, 20f); // At what number is the counter starting at.
             float current_Count = starting_Count;
 
@@ -103,6 +109,7 @@ namespace TMPro.Examples
             Color32 start_color = m_textMeshPro.color;
             float alpha = 255;
             int int_counter = 0;
+
 
             float fadeDuration = 3 / starting_Count * CountDuration;
 
@@ -147,9 +154,10 @@ namespace TMPro.Examples
             StartCoroutine(DisplayTextMeshProFloatingText());
         }
 
+
         public IEnumerator DisplayTextMeshFloatingText()
         {
-            float CountDuration = 2.0f; // How long is the countdown alive.
+            float CountDuration = 2.0f; // How long is the countdown alive.    
             float starting_Count = Random.Range(5f, 20f); // At what number is the counter starting at.
             float current_Count = starting_Count;
 
@@ -188,6 +196,8 @@ namespace TMPro.Examples
                     Vector3 dir = m_transform.position - lastPOS;
                     m_transform.forward = new Vector3(dir.x, 0, dir.z);
                 }
+
+
 
                 yield return new WaitForEndOfFrame();
             }

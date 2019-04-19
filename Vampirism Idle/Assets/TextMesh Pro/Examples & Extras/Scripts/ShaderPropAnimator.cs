@@ -1,10 +1,13 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
+
 
 namespace TMPro.Examples
 {
+    
     public class ShaderPropAnimator : MonoBehaviour
     {
+
         private Renderer m_Renderer;
         private Material m_Material;
 
@@ -12,7 +15,7 @@ namespace TMPro.Examples
 
         public float m_frame;
 
-        private void Awake()
+        void Awake()
         {
             // Cache a reference to object's renderer
             m_Renderer = GetComponent<Renderer>();
@@ -21,12 +24,12 @@ namespace TMPro.Examples
             m_Material = m_Renderer.material;
         }
 
-        private void Start()
+        void Start()
         {
             StartCoroutine(AnimateProperties());
         }
 
-        private IEnumerator AnimateProperties()
+        IEnumerator AnimateProperties()
         {
             //float lightAngle;
             float glowPower;

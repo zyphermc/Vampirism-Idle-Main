@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
+
 
 namespace TMPro.Examples
 {
+
     public class TMP_TextSelector_A : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         private TextMeshPro m_TextMeshPro;
@@ -14,7 +17,7 @@ namespace TMPro.Examples
         private int m_lastCharIndex = -1;
         private int m_lastWordIndex = -1;
 
-        private void Awake()
+        void Awake()
         {
             m_TextMeshPro = gameObject.GetComponent<TextMeshPro>();
             m_Camera = Camera.main;
@@ -23,7 +26,8 @@ namespace TMPro.Examples
             m_TextMeshPro.ForceMeshUpdate();
         }
 
-        private void LateUpdate()
+
+        void LateUpdate()
         {
             m_isHoveringObject = false;
 
@@ -35,7 +39,6 @@ namespace TMPro.Examples
             if (m_isHoveringObject)
             {
                 #region Example of Character Selection
-
                 int charIndex = TMP_TextUtilities.FindIntersectingCharacter(m_TextMeshPro, Input.mousePosition, Camera.main, true);
                 if (charIndex != -1 && charIndex != m_lastCharIndex && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)))
                 {
@@ -59,11 +62,9 @@ namespace TMPro.Examples
                     //m_TextMeshPro.mesh.colors32 = vertexColors;
                     m_TextMeshPro.textInfo.meshInfo[meshIndex].mesh.colors32 = vertexColors;
                 }
-
-                #endregion Example of Character Selection
+                #endregion
 
                 #region Example of Link Handling
-
                 // Check if mouse intersects with any links.
                 int linkIndex = TMP_TextUtilities.FindIntersectingLink(m_TextMeshPro, Input.mousePosition, m_Camera);
 
@@ -84,8 +85,7 @@ namespace TMPro.Examples
                     // The following provides an example of how to access the link properties.
                     Debug.Log("Link ID: \"" + linkInfo.GetLinkID() + "\"   Link Text: \"" + linkInfo.GetLinkText() + "\""); // Example of how to retrieve the Link ID and Link Text.
 
-                    Vector3 worldPointInRectangle = Vector3.zero;
-                    RectTransformUtility.ScreenPointToWorldPointInRectangle(m_TextMeshPro.rectTransform, Input.mousePosition, m_Camera, out worldPointInRectangle);
+                    RectTransformUtility.ScreenPointToWorldPointInRectangle(m_TextMeshPro.rectTransform, Input.mousePosition, m_Camera, out Vector3 worldPointInRectangle);
 
                     switch (linkInfo.GetLinkID())
                     {
@@ -94,7 +94,6 @@ namespace TMPro.Examples
                                       //m_TextPopup_RectTransform.gameObject.SetActive(true);
                                       //m_TextPopup_TMPComponent.text = k_LinkText + " ID 01";
                             break;
-
                         case "id_02": // 100041638: // id_02
                                       //m_TextPopup_RectTransform.position = worldPointInRectangle;
                                       //m_TextPopup_RectTransform.gameObject.SetActive(true);
@@ -102,11 +101,10 @@ namespace TMPro.Examples
                             break;
                     }
                 }
+                #endregion
 
-                #endregion Example of Link Handling
 
                 #region Example of Word Selection
-
                 // Check if Mouse intersects any words and if so assign a random color to that word.
                 int wordIndex = TMP_TextUtilities.FindIntersectingWord(m_TextMeshPro, Input.mousePosition, Camera.main);
                 if (wordIndex != -1 && wordIndex != m_lastWordIndex)
@@ -135,10 +133,10 @@ namespace TMPro.Examples
 
                     m_TextMeshPro.mesh.colors32 = vertexColors;
                 }
-
-                #endregion Example of Word Selection
+                #endregion
             }
         }
+
 
         public void OnPointerEnter(PointerEventData eventData)
         {
@@ -146,10 +144,12 @@ namespace TMPro.Examples
             m_isHoveringObject = true;
         }
 
+
         public void OnPointerExit(PointerEventData eventData)
         {
             Debug.Log("OnPointerExit()");
             m_isHoveringObject = false;
         }
+
     }
 }
