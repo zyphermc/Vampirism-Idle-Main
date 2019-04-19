@@ -19,6 +19,12 @@ public class VampireManager : MonoBehaviour //Persistent
      * The Father
      */
 
+    //Blood Gather Manager Object
+    public BloodGatherManager BloodGatherManager;
+
+    //Vampire Progress Bars (Lair)
+    public TextMeshProUGUI[] Lair_ProgressBars;
+
     public string[] vampires_name;
     public string[] vampires_quote;
     public string[] vampires_desc;
@@ -47,9 +53,6 @@ public class VampireManager : MonoBehaviour //Persistent
     [HideInInspector] public int[] vampires_amount_Used_Total;
     [HideInInspector] public int[] vampires_amount_Used_Feed;
     [HideInInspector] public int[] vampires_amount_Used_Infect;
-
-    //Vampire Progress Bars (Lair)
-    [HideInInspector] public TextMeshProUGUI[] Lair_ProgressBars;
 
     //Vampire Slider Values (Lair)
     public int slider_maxValue;
@@ -152,6 +155,12 @@ public class VampireManager : MonoBehaviour //Persistent
                 if (vampires_progress[a] >= 1)
                 {
                     //do functions here
+                    BloodGatherManager.vampIndex = a;
+                    BloodGatherManager.CommenceFeed();
+                    BloodGatherManager.CommenceInfect();
+
+
+                    //reset progress after cycle
                     vampires_currentProgress[a] = 0;
                 }
 
@@ -176,7 +185,7 @@ public class VampireManager : MonoBehaviour //Persistent
         {
             for (int a = 0; a < 10; a++)
             {
-                if (vampires_amount_Total[a] > 0)
+                if (vampires_amount_Used_Feed[a] > 0 || vampires_amount_Used_Infect[a] > 0)
                 {
                     vampires_currentProgress[a] += vampires_speed[a] / 60f; //add the speed value to the current progress
                 }

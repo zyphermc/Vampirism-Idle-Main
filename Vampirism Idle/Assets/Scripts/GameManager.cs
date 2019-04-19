@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour //Persistent
 
     public double res_Wood;
     public double res_Stone;
-    public double res_HumanPop;
+    public int res_HumanPop;
 
     //Cooldown Tick for Bite Button
     public int cooldownTick;
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour //Persistent
     private void Update()
     {
         textBox_Blood.text = Math.Floor(res_Blood).ToString();
-        textBox_HumanPop.text = Math.Floor(res_HumanPop).ToString();
+        textBox_HumanPop.text = Mathf.Floor(res_HumanPop).ToString();
     }
 
     private IEnumerator UpdateResources()
