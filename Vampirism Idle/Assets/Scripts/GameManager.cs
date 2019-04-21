@@ -3,7 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour //Persistent
+public class GameManager : MonoBehaviour //Persistent (contains game stats)
 {
     /*Declaration of Variables*/
 

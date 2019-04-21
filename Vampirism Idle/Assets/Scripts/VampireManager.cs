@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-public class VampireManager : MonoBehaviour //Persistent
+public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
 {
     /* This contains the stats of every vampire */
 

@@ -64,7 +64,6 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
                 if(AscendManager.showAscendInfo == true)
                 {
                     textBox_vampStats.text = AscendManager.AscendButtonInfo;
-                    Debug.Log("Text Changed to Ascend Button Info");
                 }
                 else if (vampIndex >= 1) //if not fledgeling (since fledgeling can't infect so should not have any infection related shit)
                 {

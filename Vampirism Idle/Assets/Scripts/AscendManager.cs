@@ -4,8 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class AscendManager : MonoBehaviour
+public class AscendManager : MonoBehaviour //Local (calculates the cost, info text, and amount of vampires available to ascend)
 {
+    //Managers
+    public GameManager GameManager;
+    public VampireManager VampireManager;
+
     //Vamp Stats Text Box
     public TextMeshProUGUI textBox_ButtonInfo;
 
