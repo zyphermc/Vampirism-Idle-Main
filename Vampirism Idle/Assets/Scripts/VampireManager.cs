@@ -50,11 +50,14 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
     [HideInInspector] public double[] vampires_progress;
     [HideInInspector] public int[] vampires_level_sharpenFangs;
     [HideInInspector] public int[] vampires_level_trainAgility;
-    [HideInInspector] public int[] vampires_amount_Total;
+     public int[] vampires_amount_Total;
     [HideInInspector] public int[] vampires_amount_Available_Total;
     [HideInInspector] public int[] vampires_amount_Used_Total;
     [HideInInspector] public int[] vampires_amount_Used_Feed;
     [HideInInspector] public int[] vampires_amount_Used_Infect;
+
+    //Ascend costs
+    public double[] vampires_cost_ascend;
 
     //Vampire Slider Values (Lair)
     public int slider_maxValue;

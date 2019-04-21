@@ -673,6 +673,16 @@ MonoBehaviour:
   vampires_amount_Used_Total: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   vampires_amount_Used_Feed: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   vampires_amount_Used_Infect: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  vampires_cost_ascend:
+  - 100
+  - 1000
+  - 10000
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   slider_maxValue: 100
   slider_savedMaxValueFeed:
   - 0
@@ -4748,6 +4758,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VampireManager: {fileID: 49179241}
   StatisticsWindow: {fileID: 1915239686}
+  AscendManager: {fileID: 1274998349}
+  button_Ascend: {fileID: 1649109681}
   tab_killMethods: {fileID: 1179300216}
   tab_efficiencyUpgrades: {fileID: 1752193511}
   textBox_vampTitle: {fileID: 1837396195}
@@ -7196,6 +7208,7 @@ MonoBehaviour:
   slider_Feed: {fileID: 2009482288}
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
+  AscendManager: {fileID: 1274998349}
   vampButton: {fileID: 943618467}
   vampInfoNum: 7
 --- !u!1 &946862164
@@ -8208,6 +8221,7 @@ MonoBehaviour:
   slider_Feed: {fileID: 2009482288}
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
+  AscendManager: {fileID: 1274998349}
   vampButton: {fileID: 1016222257}
   vampInfoNum: 3
 --- !u!1 &1041699340
@@ -10485,6 +10499,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261810505}
   m_CullTransparentMesh: 0
+--- !u!1 &1274998348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1274998350}
+  - component: {fileID: 1274998349}
+  m_Layer: 0
+  m_Name: Ascend Manager [Ascension]
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1274998349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274998348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7df1524a7744c714fba00359ae1fd264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameManager: {fileID: 612896273}
+  VampireManager: {fileID: 49179241}
+  textBox_ButtonInfo: {fileID: 646766800}
+  AscendButtonInfo: 
+  ascendAvailable: 000000000000000000
+  showAscendInfo: 0
+  ascendBuyable: 0
+  vampIndex: 0
+--- !u!4 &1274998350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274998348}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 505.65485, y: 334.9317, z: -495}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1295946692
 GameObject:
   m_ObjectHideFlags: 0
@@ -11783,6 +11848,7 @@ MonoBehaviour:
   slider_Feed: {fileID: 2009482288}
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
+  AscendManager: {fileID: 1274998349}
   vampButton: {fileID: 1401233914}
   vampInfoNum: 6
 --- !u!1 &1413157819
@@ -12486,6 +12552,7 @@ MonoBehaviour:
   slider_Feed: {fileID: 2009482288}
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
+  AscendManager: {fileID: 1274998349}
   vampButton: {fileID: 1469916255}
   vampInfoNum: 9
 --- !u!1 &1470863950
@@ -12641,6 +12708,7 @@ MonoBehaviour:
   slider_Feed: {fileID: 2009482288}
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
+  AscendManager: {fileID: 1274998349}
   vampButton: {fileID: 1470863952}
   vampInfoNum: 4
 --- !u!1 &1513442362
@@ -13290,6 +13358,7 @@ MonoBehaviour:
   slider_Feed: {fileID: 2009482288}
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
+  AscendManager: {fileID: 1274998349}
   vampButton: {fileID: 1568572906}
   vampInfoNum: 1
 --- !u!1 &1576113606
@@ -13892,7 +13961,6 @@ GameObject:
   - component: {fileID: 1649109682}
   - component: {fileID: 1649109681}
   - component: {fileID: 1649109685}
-  - component: {fileID: 1649109684}
   m_Layer: 5
   m_Name: Ascend Button
   m_TagString: Untagged
@@ -13962,7 +14030,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1649109682}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1274998349}
+        m_MethodName: ascendVamp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1649109682
@@ -14002,19 +14081,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649109679}
   m_CullTransparentMesh: 0
---- !u!114 &1649109684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1649109679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7df1524a7744c714fba00359ae1fd264, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textBox_ButtonInfo: {fileID: 646766800}
 --- !u!114 &1649109685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14032,8 +14098,25 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1649109684}
+        - m_Target: {fileID: 1274998349}
           m_MethodName: ShowAscendInfo
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1274998349}
+          m_MethodName: HideAscendInfo
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -15653,6 +15736,7 @@ MonoBehaviour:
   slider_Feed: {fileID: 2009482288}
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
+  AscendManager: {fileID: 1274998349}
   vampButton: {fileID: 1843745754}
   vampInfoNum: 8
 --- !u!1 &1854177528
@@ -16316,6 +16400,7 @@ MonoBehaviour:
   slider_Feed: {fileID: 2009482288}
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
+  AscendManager: {fileID: 1274998349}
   vampButton: {fileID: 1892336289}
   vampInfoNum: 5
 --- !u!1 &1915239682
@@ -17578,6 +17663,7 @@ MonoBehaviour:
   slider_Feed: {fileID: 2009482288}
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
+  AscendManager: {fileID: 1274998349}
   vampButton: {fileID: 2025995276}
   vampInfoNum: 2
 --- !u!1 &2032279862
@@ -18041,6 +18127,7 @@ MonoBehaviour:
   slider_Feed: {fileID: 2009482288}
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
+  AscendManager: {fileID: 1274998349}
   vampButton: {fileID: 2098891290}
   vampInfoNum: 0
 --- !u!1 &2122330881

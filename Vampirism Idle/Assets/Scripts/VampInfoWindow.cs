@@ -82,7 +82,7 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
                 /////////////////////
                 
                 //Turn off Ascend Button if vampIndex = 9 (The Father)
-                if(vampIndex == 9)
+                if(vampIndex == 9 || !AscendManager.ascendAvailable[vampIndex])
                 {
                     if (button_Ascend.isActiveAndEnabled)
                     {
@@ -91,9 +91,18 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
                 }
                 else
                 {
-                    if (AscendManager.ascendAvailable && !button_Ascend.isActiveAndEnabled)
+                    if (AscendManager.ascendAvailable[vampIndex]) //If ascend unlocked, make it visible
                     {
                         button_Ascend.gameObject.SetActive(true);
+
+                        if (AscendManager.ascendBuyable) //if buyable, make it clickable, otherwise don't
+                        {
+                            button_Ascend.interactable = true;
+                        }
+                        else
+                        {
+                            button_Ascend.interactable = false;
+                        }
                     }
                 }
 
