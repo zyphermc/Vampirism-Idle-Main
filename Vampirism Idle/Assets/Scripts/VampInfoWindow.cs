@@ -9,6 +9,11 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
 
     public StatisticsWindow StatisticsWindow; //window of statistics
 
+    public AscendManager AscendManager; //manages the ascend info and backend
+
+    //Ascend Button (to turn off and on)
+    public Button button_Ascend;
+
     //Tabs
     public GameObject tab_killMethods;
 
@@ -31,6 +36,8 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
     public TMP_InputField inputField_Feed;
     public TMP_InputField inputField_Infect;
 
+    
+
     public int vampIndex;
     [HideInInspector] public int page;
 
@@ -49,11 +56,17 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
             textBox_vampQuote.text = VampireManager.vampires_quote[vampIndex];
             textBox_vampDesc.text = VampireManager.vampires_desc[vampIndex];
 
-            if (page == 1) //kill methods page
+            if (page == 1 ) //kill methods page
             {
                 textBox_vampAvailable.text = "Available: " + VampireManager.vampires_amount_Available_Total[vampIndex].ToString(); //update available vamps
 
-                if (vampIndex >= 1) //if not fledgeling (since fledgeling can't infect so should not have any infection related shit)
+                //Vamp Stats info
+                if(AscendManager.showAscendInfo == true)
+                {
+                    textBox_vampStats.text = AscendManager.AscendButtonInfo;
+                    Debug.Log("Text Changed to Ascend Button Info");
+                }
+                else if (vampIndex >= 1) //if not fledgeling (since fledgeling can't infect so should not have any infection related shit)
                 {
                     textBox_vampStats.text = "Blood per Feed: " + VampireManager.vampires_bloodPerKill[vampIndex].ToString("F2") + "\n"
                     + "Blood per Infect: " + VampireManager.vampires_bloodPerInfect[vampIndex].ToString("F2") + "\n"
@@ -66,6 +79,23 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
                     textBox_vampStats.text = "Blood per Feed: " + VampireManager.vampires_bloodPerKill[vampIndex].ToString("F2") + "\n"
                     + "Efficiency: " + VampireManager.vampires_bloodEfficiency[vampIndex] + "%" + "\n"
                     + "Speed: " + VampireManager.vampires_completionTime[vampIndex] + " seconds";
+                }
+                /////////////////////
+                
+                //Turn off Ascend Button if vampIndex = 9 (The Father)
+                if(vampIndex == 9)
+                {
+                    if (button_Ascend.isActiveAndEnabled)
+                    {
+                        button_Ascend.gameObject.SetActive(false);
+                    }
+                }
+                else
+                {
+                    if (AscendManager.ascendAvailable && !button_Ascend.isActiveAndEnabled)
+                    {
+                        button_Ascend.gameObject.SetActive(true);
+                    }
                 }
 
                 //Turn off infection sliders and other stuff related to infection for Fledgelingss

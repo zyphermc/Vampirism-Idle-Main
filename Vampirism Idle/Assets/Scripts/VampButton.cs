@@ -13,6 +13,7 @@ public class VampButton : MonoBehaviour //Local
     public Slider slider_Infect;
 
     public VampireManager VampireManager;
+    public AscendManager AscendManager;
 
     public Button vampButton;
     public int vampInfoNum;
@@ -28,6 +29,7 @@ public class VampButton : MonoBehaviour //Local
             VampInfoWindow.vampIndex = vampInfoNum;
             VampInputManager_Feed.vampIndex = vampInfoNum;
             VampInputManager_Infect.vampIndex = vampInfoNum;
+            AscendManager.vampIndex = vampInfoNum;
 
             //Set the saved value to the sliders
             slider_Feed.value = VampireManager.slider_usedFeed[vampInfoNum];
@@ -39,6 +41,7 @@ public class VampButton : MonoBehaviour //Local
             VampInfoWindow.vampIndex = vampInfoNum;
             VampInputManager_Feed.vampIndex = vampInfoNum;
             VampInputManager_Infect.vampIndex = vampInfoNum;
+            AscendManager.vampIndex = vampInfoNum;
 
             //Set the saved value to the sliders
             slider_Feed.maxValue = VampireManager.slider_savedMaxValueFeed[vampInfoNum]; 
