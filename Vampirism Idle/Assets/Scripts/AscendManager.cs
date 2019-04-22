@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 using TMPro;
 
 public class AscendManager : MonoBehaviour //Local (calculates the cost, info text, and amount of vampires available to ascend)
@@ -31,9 +32,16 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
 
     private void Update()
     {
-        AscendButtonInfo = "Mah nem is jeff. " + "[" + vampIndex + "]";
+        //If Max amount is chosen
+        AscendButtonInfo = "Amount to Ascend: " + GetAscendableAmount() +  "\n"
+            + "Blood Cost: " + GetAscendableAmount() * VampireManager.vampires_cost_ascend[vampIndex] + "\n"
+            + "Vampire Cost: " + GetAscendableAmount() * 100;
 
-        if(VampireManager.vampires_amount_Total[vampIndex] >= 100)
+        
+        
+
+
+        if (VampireManager.vampires_amount_Total[vampIndex] >= 100)
         {
             if (!ascendAvailable[vampIndex] && vampIndex != 9) //If ascend button is not available and vamps is more than 100, make it available
             {
@@ -74,5 +82,21 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
         GameManager.res_Blood -= VampireManager.vampires_cost_ascend[vampIndex];
 
         Debug.Log("Vampire Ascended lmao");
+    }
+
+    //Calculate Total Vampires able to ascend
+    private int GetAscendableAmount()
+    {
+        int ascendable_Blood = Mathf.FloorToInt((float)(GameManager.res_Blood / VampireManager.vampires_cost_ascend[vampIndex]));
+        int ascendable_Vamps = Mathf.FloorToInt((float)(VampireManager.vampires_amount_Total[vampIndex] / 100));
+
+        if (ascendable_Blood >= ascendable_Vamps)
+        {
+            return ascendable_Blood;
+        }
+        else
+        {
+            return ascendable_Vamps;
+        }
     }
 }
