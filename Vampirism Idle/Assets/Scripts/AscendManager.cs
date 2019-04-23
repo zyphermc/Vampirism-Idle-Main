@@ -99,6 +99,7 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
 
     public void ascendVamp() //Function for ascending vampires  (TO DO: incorporate multiple ascensions in one click)
     {
+        //If max
         if (AmountButton.amountIndex == 6)
         {
             VampireManager.vampires_amount_Total[vampIndex + 1] += GetAscendableAmount();

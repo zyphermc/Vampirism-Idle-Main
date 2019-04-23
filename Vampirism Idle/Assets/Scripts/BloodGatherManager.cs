@@ -4,8 +4,10 @@ public class BloodGatherManager : MonoBehaviour //Persistent
 {
     public GameManager GameManager;
     public VampireManager VampireManager;
+    public HousingManager HousingManager;
 
     public int vampIndex; //index of vampire
+    public int vampiresToAdd;
 
     public void CommenceFeed()
     {
@@ -31,7 +33,7 @@ public class BloodGatherManager : MonoBehaviour //Persistent
         {
             for (int a = 0; a < VampireManager.vampires_amount_Used_Infect[vampIndex]; a++) //If less than 10, calculate chance for each vamp
             {
-                if (Random.value < 0.10f) //10% of infection
+                if (Random.value < 0.10f && HousingManager.housing_amountAvailable > 0) //10% of infection
                 {
                     VampireManager.vampires_amount_Total[vampIndex - 1]++;
                 }
@@ -45,7 +47,7 @@ public class BloodGatherManager : MonoBehaviour //Persistent
         {
             for (int a = 0; a < GameManager.res_HumanPop; a++) //If less than 10, calculate chance for each vamp
             {
-                if (Random.value < 0.10f) //10% of infection
+                if (Random.value < 0.10f && HousingManager.housing_amountAvailable > 0) //10% of infection
                 {
                     VampireManager.vampires_amount_Total[vampIndex - 1]++;
                 }
@@ -60,19 +62,55 @@ public class BloodGatherManager : MonoBehaviour //Persistent
             //If Human more than Vamps (Condition 3.1)
             if (GameManager.res_HumanPop >= VampireManager.vampires_amount_Used_Infect[vampIndex])
             {
-                GameManager.res_Blood += VampireManager.vampires_bloodPerInfect[vampIndex] * VampireManager.vampires_amount_Used_Infect[vampIndex];
+                GameManager.res_Blood += VampireManager.vampires_bloodPerInfect[vampIndex] * VampireManager.vampires_amount_Used_Infect[vampIndex]; //add blood
+                GameManager.res_HumanPop -= VampireManager.vampires_amount_Used_Infect[vampIndex]; //decrease pop
 
-                VampireManager.vampires_amount_Total[vampIndex - 1] += Mathf.FloorToInt(VampireManager.vampires_amount_Used_Infect[vampIndex] * 0.10f); //10% of vamps will convert a human
+                /* Infection Code */
+                vampiresToAdd = Mathf.FloorToInt(VampireManager.vampires_amount_Used_Infect[vampIndex] * 0.10f); //calculate amount of vampires to add; 10% of vamps will convert a human
 
-                GameManager.res_HumanPop -= VampireManager.vampires_amount_Used_Infect[vampIndex];
+                //If housing is greater than the vampires to be added
+                if (HousingManager.housing_amountAvailable > vampiresToAdd)
+                {
+                    VampireManager.vampires_amount_Total[vampIndex - 1] += vampiresToAdd; //add the vamps
+                }
+                else //If the vampires to be added is greater than the housing, fill the housing instead.
+                {
+                    VampireManager.vampires_amount_Total[vampIndex - 1] += HousingManager.housing_amountAvailable;
+                }
+                /////////////////////////
             }
             else //If Human less than Vamps (Condition 3.2)
             {
                 GameManager.res_Blood += VampireManager.vampires_bloodPerInfect[vampIndex] * GameManager.res_HumanPop;
 
-                VampireManager.vampires_amount_Total[vampIndex - 1] += Mathf.FloorToInt(GameManager.res_HumanPop * 0.10f); //turn 10% of human pop to vamps
+                vampiresToAdd = Mathf.FloorToInt(VampireManager.vampires_amount_Used_Infect[vampIndex] * 0.10f);
 
-                GameManager.res_HumanPop = 0;
+                //If vampires to be added is greater than the pop, convert all humans to vamps
+                if (vampiresToAdd > GameManager.res_HumanPop)
+                {
+                    if (HousingManager.housing_amountAvailable > GameManager.res_HumanPop)
+                    {
+                        VampireManager.vampires_amount_Total[vampIndex - 1] += GameManager.res_HumanPop;
+                    }
+                    else
+                    {
+                        VampireManager.vampires_amount_Total[vampIndex - 1] += HousingManager.housing_amountAvailable;
+                    }
+
+                    GameManager.res_HumanPop = 0;
+                }
+                else //If humans are greater than the vampires to be added, add that instead.
+                {
+                    if (HousingManager.housing_amountAvailable > vampiresToAdd)
+                    {
+                        VampireManager.vampires_amount_Total[vampIndex - 1] += vampiresToAdd;
+                    }
+                    else
+                    {
+                        VampireManager.vampires_amount_Total[vampIndex - 1] += HousingManager.housing_amountAvailable;
+                    }
+                    GameManager.res_HumanPop -= vampiresToAdd;
+                }
             }
         }
     }

@@ -7,6 +7,7 @@ public class BiteButton : MonoBehaviour //Local
 {
     public GameManager GameManager;
     public VampireManager VampireManager;
+    public HousingManager HousingManager;
     public Button button_biteButton;
     public TextMeshProUGUI textBox_biteButton;
 
@@ -49,6 +50,15 @@ public class BiteButton : MonoBehaviour //Local
         if(cooldown == false)
         {
             textBox_biteButton.text = "Bite";
+
+            if(HousingManager.housing_amountAvailable <= 0)
+            {
+                button_biteButton.interactable = false;
+            }
+            else
+            {
+                button_biteButton.interactable = true;
+            }
         }
         else
         {
