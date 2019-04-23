@@ -1,17 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using TMPro;
 
-public class AmountButton : MonoBehaviour
+public class AmountButton : MonoBehaviour //Local
 {
     public TextMeshProUGUI textBox_AmountButton;
-    public int[] amountNumber;
-    public int amountIndex;
+    public int[] amountArray;
+    public int amountIndex;  //index 6 is MAX
+    public int amountNumber;
+
+    public void Update()
+    {
+        amountNumber = amountArray[amountIndex];
+    }
 
     public void ChangeAmount()
     {
-        if(amountIndex != 6)
+        if (amountIndex != 6)
         {
             amountIndex++;
         }
@@ -20,9 +24,11 @@ public class AmountButton : MonoBehaviour
             amountIndex = 0;
         }
 
-        if(amountIndex < 6)
+        if (amountIndex < 6)
         {
-            textBox_AmountButton.text = (amountNumber[amountIndex] + "x");
+            textBox_AmountButton.text = (amountArray[amountIndex] + "x");
+            
+            Debug.Log("Amount Number: " + amountNumber);
         }
         else
         {

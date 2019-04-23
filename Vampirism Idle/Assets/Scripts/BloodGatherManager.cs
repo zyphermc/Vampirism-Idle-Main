@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BloodGatherManager : MonoBehaviour //Persistent
 {
@@ -11,10 +9,10 @@ public class BloodGatherManager : MonoBehaviour //Persistent
 
     public void CommenceFeed()
     {
-        if(GameManager.res_HumanPop >= VampireManager.vampires_amount_Used_Feed[vampIndex])
+        if (GameManager.res_HumanPop >= VampireManager.vampires_amount_Used_Feed[vampIndex])
         {
-            GameManager.res_Blood += 
-                VampireManager.vampires_bloodPerKill[vampIndex] 
+            GameManager.res_Blood +=
+                VampireManager.vampires_bloodPerKill[vampIndex]
               * VampireManager.vampires_amount_Used_Feed[vampIndex];
 
             GameManager.res_HumanPop -= VampireManager.vampires_amount_Used_Feed[vampIndex];
@@ -24,13 +22,12 @@ public class BloodGatherManager : MonoBehaviour //Persistent
             GameManager.res_Blood += VampireManager.vampires_bloodPerKill[vampIndex] * GameManager.res_HumanPop;
             GameManager.res_HumanPop = 0;
         }
-        
     }
 
     public void CommenceInfect()
     {
         //If Vamps less than or equal to 10, Human more than Vamps (Condition 1)
-        if(VampireManager.vampires_amount_Used_Infect[vampIndex] <= 10 && GameManager.res_HumanPop >= VampireManager.vampires_amount_Used_Infect[vampIndex])
+        if (VampireManager.vampires_amount_Used_Infect[vampIndex] <= 10 && GameManager.res_HumanPop >= VampireManager.vampires_amount_Used_Infect[vampIndex])
         {
             for (int a = 0; a < VampireManager.vampires_amount_Used_Infect[vampIndex]; a++) //If less than 10, calculate chance for each vamp
             {
@@ -41,9 +38,10 @@ public class BloodGatherManager : MonoBehaviour //Persistent
                 GameManager.res_Blood += VampireManager.vampires_bloodPerInfect[vampIndex];
                 GameManager.res_HumanPop -= 1;
             }
-        }else
+        }
+        else
         //If Vamps less than or equal to 10, Human less than Vamps (Condition 2)
-        if(VampireManager.vampires_amount_Used_Infect[vampIndex] <= 10 && GameManager.res_HumanPop < VampireManager.vampires_amount_Used_Infect[vampIndex])
+        if (VampireManager.vampires_amount_Used_Infect[vampIndex] <= 10 && GameManager.res_HumanPop < VampireManager.vampires_amount_Used_Infect[vampIndex])
         {
             for (int a = 0; a < GameManager.res_HumanPop; a++) //If less than 10, calculate chance for each vamp
             {
@@ -57,7 +55,7 @@ public class BloodGatherManager : MonoBehaviour //Persistent
         }
         else
         //If Vamps more than 10 (Condition 3)
-        if(VampireManager.vampires_amount_Used_Infect[vampIndex] > 10)
+        if (VampireManager.vampires_amount_Used_Infect[vampIndex] > 10)
         {
             //If Human more than Vamps (Condition 3.1)
             if (GameManager.res_HumanPop >= VampireManager.vampires_amount_Used_Infect[vampIndex])
@@ -76,7 +74,6 @@ public class BloodGatherManager : MonoBehaviour //Persistent
 
                 GameManager.res_HumanPop = 0;
             }
-            
         }
     }
 }

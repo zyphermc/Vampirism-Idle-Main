@@ -1,15 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using System;
-using TMPro;
 
 public class AscendManager : MonoBehaviour //Local (calculates the cost, info text, and amount of vampires available to ascend)
 {
     //Managers
     public GameManager GameManager;
+
     public VampireManager VampireManager;
+    public AmountButton AmountButton;
 
     //Vamp Stats Text Box
     public TextMeshProUGUI textBox_ButtonInfo;
@@ -18,6 +16,7 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
 
     //Ascend Button Info Switch
     public bool[] ascendAvailable; //if there is n amount of vamps, make it true.
+
     public bool showAscendInfo; //if ascend button is hovered.
     public bool ascendBuyable;
 
@@ -32,33 +31,56 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
 
     private void Update()
     {
-        //If Max amount is chosen
-        AscendButtonInfo = "Amount to Ascend: " + GetAscendableAmount() +  "\n"
-            + "Blood Cost: " + GetAscendableAmount() * VampireManager.vampires_cost_ascend[vampIndex] + "\n"
-            + "Vampire Cost: " + GetAscendableAmount() * 100;
-
-        
-        
-
-
-        if (VampireManager.vampires_amount_Total[vampIndex] >= 100)
+        if (vampIndex != 9) //If vampire is not The Father
         {
-            if (!ascendAvailable[vampIndex] && vampIndex != 9) //If ascend button is not available and vamps is more than 100, make it available
+            //If Max amount is chosen
+            if (AmountButton.amountIndex == 6)
             {
-                ascendAvailable[vampIndex] = true;
-                Debug.Log("Ascend Available");
-            }
-        }
-
-        if (ascendAvailable[vampIndex]) //if ascend unlocked, calculate if buyable
-        {
-            if(VampireManager.vampires_amount_Total[vampIndex] >= 100 && GameManager.res_Blood >= VampireManager.vampires_cost_ascend[vampIndex])
-            {
-                ascendBuyable = true;
+                AscendButtonInfo = "Amount to Ascend: " + GetAscendableAmount() + "\n"
+                                   + "Blood Cost: " + GetAscendableAmount() * VampireManager.vampires_cost_ascend[vampIndex] + "\n"
+                                   + "Vampire Cost: " + GetAscendableAmount() * 100;
             }
             else
             {
-                ascendBuyable = false;
+                AscendButtonInfo = "Amount to Ascend: " + AmountButton.amountNumber + "\n"
+                                + "Blood Cost: " + AmountButton.amountNumber * VampireManager.vampires_cost_ascend[vampIndex] + "\n"
+                                + "Vampire Cost: " + AmountButton.amountNumber * 100;
+            }
+
+            if (VampireManager.vampires_amount_Total[vampIndex] >= 100)
+            {
+                if (!ascendAvailable[vampIndex] && vampIndex != 9) //If ascend button is not available and vamps is more than 100, make it available
+                {
+                    ascendAvailable[vampIndex] = true;
+                    Debug.Log("Ascend Available");
+                }
+            }
+
+            if (ascendAvailable[vampIndex]) //if ascend unlocked, calculate if buyable
+            {
+                if (AmountButton.amountIndex == 6) //MAX
+                {
+                    if (VampireManager.vampires_amount_Total[vampIndex] >= 100 && GameManager.res_Blood >= VampireManager.vampires_cost_ascend[vampIndex])
+                    {
+                        ascendBuyable = true;
+                    }
+                    else
+                    {
+                        ascendBuyable = false;
+                    }
+                }
+                else //if not max (1,10,25,50,100)
+                {
+                    //Check if total cost is met
+                    if (VampireManager.vampires_amount_Total[vampIndex] >= 100 * AmountButton.amountNumber && GameManager.res_Blood >= VampireManager.vampires_cost_ascend[vampIndex] * AmountButton.amountNumber)
+                    {
+                        ascendBuyable = true;
+                    }
+                    else
+                    {
+                        ascendBuyable = false;
+                    }
+                }
             }
         }
     }
@@ -77,11 +99,22 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
 
     public void ascendVamp() //Function for ascending vampires  (TO DO: incorporate multiple ascensions in one click)
     {
-        VampireManager.vampires_amount_Total[vampIndex + 1]++;
-        VampireManager.vampires_amount_Total[vampIndex] -= 100;
-        GameManager.res_Blood -= VampireManager.vampires_cost_ascend[vampIndex];
+        if (AmountButton.amountIndex == 6)
+        {
+            VampireManager.vampires_amount_Total[vampIndex + 1] += GetAscendableAmount();
+            VampireManager.vampires_amount_Total[vampIndex] -= 100 * GetAscendableAmount();
+            GameManager.res_Blood -= VampireManager.vampires_cost_ascend[vampIndex] * GetAscendableAmount();
 
-        Debug.Log("Vampire Ascended lmao");
+            Debug.Log("Vampires Ascended: " + GetAscendableAmount());
+        }
+        else
+        {
+            VampireManager.vampires_amount_Total[vampIndex + 1] += AmountButton.amountNumber;
+            VampireManager.vampires_amount_Total[vampIndex] -= 100 * AmountButton.amountNumber;
+            GameManager.res_Blood -= VampireManager.vampires_cost_ascend[vampIndex] * AmountButton.amountNumber;
+
+            Debug.Log("Vampires Ascended: " + AmountButton.amountNumber);
+        }
     }
 
     //Calculate Total Vampires able to ascend

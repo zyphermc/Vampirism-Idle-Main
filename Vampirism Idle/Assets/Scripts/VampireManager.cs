@@ -50,7 +50,7 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
     [HideInInspector] public double[] vampires_progress;
     [HideInInspector] public int[] vampires_level_sharpenFangs;
     [HideInInspector] public int[] vampires_level_trainAgility;
-     public int[] vampires_amount_Total;
+    public int[] vampires_amount_Total;
     [HideInInspector] public int[] vampires_amount_Available_Total;
     [HideInInspector] public int[] vampires_amount_Used_Total;
     [HideInInspector] public int[] vampires_amount_Used_Feed;
@@ -61,6 +61,7 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
 
     //Vampire Slider Values (Lair)
     public int slider_maxValue;
+
     public float[] slider_savedMaxValueFeed;
     public float[] slider_savedMaxValueInfect;
     public int[] slider_usedFeed;
@@ -166,7 +167,6 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
                     BloodGatherManager.vampIndex = a;
                     BloodGatherManager.CommenceFeed();
                     BloodGatherManager.CommenceInfect();
-
 
                     //reset progress after cycle
                     vampires_currentProgress[a] = 0;

@@ -36,7 +36,8 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
     public TMP_InputField inputField_Feed;
     public TMP_InputField inputField_Infect;
 
-    
+    //Amount Button
+    public Button button_AmountButton;
 
     public int vampIndex;
     [HideInInspector] public int page;
@@ -56,12 +57,12 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
             textBox_vampQuote.text = VampireManager.vampires_quote[vampIndex];
             textBox_vampDesc.text = VampireManager.vampires_desc[vampIndex];
 
-            if (page == 1 ) //kill methods page
+            if (page == 1) //kill methods page
             {
                 textBox_vampAvailable.text = "Available: " + VampireManager.vampires_amount_Available_Total[vampIndex].ToString(); //update available vamps
 
                 //Vamp Stats info
-                if(AscendManager.showAscendInfo == true)
+                if (AscendManager.showAscendInfo == true)
                 {
                     textBox_vampStats.text = AscendManager.AscendButtonInfo;
                 }
@@ -70,23 +71,24 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
                     textBox_vampStats.text = "Blood per Feed: " + VampireManager.vampires_bloodPerKill[vampIndex].ToString("F2") + "\n"
                     + "Blood per Infect: " + VampireManager.vampires_bloodPerInfect[vampIndex].ToString("F2") + "\n"
                     + "Infection Chance: " + VampireManager.vampires_infectionChance[vampIndex] + "%" + "\n"
-                    + "Efficiency: " + VampireManager.vampires_bloodEfficiency[vampIndex] + "%" + "\n"
+                    + "Feed Efficiency: " + VampireManager.vampires_bloodEfficiency[vampIndex] + "%" + "\n"
                     + "Speed: " + VampireManager.vampires_completionTime[vampIndex] + " seconds";
                 }
                 else if (vampIndex == 0)
                 {
                     textBox_vampStats.text = "Blood per Feed: " + VampireManager.vampires_bloodPerKill[vampIndex].ToString("F2") + "\n"
-                    + "Efficiency: " + VampireManager.vampires_bloodEfficiency[vampIndex] + "%" + "\n"
+                    + "Feed Efficiency: " + VampireManager.vampires_bloodEfficiency[vampIndex] + "%" + "\n"
                     + "Speed: " + VampireManager.vampires_completionTime[vampIndex] + " seconds";
                 }
                 /////////////////////
-                
-                //Turn off Ascend Button if vampIndex = 9 (The Father)
-                if(vampIndex == 9 || !AscendManager.ascendAvailable[vampIndex])
+
+                //Turn off Ascend Button if vampIndex = 9 (The Father) or if ascension not yet available for Vampire[n]
+                if (vampIndex == 9 || !AscendManager.ascendAvailable[vampIndex])
                 {
                     if (button_Ascend.isActiveAndEnabled)
                     {
                         button_Ascend.gameObject.SetActive(false);
+                        button_AmountButton.gameObject.SetActive(false);
                     }
                 }
                 else
@@ -94,6 +96,7 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
                     if (AscendManager.ascendAvailable[vampIndex]) //If ascend unlocked, make it visible
                     {
                         button_Ascend.gameObject.SetActive(true);
+                        button_AmountButton.gameObject.SetActive(true);
 
                         if (AscendManager.ascendBuyable) //if buyable, make it clickable, otherwise don't
                         {

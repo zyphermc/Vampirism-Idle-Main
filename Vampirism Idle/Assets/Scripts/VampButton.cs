@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+
 public class VampButton : MonoBehaviour //Local
 {
     public VampInfoWindow VampInfoWindow; //window of vampire info
@@ -44,7 +44,7 @@ public class VampButton : MonoBehaviour //Local
             AscendManager.vampIndex = vampInfoNum;
 
             //Set the saved value to the sliders
-            slider_Feed.maxValue = VampireManager.slider_savedMaxValueFeed[vampInfoNum]; 
+            slider_Feed.maxValue = VampireManager.slider_savedMaxValueFeed[vampInfoNum];
             slider_Feed.value = VampireManager.slider_usedFeed[vampInfoNum];
 
             slider_Infect.maxValue = VampireManager.slider_savedMaxValueInfect[vampInfoNum];

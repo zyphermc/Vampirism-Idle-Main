@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
-using TMPro;
 
 public class VampInputManager : MonoBehaviour //Local (Slider and Input field for Lair Tab)
 {
@@ -20,14 +17,11 @@ public class VampInputManager : MonoBehaviour //Local (Slider and Input field fo
     //For setting percentage text in UI
     public TextMeshProUGUI textBox_TitlePercentage;
 
-
     private void Update()
     {
-
         //Set percentages
-        if(killMethod == 0) //Slider Feed
+        if (killMethod == 0) //Slider Feed
         {
-
             slider.maxValue = VampireManager.slider_maxValue - VampireManager.slider_usedInfect[vampIndex]; //set the max value possible
 
             VampireManager.slider_savedMaxValueFeed[vampIndex] = slider.maxValue; //save the max value
@@ -40,7 +34,7 @@ public class VampInputManager : MonoBehaviour //Local (Slider and Input field fo
             textBox_TitlePercentage.text = "Feed (" + slider.value + "%)";
         }
 
-        if(killMethod == 1)//Slider Infect
+        if (killMethod == 1)//Slider Infect
         {
             slider.maxValue = VampireManager.slider_maxValue - VampireManager.slider_usedFeed[vampIndex]; //set the max value possible
 
