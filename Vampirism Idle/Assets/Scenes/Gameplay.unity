@@ -736,7 +736,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameManager: {fileID: 612896273}
   VampireManager: {fileID: 49179241}
+  HousingManager: {fileID: 614224046}
   vampIndex: 0
+  vampiresToAdd: 0
 --- !u!1 &67110890
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,6 +1160,7 @@ GameObject:
   - component: {fileID: 162979208}
   - component: {fileID: 162979210}
   - component: {fileID: 162979209}
+  - component: {fileID: 162979211}
   m_Layer: 5
   m_Name: Log Text
   m_TagString: Untagged
@@ -1176,14 +1179,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 572902218}
+  m_Father: {fileID: 1031339769}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.33996582, y: -9.399994}
-  m_SizeDelta: {x: 263.9, y: 281}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 131.94957, y: -142.62598}
+  m_SizeDelta: {x: 263.9, y: 0}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &162979209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,7 +1210,9 @@ MonoBehaviour:
   m_text: 'A vampire has been spotted by police.
 
 
-    Residents suddenly turned into vampires.'
+    Residents suddenly turned into vampires.
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 060c1d02e9bfb6c4c8266adde9e79361, type: 2}
   m_sharedMaterial: {fileID: 21523373816151134, guid: 060c1d02e9bfb6c4c8266adde9e79361,
@@ -1277,9 +1282,9 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 162979209}
-    characterCount: 79
+    characterCount: 80
     spriteCount: 0
-    spaceCount: 12
+    spaceCount: 13
     wordCount: 12
     linkCount: 0
     lineCount: 3
@@ -1308,6 +1313,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162979207}
   m_CullTransparentMesh: 0
+--- !u!114 &162979211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162979207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1741964061, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &197027906
 GameObject:
   m_ObjectHideFlags: 0
@@ -4289,7 +4308,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -1.04, y: 0}
   m_SizeDelta: {x: 17.93, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4357,7 +4376,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 162979208}
+  - {fileID: 1031339769}
   m_Father: {fileID: 1915239683}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4679,7 +4698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &582645736
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5061,6 +5080,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 614224045}
+  - component: {fileID: 614224046}
   m_Layer: 0
   m_Name: Housing Manger [Housing and Human Spawn]
   m_TagString: Untagged
@@ -5082,6 +5102,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &614224046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614224044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff8eca1735d6f942ac6e7d3c95d92ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VampireManager: {fileID: 49179241}
+  textBox_housingLair: {fileID: 1354242961}
+  housing_amountAvailable: 0
+  housing_amountTotal: 0
+  housing_amountUsed: 0
+  housing_buildingName:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  housing_buildingDesc:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  housing_buildingBaseCap: 0a0000003200000064000000fa000000f4010000e8030000d0070000a00f00007017000010270000
+  housing_buildingAmount: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  housing_buildingTotalCap: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1 &620268932
 GameObject:
   m_ObjectHideFlags: 0
@@ -8257,6 +8319,88 @@ MonoBehaviour:
   AscendManager: {fileID: 1274998349}
   vampButton: {fileID: 1016222257}
   vampInfoNum: 3
+--- !u!1 &1031339768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1031339769}
+  - component: {fileID: 1031339770}
+  - component: {fileID: 1031339771}
+  m_Layer: 5
+  m_Name: Text Mask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1031339769
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031339768}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 162979208}
+  m_Father: {fileID: 572902218}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.3400116, y: -7.27}
+  m_SizeDelta: {x: 263.9, y: 285.25}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1031339770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031339768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -146154839, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1031339771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031339768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1367256648, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Content: {fileID: 162979208}
+  m_Horizontal: 0
+  m_Vertical: 1
+  m_MovementType: 1
+  m_Elasticity: 0.1
+  m_Inertia: 1
+  m_DecelerationRate: 0.135
+  m_ScrollSensitivity: 1
+  m_Viewport: {fileID: 0}
+  m_HorizontalScrollbar: {fileID: 0}
+  m_VerticalScrollbar: {fileID: 0}
+  m_HorizontalScrollbarVisibility: 0
+  m_VerticalScrollbarVisibility: 0
+  m_HorizontalScrollbarSpacing: 0
+  m_VerticalScrollbarSpacing: 0
+  m_OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1041699340
 GameObject:
   m_ObjectHideFlags: 0
@@ -11918,7 +12062,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: -1.04, y: 0}
   m_SizeDelta: {x: 17.93, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -14738,8 +14882,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameManager: {fileID: 612896273}
   VampireManager: {fileID: 49179241}
+  HousingManager: {fileID: 614224046}
   button_biteButton: {fileID: 1697732245}
   textBox_biteButton: {fileID: 1013734434}
+  StatisticsWindow: {fileID: 0}
 --- !u!1 &1736816570
 GameObject:
   m_ObjectHideFlags: 0
@@ -16454,7 +16600,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1915239683
 RectTransform:
   m_ObjectHideFlags: 0

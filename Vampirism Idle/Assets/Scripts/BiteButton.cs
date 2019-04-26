@@ -10,8 +10,10 @@ public class BiteButton : MonoBehaviour //Local
     public HousingManager HousingManager;
     public Button button_biteButton;
     public TextMeshProUGUI textBox_biteButton;
+    public StatisticsWindow StatisticsWindow;
 
     private bool cooldown = false;
+    private float cooldownTime = 2f;
 
     public void BiteHuman()
     {
@@ -20,13 +22,14 @@ public class BiteButton : MonoBehaviour //Local
             VampireManager.vampires_amount_Total[0] += 1;
             GameManager.res_HumanPop -= 1;
             StartCoroutine("BiteCooldown");
+            StatisticsWindow.textBox_Log.text += "\nA human is bitten. +1 " + VampireManager.vampires_name[0];
             cooldown = true;
         }
     }
 
     IEnumerator BiteCooldown()
     {
-        GameManager.cooldownTick = 11;
+        GameManager.cooldownTick = (int)cooldownTime+1;
         button_biteButton.interactable = false;
 
         while (true)

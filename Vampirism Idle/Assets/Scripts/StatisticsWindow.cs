@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,10 @@ public class StatisticsWindow : MonoBehaviour //Local (UI)
     public TextMeshProUGUI textBox_Title;
     public TextMeshProUGUI textBox_Log;
     public TextMeshProUGUI textBox_Statistics;
+
+    //String list
+    private List<string> eventList = new List<string>(); //contains each line of text
+    private int maxLines;
 
     //Tab GameObjects
     public GameObject obj_Log;
@@ -29,7 +34,12 @@ public class StatisticsWindow : MonoBehaviour //Local (UI)
     {
         while (true)
         {
+            //Update Statistics Text
             textBox_Statistics.text = "Total Vampires: " + "" + "\n" + "Total Humans Killed: ";
+
+            //Update Log Text
+
+
             yield return new WaitForSeconds(1f);
         }
     }

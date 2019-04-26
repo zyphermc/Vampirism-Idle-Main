@@ -124,13 +124,14 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
         int ascendable_Blood = Mathf.FloorToInt((float)(GameManager.res_Blood / VampireManager.vampires_cost_ascend[vampIndex]));
         int ascendable_Vamps = Mathf.FloorToInt((float)(VampireManager.vampires_amount_Total[vampIndex] / 100));
 
+        //return which is less
         if (ascendable_Blood >= ascendable_Vamps)
         {
-            return ascendable_Blood;
+            return ascendable_Vamps;
         }
         else
         {
-            return ascendable_Vamps;
+            return ascendable_Blood;
         }
     }
 }
