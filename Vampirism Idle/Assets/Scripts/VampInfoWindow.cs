@@ -70,14 +70,14 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
                 {
                     textBox_vampStats.text = "Blood per Feed: " + VampireManager.vampires_bloodPerKill[vampIndex].ToString("F2") + "\n"
                     + "Blood per Infect: " + VampireManager.vampires_bloodPerInfect[vampIndex].ToString("F2") + "\n"
-                    + "Infection Chance: " + VampireManager.vampires_infectionChance[vampIndex] + "%" + "\n"
-                    + "Feed Efficiency: " + VampireManager.vampires_bloodEfficiency[vampIndex] + "%" + "\n"
+                    + "Infection Chance: " + VampireManager.vampires_InfectionChanceTotal[vampIndex] + "%" + "\n"
+                    + "Feed Efficiency: " + VampireManager.vampires_BloodEfficiencyTotal[vampIndex] + "%" + "\n"
                     + "Speed: " + VampireManager.vampires_completionTime[vampIndex] + " seconds";
                 }
                 else if (vampIndex == 0)
                 {
                     textBox_vampStats.text = "Blood per Feed: " + VampireManager.vampires_bloodPerKill[vampIndex].ToString("F2") + "\n"
-                    + "Feed Efficiency: " + VampireManager.vampires_bloodEfficiency[vampIndex] + "%" + "\n"
+                    + "Feed Efficiency: " + VampireManager.vampires_BloodEfficiencyTotal[vampIndex] + "%" + "\n"
                     + "Speed: " + VampireManager.vampires_completionTime[vampIndex] + " seconds";
                 }
                 /////////////////////
@@ -150,7 +150,7 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
     public void CloseWindow()
     {
         vampIndex = -1;
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
         StatisticsWindow.gameObject.SetActive(true);
     }
 }

@@ -512,28 +512,6 @@ MonoBehaviour:
   - 
   - 
   - 
-  vampires_baseCost_sharpenFangs:
-  - 10000
-  - 100000
-  - 1000000
-  - 10000000
-  - 100000000
-  - 1000000000
-  - 10000000000
-  - 100000000000
-  - 1000000000000
-  - 10000000000000
-  vampires_baseCost_trainAgility:
-  - 10000
-  - 100000
-  - 1000000
-  - 10000000
-  - 100000000
-  - 1000000000
-  - 10000000000
-  - 100000000000
-  - 1000000000000
-  - 10000000000000
   vampires_speed:
   - 1
   - 1
@@ -556,17 +534,50 @@ MonoBehaviour:
   - 80
   - 90
   - 100
-  vampires_bloodEfficiency:
-  - 75
-  - 70
-  - 65
-  - 60
-  - 55
+  vampires_base_BloodEfficiency:
   - 50
   - 45
   - 40
   - 35
   - 30
+  - 25
+  - 20
+  - 15
+  - 10
+  - 5
+  vampires_base_InfectionChance:
+  - 50
+  - 45
+  - 40
+  - 35
+  - 30
+  - 25
+  - 20
+  - 15
+  - 10
+  - 5
+  vampires_BloodEfficiencyTotal:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  vampires_InfectionChanceTotal:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   vampires_infectEfficiency:
   - 0
   - 10
@@ -611,40 +622,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  vampires_infectionChance:
-  - 0
-  - 10
-  - 9
-  - 8
-  - 7
-  - 6
-  - 5
-  - 4
-  - 3
-  - 2
   vampires_currentProgress:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  vampires_Cost_sharpenFangs:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  vampires_Cost_trainAgility:
   - 0
   - 0
   - 0
@@ -666,13 +644,12 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  vampires_level_sharpenFangs: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
-  vampires_level_trainAgility: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   vampires_amount_Total: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   vampires_amount_Available_Total: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   vampires_amount_Used_Total: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   vampires_amount_Used_Feed: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   vampires_amount_Used_Infect: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  EfficiencyUpgrades: {fileID: 582645740}
   vampires_cost_ascend:
   - 100
   - 1000
@@ -4472,7 +4449,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -1.04, y: 0}
   m_SizeDelta: {x: 17.93, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4856,6 +4833,7 @@ GameObject:
   - component: {fileID: 582645738}
   - component: {fileID: 582645737}
   - component: {fileID: 582645739}
+  - component: {fileID: 582645740}
   m_Layer: 5
   m_Name: Vampire Info Window
   m_TagString: Untagged
@@ -4957,6 +4935,96 @@ MonoBehaviour:
   button_AmountButton: {fileID: 414224700}
   vampIndex: -1
   page: 0
+--- !u!114 &582645740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582645735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db39561363d7b66478a4e7d5a5ebe481, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameManager: {fileID: 612896273}
+  VampireManager: {fileID: 49179241}
+  upgrade_SharpenFang: {fileID: 1419891041}
+  upgrade_TrainAgility: {fileID: 1387565125}
+  textBox_SharpenFang: {fileID: 247806901}
+  textBox_TrainAgility: {fileID: 1593033143}
+  buttonDescription: {fileID: 211860537}
+  baseCost_SharpenFang:
+  - 500
+  - 1000
+  - 2000
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  baseCost_TrainAgility:
+  - 500
+  - 1000
+  - 2000
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  growthRate_SharpenFang:
+  - 1.4
+  - 1.5
+  - 1.6
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  growthRate_TrainAgility:
+  - 1.4
+  - 1.5
+  - 1.6
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  cost_SharpenFang:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  cost_TrainAgility:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  level_SharpenFang: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  level_TrainAgility: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  vampIndex: 0
+  hovered_SharpenFang: 0
+  hovered_TrainAgility: 0
 --- !u!1 &591987546
 GameObject:
   m_ObjectHideFlags: 0
@@ -6578,7 +6646,7 @@ GameObject:
   - component: {fileID: 794688495}
   - component: {fileID: 794688494}
   m_Layer: 5
-  m_Name: EfficiencyUpgrades
+  m_Name: Efficiency Upgrades Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7233,8 +7301,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 121.69006, y: -88.759995}
-  m_SizeDelta: {x: 16.52, y: 12.91}
+  m_AnchoredPosition: {x: 116, y: -88.1}
+  m_SizeDelta: {x: 31.22, y: 20.37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &939376179
 MonoBehaviour:
@@ -7483,6 +7551,7 @@ MonoBehaviour:
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
   AscendManager: {fileID: 1274998349}
+  EfficiencyUpgrades: {fileID: 582645740}
   vampButton: {fileID: 943618467}
   vampInfoNum: 7
 --- !u!1 &946862164
@@ -8496,6 +8565,7 @@ MonoBehaviour:
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
   AscendManager: {fileID: 1274998349}
+  EfficiencyUpgrades: {fileID: 582645740}
   vampButton: {fileID: 1016222257}
   vampInfoNum: 3
 --- !u!1 &1031339768
@@ -8615,8 +8685,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 138.21005, y: -88.759995}
-  m_SizeDelta: {x: 16.52, y: 12.91}
+  m_AnchoredPosition: {x: 135, y: -88}
+  m_SizeDelta: {x: 31.22, y: 20.37}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1041699342
 MonoBehaviour:
@@ -9662,7 +9732,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1179300217
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11814,6 +11884,7 @@ GameObject:
   - component: {fileID: 1387565127}
   - component: {fileID: 1387565126}
   - component: {fileID: 1387565125}
+  - component: {fileID: 1387565128}
   m_Layer: 5
   m_Name: TrainAgility UpgradeButton
   m_TagString: Untagged
@@ -11883,7 +11954,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1387565126}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 582645740}
+        m_MethodName: BuyUpgrade_TrainAgility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1387565126
@@ -11923,6 +12005,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1387565123}
   m_CullTransparentMesh: 0
+--- !u!114 &1387565128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387565123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 582645740}
+          m_MethodName: HoveringTrainAgility
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 582645740}
+          m_MethodName: HoverExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &1389596394
 GameObject:
   m_ObjectHideFlags: 0
@@ -12209,6 +12338,7 @@ MonoBehaviour:
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
   AscendManager: {fileID: 1274998349}
+  EfficiencyUpgrades: {fileID: 582645740}
   vampButton: {fileID: 1401233914}
   vampInfoNum: 6
 --- !u!1 &1413157819
@@ -12244,7 +12374,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -1.04, y: 0}
   m_SizeDelta: {x: 17.93, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -12297,6 +12427,7 @@ GameObject:
   - component: {fileID: 1419891043}
   - component: {fileID: 1419891042}
   - component: {fileID: 1419891041}
+  - component: {fileID: 1419891044}
   m_Layer: 5
   m_Name: SharpenFangs UpgradeButton
   m_TagString: Untagged
@@ -12366,7 +12497,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1419891042}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 582645740}
+        m_MethodName: BuyUpgrade_SharpenFang
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1419891042
@@ -12406,6 +12548,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1419891039}
   m_CullTransparentMesh: 0
+--- !u!114 &1419891044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419891039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 582645740}
+          m_MethodName: HoveringSharpenFang
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 582645740}
+          m_MethodName: HoverExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &1435325597
 GameObject:
   m_ObjectHideFlags: 0
@@ -12913,6 +13102,7 @@ MonoBehaviour:
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
   AscendManager: {fileID: 1274998349}
+  EfficiencyUpgrades: {fileID: 582645740}
   vampButton: {fileID: 1469916255}
   vampInfoNum: 9
 --- !u!1 &1470863950
@@ -13069,6 +13259,7 @@ MonoBehaviour:
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
   AscendManager: {fileID: 1274998349}
+  EfficiencyUpgrades: {fileID: 582645740}
   vampButton: {fileID: 1470863952}
   vampInfoNum: 4
 --- !u!1 &1513442362
@@ -13719,6 +13910,7 @@ MonoBehaviour:
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
   AscendManager: {fileID: 1274998349}
+  EfficiencyUpgrades: {fileID: 582645740}
   vampButton: {fileID: 1568572906}
   vampInfoNum: 1
 --- !u!1 &1576113606
@@ -15438,7 +15630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1752193512
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16099,6 +16291,7 @@ MonoBehaviour:
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
   AscendManager: {fileID: 1274998349}
+  EfficiencyUpgrades: {fileID: 582645740}
   vampButton: {fileID: 1843745754}
   vampInfoNum: 8
 --- !u!1 &1854177528
@@ -16763,6 +16956,7 @@ MonoBehaviour:
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
   AscendManager: {fileID: 1274998349}
+  EfficiencyUpgrades: {fileID: 582645740}
   vampButton: {fileID: 1892336289}
   vampInfoNum: 5
 --- !u!1 &1915239682
@@ -18026,6 +18220,7 @@ MonoBehaviour:
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
   AscendManager: {fileID: 1274998349}
+  EfficiencyUpgrades: {fileID: 582645740}
   vampButton: {fileID: 2025995276}
   vampInfoNum: 2
 --- !u!1 &2032279862
@@ -18490,6 +18685,7 @@ MonoBehaviour:
   slider_Infect: {fileID: 1114724419}
   VampireManager: {fileID: 49179241}
   AscendManager: {fileID: 1274998349}
+  EfficiencyUpgrades: {fileID: 582645740}
   vampButton: {fileID: 2098891290}
   vampInfoNum: 0
 --- !u!1 &2122330881

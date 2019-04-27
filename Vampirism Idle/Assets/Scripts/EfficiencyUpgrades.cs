@@ -1,13 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
-using UnityEngine;
+﻿using System;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class EfficiencyUpgrades : MonoBehaviour //Local
 {
+    //Resources References
+    public GameManager GameManager;
+
+    public VampireManager VampireManager;
+
+    //UI References
     public Button upgrade_SharpenFang;
+
     public Button upgrade_TrainAgility;
     public TextMeshProUGUI textBox_SharpenFang;
     public TextMeshProUGUI textBox_TrainAgility;
@@ -28,6 +33,7 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
 
     //Description Switches
     public bool hovered_SharpenFang;
+
     public bool hovered_TrainAgility;
 
     private void Update()
@@ -43,7 +49,25 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
         //Update Description Box
         if (hovered_SharpenFang)
         {
-            buttonDescription.text = "sharpen fang lolol " + "[" + vampIndex + "]";
+            if (vampIndex == 0)
+            {
+                double newEfficiency = VampireManager.vampires_BloodEfficiencyTotal[vampIndex] + 5;
+
+                buttonDescription.text = "Sharpen Fangs:" + "\n"
+                + "Increase Feed Efficiency by 5%" + "\n"
+                + VampireManager.vampires_BloodEfficiencyTotal[vampIndex] + "% -> " + newEfficiency + "%\n"
+                + "Cost (Blood): " + cost_SharpenFang[vampIndex];
+            }
+            else
+            {
+                double newEfficiency = VampireManager.vampires_BloodEfficiencyTotal[vampIndex] + 5;
+
+                buttonDescription.text = "Sharpen Fangs:" + "\n"
+                + "Increase Feed Efficiency and Infection Chance by 5%" + "\n"
+                + VampireManager.vampires_BloodEfficiencyTotal[vampIndex] + "% -> " + newEfficiency + "%\n"
+                + "Cost (Blood): " + cost_SharpenFang[vampIndex];
+            }
+            
         }
         else
         if (hovered_TrainAgility)
@@ -55,6 +79,23 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
             buttonDescription.text = "";
         }
     }
+
+    /* Purchasing the upgrade functions */
+
+    public void BuyUpgrade_SharpenFang()
+    {
+        if(GameManager.res_Blood >= cost_SharpenFang[vampIndex])
+        {
+            GameManager.res_Blood -= cost_SharpenFang[vampIndex];
+            level_SharpenFang[vampIndex]++;
+        }
+    }
+
+    public void BuyUpgrade_TrainAgility()
+    {
+    }
+
+    /* Hover Functions */
 
     public void HoveringSharpenFang()
     {
