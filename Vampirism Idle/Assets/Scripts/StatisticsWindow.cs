@@ -14,6 +14,7 @@ public class StatisticsWindow : MonoBehaviour //Local (UI)
 
     //String list
     private List<string> eventList = new List<string>(); //contains each line of text
+
     private int maxLines;
 
     //Tab GameObjects
@@ -29,6 +30,7 @@ public class StatisticsWindow : MonoBehaviour //Local (UI)
         StartCoroutine("UpdateText");
         button_LogSwitch.interactable = false;
 
+        //Max lines for log
         maxLines = 100;
     }
 
@@ -38,8 +40,6 @@ public class StatisticsWindow : MonoBehaviour //Local (UI)
         {
             //Update Statistics Text
             textBox_Statistics.text = "Total Vampires: " + "" + "\n" + "Total Humans Killed: ";
-
-
 
             yield return new WaitForSeconds(1f);
         }

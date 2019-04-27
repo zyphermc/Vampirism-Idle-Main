@@ -1,7 +1,7 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class BiteButton : MonoBehaviour //Local
 {
@@ -27,16 +27,16 @@ public class BiteButton : MonoBehaviour //Local
         }
     }
 
-    IEnumerator BiteCooldown()
+    private IEnumerator BiteCooldown()
     {
-        GameManager.cooldownTick = (int)cooldownTime+1;
+        GameManager.cooldownTick = (int)cooldownTime + 1;
         button_biteButton.interactable = false;
 
         while (true)
         {
             GameManager.cooldownTick--;
 
-            if(GameManager.cooldownTick <= 0)
+            if (GameManager.cooldownTick <= 0)
             {
                 cooldown = false;
                 button_biteButton.interactable = true;
@@ -45,16 +45,15 @@ public class BiteButton : MonoBehaviour //Local
 
             yield return new WaitForSeconds(1f);
         }
-        
     }
 
     private void Update()
     {
-        if(cooldown == false)
+        if (cooldown == false)
         {
             textBox_biteButton.text = "Bite";
 
-            if(HousingManager.housing_amountAvailable <= 0)
+            if (HousingManager.housing_amountAvailable <= 0)
             {
                 button_biteButton.interactable = false;
             }
@@ -67,6 +66,5 @@ public class BiteButton : MonoBehaviour //Local
         {
             textBox_biteButton.text = GameManager.cooldownTick + "s";
         }
-        
     }
 }
