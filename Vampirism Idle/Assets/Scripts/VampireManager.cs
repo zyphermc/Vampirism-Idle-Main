@@ -30,7 +30,8 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
     public string[] vampires_desc;
 
     public double[] vampires_speed; // value to add per second
-    public double[] vampires_completionTime; //Time it takes to complete a cycle
+    public double[] vampires_base_CompletionTime; //Time it takes to complete a cycle
+    public double[] vampires_CompletionTimeTotal;
 
     public double[] vampires_base_BloodEfficiency;
     public double[] vampires_base_InfectionChance; //chance you infect someone and turn it into a vamp one tier below
@@ -84,7 +85,7 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
         //vampires_infectionChance[0] = 10; //out of 100
         //vampires_infectEfficiency[0] = 10;
         vampires_speed[0] = 1;
-        vampires_completionTime[0] = 10;
+        vampires_base_CompletionTime[0] = 10;
 
         vampires_amount_Total[0] = 0;
         vampires_amount_Used_Total[0] = 0;
@@ -102,7 +103,7 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
         vampires_base_InfectionChance[1] = 45; //out of 100
         vampires_infectEfficiency[1] = 10;
         vampires_speed[1] = 1;
-        vampires_completionTime[1] = 20;
+        vampires_base_CompletionTime[1] = 20;
 
         vampires_amount_Total[1] = 0;
         vampires_amount_Used_Total[1] = 0;
@@ -120,7 +121,7 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
         vampires_base_InfectionChance[2] = 40; //out of 100
         vampires_infectEfficiency[2] = 9;
         vampires_speed[2] = 1;
-        vampires_completionTime[2] = 30;
+        vampires_base_CompletionTime[2] = 30;
 
         vampires_amount_Total[2] = 0;
         vampires_amount_Used_Total[2] = 0;
@@ -137,7 +138,7 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
             //Update Progress Bar for all available vamps
             if (vampires_amount_Used_Total[a] > 0)
             {
-                vampires_progress[a] = (vampires_currentProgress[a] / vampires_completionTime[a]); //update the progress of completion in lair
+                vampires_progress[a] = (vampires_currentProgress[a] / vampires_CompletionTimeTotal[a]); //update the progress of completion in lair
 
                 if (vampires_progress[a] >= 1)
                 {
@@ -162,6 +163,8 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
 
             vampires_BloodEfficiencyTotal[a] = vampires_base_BloodEfficiency[a] + (5 * EfficiencyUpgrades.level_SharpenFang[a]);
             vampires_InfectionChanceTotal[a] = vampires_base_InfectionChance[a] + (5 * EfficiencyUpgrades.level_SharpenFang[a]);
+
+            vampires_CompletionTimeTotal[a] = vampires_base_CompletionTime[a] / (Mathf.Pow(2,EfficiencyUpgrades.level_TrainAgility[a]));
 
             vampires_bloodPerKill[a] = vampires_maximumBloodGather[a] * (vampires_BloodEfficiencyTotal[a] / 100f); //% out of 100
             vampires_bloodPerInfect[a] = vampires_maximumBloodGather[a] * (vampires_infectEfficiency[a] / 100f); //only 10% of max blood gather

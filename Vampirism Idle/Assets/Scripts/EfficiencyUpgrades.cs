@@ -31,6 +31,10 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
     //Vamp Index
     public int vampIndex;
 
+    //Temporary Variables
+    double newEfficiency;
+    double newSpeed;
+
     //Description Switches
     public bool hovered_SharpenFang;
 
@@ -51,7 +55,7 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
         {
             if (vampIndex == 0)
             {
-                double newEfficiency = VampireManager.vampires_BloodEfficiencyTotal[vampIndex] + 5;
+                newEfficiency = VampireManager.vampires_BloodEfficiencyTotal[vampIndex] + 5;
 
                 buttonDescription.text = "Sharpen Fangs:" + "\n"
                 + "Increase Feed Efficiency by 5%" + "\n"
@@ -60,7 +64,7 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
             }
             else
             {
-                double newEfficiency = VampireManager.vampires_BloodEfficiencyTotal[vampIndex] + 5;
+                newEfficiency = VampireManager.vampires_BloodEfficiencyTotal[vampIndex] + 5;
 
                 buttonDescription.text = "Sharpen Fangs:" + "\n"
                 + "Increase Feed Efficiency and Infection Chance by 5%" + "\n"
@@ -72,7 +76,12 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
         else
         if (hovered_TrainAgility)
         {
-            buttonDescription.text = "train agility lolol " + "[" + vampIndex + "]";
+            newSpeed = VampireManager.vampires_CompletionTimeTotal[vampIndex] / 2f;
+
+            buttonDescription.text = "Train Agility:" + "\n"
+            + "Halve your vampire's completion time." + "\n"
+            + VampireManager.vampires_CompletionTimeTotal[vampIndex] + " seconds -> " + newSpeed + " seconds" + "\n"
+            + "Cost (Blood): " + cost_TrainAgility[vampIndex];
         }
         else
         {
@@ -93,6 +102,11 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
 
     public void BuyUpgrade_TrainAgility()
     {
+        if(GameManager.res_Blood >= cost_TrainAgility[vampIndex])
+        {
+            GameManager.res_Blood -= cost_TrainAgility[vampIndex];
+            level_TrainAgility[vampIndex]++;
+        }
     }
 
     /* Hover Functions */

@@ -523,17 +523,28 @@ MonoBehaviour:
   - 1
   - 1
   - 1
-  vampires_completionTime:
-  - 10
-  - 20
+  vampires_base_CompletionTime:
   - 30
-  - 40
-  - 50
   - 60
-  - 70
-  - 80
-  - 90
-  - 100
+  - 120
+  - 240
+  - 480
+  - 960
+  - 1920
+  - 3840
+  - 7680
+  - 15280
+  vampires_CompletionTimeTotal:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   vampires_base_BloodEfficiency:
   - 50
   - 45
