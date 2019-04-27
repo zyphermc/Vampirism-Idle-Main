@@ -28,6 +28,8 @@ public class StatisticsWindow : MonoBehaviour //Local (UI)
     {
         StartCoroutine("UpdateText");
         button_LogSwitch.interactable = false;
+
+        maxLines = 100;
     }
 
     private IEnumerator UpdateText()
@@ -37,7 +39,6 @@ public class StatisticsWindow : MonoBehaviour //Local (UI)
             //Update Statistics Text
             textBox_Statistics.text = "Total Vampires: " + "" + "\n" + "Total Humans Killed: ";
 
-            //Update Log Text
 
 
             yield return new WaitForSeconds(1f);
@@ -66,6 +67,25 @@ public class StatisticsWindow : MonoBehaviour //Local (UI)
             button_LogSwitch.interactable = true;
             button_StatisticsSwitch.interactable = false;
             textBox_Title.text = "Statistics";
+        }
+    }
+
+    public void AddEvent(string eventString)
+    {
+        //Add a string to the list
+        eventList.Add(eventString);
+
+        //If limit is reached, delete the farthest line
+        if (eventList.Count >= maxLines)
+            eventList.RemoveAt(0);
+
+        //Update Log Text
+        textBox_Log.text = "";
+
+        foreach (string logEvent in eventList)
+        {
+            textBox_Log.text += logEvent;
+            textBox_Log.text += "\n";
         }
     }
 }

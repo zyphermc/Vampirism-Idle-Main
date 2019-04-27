@@ -22,7 +22,7 @@ public class BiteButton : MonoBehaviour //Local
             VampireManager.vampires_amount_Total[0] += 1;
             GameManager.res_HumanPop -= 1;
             StartCoroutine("BiteCooldown");
-            StatisticsWindow.textBox_Log.text += "\nA human is bitten. +1 " + VampireManager.vampires_name[0];
+            StatisticsWindow.AddEvent("A human is bitten. +1 " + VampireManager.vampires_name[0]);
             cooldown = true;
         }
     }
