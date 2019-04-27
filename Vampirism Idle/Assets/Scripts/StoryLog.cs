@@ -1,15 +1,15 @@
 ﻿using UnityEngine;
 
-public class StoryLog : MonoBehaviour
+public class StoryLog : MonoBehaviour //Persistent
 {
     public GameManager GameManager;
     public HousingManager HousingManager;
+    public VampireManager VampireManager;
+    public StatisticsWindow StatisticsWindow;
 
     //Log Messages (0 = locked, 1 = to be sent, 2 = sent)
     public int Log_WelcomeMessage;
 
-    public StatisticsWindow StatisticsWindow;
-    public VampireManager VampireManager;
     private void Update()
     {
         //Welcome Message
@@ -24,7 +24,5 @@ public class StoryLog : MonoBehaviour
             Log_WelcomeMessage = 2;
         }
         /////
-        
-
     }
 }

@@ -56,6 +56,11 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
     [HideInInspector] public int[] vampires_amount_Used_Feed;
     [HideInInspector] public int[] vampires_amount_Used_Infect;
 
+    /* Upgrades */
+
+    //Efficiency Upgrades
+    public EfficiencyUpgrades EfficiencyUpgrades;
+
     //Ascend costs
     public double[] vampires_cost_ascend;
 
@@ -78,7 +83,7 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
         vampires_desc[0] = "Basically a freshly turned vampire.";
 
         vampires_maximumBloodGather[0] = 1000;
-        vampires_bloodEfficiency[0] = 75; //out of 100
+        vampires_bloodEfficiency[0] = 50; //out of 100
         //vampires_infectionChance[0] = 10; //out of 100
         //vampires_infectEfficiency[0] = 10;
         vampires_speed[0] = 1;
@@ -104,8 +109,8 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
         vampires_desc[1] = "This is the next step to human evolution.";
 
         vampires_maximumBloodGather[1] = 7000;
-        vampires_bloodEfficiency[1] = 70; //out of 100
-        vampires_infectionChance[1] = 10; //out of 100
+        vampires_bloodEfficiency[1] = 45; //out of 100
+        vampires_infectionChance[1] = 45; //out of 100
         vampires_infectEfficiency[1] = 10;
         vampires_speed[1] = 1;
         vampires_completionTime[1] = 20;
@@ -130,8 +135,8 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
         vampires_desc[2] = "This is the next step to human evolution.";
 
         vampires_maximumBloodGather[2] = 30000;
-        vampires_bloodEfficiency[2] = 65; //out of 100
-        vampires_infectionChance[2] = 9; //out of 100
+        vampires_bloodEfficiency[2] = 40; //out of 100
+        vampires_infectionChance[2] = 40; //out of 100
         vampires_infectEfficiency[2] = 9;
         vampires_speed[2] = 1;
         vampires_completionTime[2] = 30;
