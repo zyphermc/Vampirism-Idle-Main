@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
 {
@@ -19,12 +20,16 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
      * The Father
      */
 
+    //Button References (for enabling and disabling)
+    public Button[] vampireButton;
+
     //Blood Gather Manager Object
     public BloodGatherManager BloodGatherManager;
 
     //Vampire Progress Bars (Lair)
     public TextMeshProUGUI[] Lair_ProgressBars;
 
+    //Vampire Stats
     public string[] vampires_name;
     public string[] vampires_quote;
     public string[] vampires_desc;
@@ -38,13 +43,13 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
     public double[] vampires_BloodEfficiencyTotal;
     public double[] vampires_InfectionChanceTotal;
     public double[] vampires_infectEfficiency;
-    
 
     public double[] vampires_maximumBloodGather;
 
+    public bool[] vampires_unlocked; //Switch for unlocking the vampire buttons
+
     [HideInInspector] public double[] vampires_bloodPerKill; //blood you get per kill
     [HideInInspector] public double[] vampires_bloodPerInfect; //blood you get when infecting humans (lower than per kill)
-    
 
     [HideInInspector] public double[] vampires_currentProgress;
     [HideInInspector] public double[] vampires_progress;
@@ -91,6 +96,8 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
         vampires_amount_Used_Total[0] = 0;
         vampires_amount_Used_Feed[0] = 0;
         vampires_amount_Used_Infect[0] = 0;
+
+        vampires_unlocked[0] = true;
         //////////////////////////////////////////////////////////////////////////////////////////////
 
         //Vampling Initial Stats
@@ -164,10 +171,27 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
             vampires_BloodEfficiencyTotal[a] = vampires_base_BloodEfficiency[a] + (5 * EfficiencyUpgrades.level_SharpenFang[a]);
             vampires_InfectionChanceTotal[a] = vampires_base_InfectionChance[a] + (5 * EfficiencyUpgrades.level_SharpenFang[a]);
 
-            vampires_CompletionTimeTotal[a] = vampires_base_CompletionTime[a] / (Mathf.Pow(2,EfficiencyUpgrades.level_TrainAgility[a]));
+            vampires_CompletionTimeTotal[a] = vampires_base_CompletionTime[a] / (Mathf.Pow(2, EfficiencyUpgrades.level_TrainAgility[a]));
 
             vampires_bloodPerKill[a] = vampires_maximumBloodGather[a] * (vampires_BloodEfficiencyTotal[a] / 100f); //% out of 100
             vampires_bloodPerInfect[a] = vampires_maximumBloodGather[a] * (vampires_infectEfficiency[a] / 100f); //only 10% of max blood gather
+
+            //Update button lock
+            if(vampires_amount_Total[a] > 0 && vampires_unlocked[a] == false)
+            {
+                vampires_unlocked[a] = true;
+            }
+
+            //Check if button is unlocked, if yes show it, if no, hide it.
+            if (vampires_unlocked[a])
+            {
+                vampireButton[a].gameObject.SetActive(true);
+            }
+            else
+            {
+                vampireButton[a].gameObject.SetActive(false);
+            }
+            
         }
     }
 
