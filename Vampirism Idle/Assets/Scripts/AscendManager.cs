@@ -8,6 +8,7 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
 
     public VampireManager VampireManager;
     public AmountButton AmountButton;
+    public StatisticsWindow StatisticsWindow;
 
     //Vamp Stats Text Box
     public TextMeshProUGUI textBox_ButtonInfo;
@@ -36,7 +37,7 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
             //If Max amount is chosen
             if (AmountButton.amountIndex == 6)
             {
-                AscendButtonInfo = "Amount to Ascend: " + GetAscendableAmount() + "\n"
+                AscendButtonInfo = "Able to Ascend: " + GetAscendableAmount() + "\n"
                                    + "Blood Cost: " + GetAscendableAmount() * VampireManager.vampires_cost_ascend[vampIndex] + "\n"
                                    + "Vampire Cost: " + GetAscendableAmount() * 100;
             }
@@ -102,19 +103,21 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
         //If max
         if (AmountButton.amountIndex == 6)
         {
+            //Log Event
+            StatisticsWindow.AddEvent((100 * GetAscendableAmount()).ToString() + " " + VampireManager.vampires_name[vampIndex] + "s has turned into " + GetAscendableAmount() + " " + VampireManager.vampires_name[vampIndex + 1]);
+
             VampireManager.vampires_amount_Total[vampIndex + 1] += GetAscendableAmount();
             VampireManager.vampires_amount_Total[vampIndex] -= 100 * GetAscendableAmount();
-            GameManager.res_Blood -= VampireManager.vampires_cost_ascend[vampIndex] * GetAscendableAmount();
-
-            Debug.Log("Vampires Ascended: " + GetAscendableAmount());
+            GameManager.res_Blood -= VampireManager.vampires_cost_ascend[vampIndex] * GetAscendableAmount();          
         }
         else
         {
+            //Log Event
+            StatisticsWindow.AddEvent((100 * AmountButton.amountNumber).ToString() + " " + VampireManager.vampires_name[vampIndex] + "s has turned into " + AmountButton.amountNumber + " " + VampireManager.vampires_name[vampIndex + 1]);
+
             VampireManager.vampires_amount_Total[vampIndex + 1] += AmountButton.amountNumber;
             VampireManager.vampires_amount_Total[vampIndex] -= 100 * AmountButton.amountNumber;
             GameManager.res_Blood -= VampireManager.vampires_cost_ascend[vampIndex] * AmountButton.amountNumber;
-
-            Debug.Log("Vampires Ascended: " + AmountButton.amountNumber);
         }
     }
 

@@ -91,13 +91,6 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
         //vampires_infectEfficiency[0] = 10;
         vampires_speed[0] = 1;
         vampires_base_CompletionTime[0] = 10;
-
-        vampires_amount_Total[0] = 0;
-        vampires_amount_Used_Total[0] = 0;
-        vampires_amount_Used_Feed[0] = 0;
-        vampires_amount_Used_Infect[0] = 0;
-
-        vampires_unlocked[0] = true;
         //////////////////////////////////////////////////////////////////////////////////////////////
 
         //Vampling Initial Stats
@@ -111,11 +104,6 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
         vampires_infectEfficiency[1] = 10;
         vampires_speed[1] = 1;
         vampires_base_CompletionTime[1] = 20;
-
-        vampires_amount_Total[1] = 0;
-        vampires_amount_Used_Total[1] = 0;
-        vampires_amount_Used_Feed[1] = 0;
-        vampires_amount_Used_Infect[1] = 0;
         //////////////////////////////////////////////////////////////////////////////////////////////
 
         //Lesser Vampire Initial Stats
@@ -129,11 +117,6 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
         vampires_infectEfficiency[2] = 9;
         vampires_speed[2] = 1;
         vampires_base_CompletionTime[2] = 30;
-
-        vampires_amount_Total[2] = 0;
-        vampires_amount_Used_Total[2] = 0;
-        vampires_amount_Used_Feed[2] = 0;
-        vampires_amount_Used_Infect[2] = 0;
         //////////////////////////////////////////////////////////////////////////////////////////////
     }
 
