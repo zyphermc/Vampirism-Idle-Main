@@ -2,6 +2,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using NumberShortening;
 
 public class GameManager : MonoBehaviour //Persistent (contains game stats)
 {
@@ -11,6 +12,9 @@ public class GameManager : MonoBehaviour //Persistent (contains game stats)
     public TextMeshProUGUI textBox_Blood;
 
     public TextMeshProUGUI textBox_HumanPop;
+
+    //Class Objects
+    ShortenNumber sn = new ShortenNumber();
 
     //Resources
     public double res_Blood;
@@ -22,10 +26,16 @@ public class GameManager : MonoBehaviour //Persistent (contains game stats)
     //Cooldown Tick for Bite Button
     public int cooldownTick;
 
+    //experimental variables
+    public double value;
+    [HideInInspector] double tempValue;
+
     // Start is called before the first frame update
     private void Start()
     {
         StartCoroutine("UpdateResources");
+
+        
     }
 
     // Update is called once per frame
@@ -33,6 +43,13 @@ public class GameManager : MonoBehaviour //Persistent (contains game stats)
     {
         textBox_Blood.text = Math.Floor(res_Blood).ToString();
         textBox_HumanPop.text = Math.Floor(res_HumanPop).ToString();;
+
+        //experimental
+        if(tempValue != value)
+        {
+            tempValue = value;
+            Debug.Log(sn.shortenNumber(tempValue));
+        }
     }
 
     private IEnumerator UpdateResources()
