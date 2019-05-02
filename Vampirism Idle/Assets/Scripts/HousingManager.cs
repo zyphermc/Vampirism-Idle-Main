@@ -9,16 +9,16 @@ public class HousingManager : MonoBehaviour
     public TextMeshProUGUI textBox_housingLair;
 
     //Declaration of housing variables
-    public int housing_amountAvailable;
+    public double housing_amountAvailable;
 
-    public int housing_amountTotal;
-    public int housing_amountUsed;
+    public double housing_amountTotal;
+    public double housing_amountUsed;
 
     [HideInInspector] public string[] housing_buildingName;
     [HideInInspector] public string[] housing_buildingDesc;
-    public int[] housing_buildingBaseCap;
-    public int[] housing_buildingAmount;
-    [HideInInspector] public int[] housing_buildingTotalCap;
+    public double[] housing_buildingBaseCap;
+    public double[] housing_buildingAmount;
+    [HideInInspector] public double[] housing_buildingTotalCap;
 
     private void Start()
     {

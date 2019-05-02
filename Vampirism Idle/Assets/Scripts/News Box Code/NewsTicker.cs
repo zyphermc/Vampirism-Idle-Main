@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewsTicker : MonoBehaviour
+public class NewsTicker : MonoBehaviour //Persistent
 {
     public NewsItem newsItem_prefab; //The news text prefab
     [Range(0,10)]public float itemDuration; //How long to scroll the news
-    public string[] fillerItems; //News that will loop if there is no important news to show
+    public List<string> fillerItems; //News that will loop if there is no important news to show
 
     private float width;
     private float pixelsPerSecond; //to calculate the speed in which the whole news scrolls
@@ -17,7 +17,7 @@ public class NewsTicker : MonoBehaviour
     {
         width = GetComponent<RectTransform>().rect.width;
         pixelsPerSecond = width / itemDuration;
-        AddNewsItem(fillerItems[0]);
+        AddNewsItem(fillerItems[Random.Range(0, fillerItems.Count)]);
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class NewsTicker : MonoBehaviour
     {
         if(!currentItem)
         {
-            AddNewsItem(fillerItems[Random.Range(0, 2)]);
+            AddNewsItem(fillerItems[Random.Range(0, fillerItems.Count)]);
         }
     }
 

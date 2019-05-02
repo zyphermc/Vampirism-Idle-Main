@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class NewsItem : MonoBehaviour
+public class NewsItem : MonoBehaviour //Persistent
 {
     private float itemWidth;
     private float pixelsPerSecond;

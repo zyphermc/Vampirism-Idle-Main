@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,7 +29,7 @@ public class VampInputManager : MonoBehaviour //Local (Slider and Input field fo
             VampireManager.slider_usedFeed[vampIndex] = (int)slider.value; //update the set percentage in vamp manager
 
             //Set vampires used for feeding in vamp manager
-            VampireManager.vampires_amount_Used_Feed[vampIndex] = Mathf.FloorToInt(VampireManager.vampires_amount_Total[vampIndex] * (slider.value / 100));
+            VampireManager.vampires_amount_Used_Feed[vampIndex] = Math.Floor(VampireManager.vampires_amount_Total[vampIndex] * (slider.value / 100));
 
             //Set the percentage text
             textBox_TitlePercentage.text = "Feed (" + slider.value + "%)";
@@ -42,7 +43,7 @@ public class VampInputManager : MonoBehaviour //Local (Slider and Input field fo
             VampireManager.slider_usedInfect[vampIndex] = (int)slider.value; //update the set percentage in vamp manager
 
             //Set vampires used for feeding in vamp manager
-            VampireManager.vampires_amount_Used_Infect[vampIndex] = Mathf.FloorToInt(VampireManager.vampires_amount_Total[vampIndex] * (slider.value / 100));
+            VampireManager.vampires_amount_Used_Infect[vampIndex] = Math.Floor(VampireManager.vampires_amount_Total[vampIndex] * (slider.value / 100));
 
             //Set the percentage text
             textBox_TitlePercentage.text = "Infect (" + slider.value + "%)";
