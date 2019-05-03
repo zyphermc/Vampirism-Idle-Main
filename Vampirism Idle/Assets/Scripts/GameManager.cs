@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour //Persistent (contains game stats)
         if(tempValue != value)
         {
             tempValue = value;
-            Debug.Log(sn.shortenNumber(tempValue,1));
+            Debug.Log(sn.shortenNumber(tempValue,0));
         }
     }
 
