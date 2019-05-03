@@ -36,12 +36,12 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
 
     public double[] vampires_speed; // value to add per second
     public double[] vampires_base_CompletionTime; //Time it takes to complete a cycle
-    public double[] vampires_CompletionTimeTotal;
+    [HideInInspector] public double[] vampires_CompletionTimeTotal;
 
     public double[] vampires_base_BloodEfficiency;
     public double[] vampires_base_InfectionChance; //chance you infect someone and turn it into a vamp one tier below
-    public double[] vampires_BloodEfficiencyTotal;
-    public double[] vampires_InfectionChanceTotal;
+    [HideInInspector] public double[] vampires_BloodEfficiencyTotal;
+    [HideInInspector] public double[] vampires_InfectionChanceTotal;
     public double[] vampires_infectEfficiency;
 
     public double[] vampires_maximumBloodGather;
@@ -53,11 +53,11 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
 
     [HideInInspector] public double[] vampires_currentProgress;
     [HideInInspector] public double[] vampires_progress;
-    public int[] vampires_amount_Total;
-    [HideInInspector] public int[] vampires_amount_Available_Total;
-    [HideInInspector] public int[] vampires_amount_Used_Total;
-    [HideInInspector] public int[] vampires_amount_Used_Feed;
-    [HideInInspector] public int[] vampires_amount_Used_Infect;
+    public double[] vampires_amount_Total;
+    [HideInInspector] public double[] vampires_amount_Available_Total;
+    [HideInInspector] public double[] vampires_amount_Used_Total;
+    [HideInInspector] public double[] vampires_amount_Used_Feed;
+    [HideInInspector] public double[] vampires_amount_Used_Infect;
 
     /* Upgrades */
 

@@ -6,6 +6,7 @@ public class StoryLog : MonoBehaviour //Persistent
     public HousingManager HousingManager;
     public VampireManager VampireManager;
     public StatisticsWindow StatisticsWindow;
+    public NewsTicker NewsTicker;
 
     //Log Messages (0 = locked, 1 = to be sent, 2 = sent)
     public int Log_WelcomeMessage;
