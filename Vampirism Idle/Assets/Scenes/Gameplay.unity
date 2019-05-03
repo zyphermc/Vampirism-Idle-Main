@@ -667,11 +667,61 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  vampires_amount_Total: 88130000000000000000000000000000000000000000000000000000000000000000000000000000
-  vampires_amount_Available_Total: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
-  vampires_amount_Used_Total: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
-  vampires_amount_Used_Feed: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
-  vampires_amount_Used_Infect: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  vampires_amount_Total:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  vampires_amount_Available_Total:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  vampires_amount_Used_Total:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  vampires_amount_Used_Feed:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  vampires_amount_Used_Infect:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   EfficiencyUpgrades: {fileID: 582645740}
   vampires_cost_ascend:
   - 100
@@ -5572,8 +5622,9 @@ MonoBehaviour:
   res_Blood: 20000000
   res_Wood: 0
   res_Stone: 0
-  res_HumanPop: 0
+  res_HumanPop: 100
   cooldownTick: 0
+  value: 0
 --- !u!4 &612896274
 Transform:
   m_ObjectHideFlags: 0
@@ -5604,6 +5655,7 @@ MonoBehaviour:
   HousingManager: {fileID: 614224046}
   VampireManager: {fileID: 49179241}
   StatisticsWindow: {fileID: 1006859911}
+  NewsTicker: {fileID: 1812182796}
   Log_WelcomeMessage: 0
 --- !u!1 &614224044
 GameObject:
@@ -5675,9 +5727,39 @@ MonoBehaviour:
   - 
   - 
   - 
-  housing_buildingBaseCap: 0a0000003200000064000000fa000000f4010000e8030000d0070000a00f00007017000010270000
-  housing_buildingAmount: 00000000000000000000000000000000000000000000000000000000000000000000000001000000
-  housing_buildingTotalCap: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  housing_buildingBaseCap:
+  - 10
+  - 25
+  - 50
+  - 100
+  - 250
+  - 500
+  - 1000
+  - 1500
+  - 2000
+  - 2500
+  housing_buildingAmount:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 23
+  - 0
+  - 0
+  - 0
+  housing_buildingTotalCap:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!1 &617400930
 GameObject:
   m_ObjectHideFlags: 0
@@ -16747,7 +16829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   newsItem_prefab: {fileID: 8784810979203870718, guid: b55618dc26ea85649aa6b84390bb4db4,
     type: 3}
-  itemDuration: 10
+  itemDuration: 3.7
   fillerItems:
   - Vampires reportedly spotted in the alleys.
   - Just in, vampires allergic to lemon juice?
