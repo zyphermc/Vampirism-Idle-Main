@@ -44,7 +44,7 @@ namespace NumberShortening
                     return value.ToString(); //return value un-edited
                 }
             }
-            else if(method == 1) //if scientific method
+            else if(method == 1) //if scientific notation method
             {
                 /* Scientific Notation */
                 return value.ToString("0.000e0"); //scientific notation
