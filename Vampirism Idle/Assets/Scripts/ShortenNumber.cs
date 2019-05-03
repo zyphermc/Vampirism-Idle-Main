@@ -5,14 +5,14 @@ namespace NumberShortening
 {
     public class ShortenNumber
     {
-        public string[] numberSuffix =
+        public string[] numberSuffix = //contains the suffixes
         {
             " Thousand",
             " Million",
             " Trillion"
         };
 
-        public int suffixIndex; //index for post fix
+        public int suffixIndex; //index for suffix
         public bool decreased = false; //checks if index is already decreased
 
         public int shortenMethod = 0; //0 = suffix, 1 = scientific
