@@ -7,9 +7,11 @@ namespace NumberShortening
     {
         public string[] numberSuffix = //contains the suffixes
         {
-            " Thousand",
-            " Million",
-            " Trillion"
+            " K",
+            " M",
+            " T",
+            " q",
+            " Q"
         };
 
         public int suffixIndex; //index for suffix
@@ -17,7 +19,7 @@ namespace NumberShortening
 
         public int shortenMethod = 0; //0 = suffix, 1 = scientific
 
-        public string shortenNumber(double value, int method)
+        public string shortenNumber(double value, int method, int decimalPlaces)
         {
             if (method == 0) //if suffix method
             {
@@ -28,21 +30,21 @@ namespace NumberShortening
                 {
                     suffixIndex = (Mathf.FloorToInt(zeroAmount / 3f) * 3) / 3; //Calculate index to be the lowest multiple of three divided by three
 
-                    return (value / Mathf.Pow(10, suffixIndex * 3)).ToString("F2") + numberSuffix[suffixIndex - 1]; //return value in two decimal places with a post fix
+                    return (Math.Floor(value / Mathf.Pow(10, suffixIndex * 3))).ToString("N" + decimalPlaces) + numberSuffix[suffixIndex - 1]; //return value in two decimal places with a post fix
                 }
                 else
                 {
-                    return value.ToString(); //return value un-edited
+                    return Math.Floor(value).ToString(); //return value un-edited
                 }
             }
             else if (method == 1) //if scientific notation method
             {
                 /* Scientific Notation */
-                return value.ToString("0.000e0"); //scientific notation
+                return Math.Floor(value).ToString("0.000e0"); //scientific notation
             }
             else //if neither, return it unedited
             {
-                return value.ToString();
+                return Math.Floor(value).ToString();
             }
         }
     }

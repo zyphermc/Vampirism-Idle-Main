@@ -41,14 +41,14 @@ public class GameManager : MonoBehaviour //Persistent (contains game stats)
     // Update is called once per frame
     private void Update()
     {
-        textBox_Blood.text = Math.Floor(res_Blood).ToString();
-        textBox_HumanPop.text = Math.Floor(res_HumanPop).ToString();;
+        textBox_Blood.text = sn.shortenNumber(res_Blood,0,2);
+        textBox_HumanPop.text = sn.shortenNumber(res_HumanPop,0,3);
 
         //experimental
         if(tempValue != value)
         {
             tempValue = value;
-            Debug.Log(sn.shortenNumber(tempValue,0));
+            Debug.Log(sn.shortenNumber(tempValue,0,2));
         }
     }
 
