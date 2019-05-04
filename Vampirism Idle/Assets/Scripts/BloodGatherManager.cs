@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System;
 using Random = UnityEngine.Random;
 
 public class BloodGatherManager : MonoBehaviour //Persistent
@@ -35,7 +34,7 @@ public class BloodGatherManager : MonoBehaviour //Persistent
         {
             for (int a = 0; a < VampireManager.vampires_amount_Used_Infect[vampIndex]; a++) //If less than 10, calculate chance for each vamp
             {
-                if (Random.value < (VampireManager.vampires_InfectionChanceTotal[vampIndex]/100f) && HousingManager.housing_amountAvailable > 0) //10% of infection
+                if (Random.value < (VampireManager.vampires_InfectionChanceTotal[vampIndex] / 100f) && HousingManager.housing_amountAvailable > 0) //10% of infection
                 {
                     VampireManager.vampires_amount_Total[vampIndex - 1]++;
                 }

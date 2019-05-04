@@ -56,7 +56,7 @@ public class VampButton : MonoBehaviour //Local
     }
 
     private void Update()
-    {   
+    {
         //If selected, darken.
         if (VampInfoWindow.vampIndex == vampInfoNum)
         {

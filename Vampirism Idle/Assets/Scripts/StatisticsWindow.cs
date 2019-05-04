@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class StatisticsWindow : MonoBehaviour //Local (UI)
     public TextMeshProUGUI textBox_Statistics;
 
     //String list
+    private List<int> hourList = new List<int>();
+    private List<int> minuteList = new List<int>();
     private List<string> eventList = new List<string>(); //contains each line of text
 
     private int maxLines;
@@ -74,18 +77,32 @@ public class StatisticsWindow : MonoBehaviour //Local (UI)
     {
         //Add a string to the list
         eventList.Add(eventString);
+        hourList.Add(DateTime.Now.Hour);
+        minuteList.Add(DateTime.Now.Minute);
 
         //If limit is reached, delete the farthest line
         if (eventList.Count >= maxLines)
+        {
             eventList.RemoveAt(0);
+            hourList.RemoveAt(0);
+            minuteList.RemoveAt(0);
+        }
+            
 
         //Update Log Text
         textBox_Log.text = "";
 
-        foreach (string logEvent in eventList)
+        /*foreach (string logEvent in eventList)
         {
             textBox_Log.text += logEvent;
             textBox_Log.text += "\n";
+        }*/
+        
+        for(int a = 0; a < eventList.Count; a++)
+        {
+            textBox_Log.text += "[" + hourList[a].ToString("00") + ":" + minuteList[a].ToString("00") + "] " + eventList[a];
+            textBox_Log.text += "\n";
         }
+
     }
 }

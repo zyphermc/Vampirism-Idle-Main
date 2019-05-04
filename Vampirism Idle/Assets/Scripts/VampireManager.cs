@@ -31,6 +31,7 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
 
     //Vampire Stats
     public string[] vampires_name;
+
     public string[] vampires_quote;
     public string[] vampires_desc;
 
@@ -160,7 +161,7 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
             vampires_bloodPerInfect[a] = vampires_maximumBloodGather[a] * (vampires_infectEfficiency[a] / 100f); //only 10% of max blood gather
 
             //Update button lock
-            if(vampires_amount_Total[a] > 0 && vampires_unlocked[a] == false)
+            if (vampires_amount_Total[a] > 0 && vampires_unlocked[a] == false)
             {
                 vampires_unlocked[a] = true;
             }
@@ -174,7 +175,6 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
             {
                 vampireButton[a].gameObject.SetActive(false);
             }
-            
         }
     }
 

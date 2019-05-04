@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using NumberShortening;
 
 public class EfficiencyUpgrades : MonoBehaviour //Local
 {
@@ -9,6 +10,9 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
     public GameManager GameManager;
 
     public VampireManager VampireManager;
+
+    //Shortening Number Object
+    public ShortenNumber sn = new ShortenNumber();
 
     //UI References
     public Button upgrade_SharpenFang;
@@ -20,6 +24,7 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
 
     //Upgrade variables
     public double[] baseCost_SharpenFang;
+
     public double[] baseCost_TrainAgility;
     public double[] growthRate_SharpenFang;
     public double[] growthRate_TrainAgility;
@@ -32,8 +37,9 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
     public int vampIndex;
 
     //Temporary Variables
-    double newEfficiency;
-    double newSpeed;
+    private double newEfficiency;
+
+    private double newSpeed;
 
     //Description Switches
     public bool hovered_SharpenFang;
@@ -60,7 +66,7 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
                 buttonDescription.text = "Sharpen Fangs:" + "\n"
                 + "Increase Feed Efficiency by 5%" + "\n"
                 + VampireManager.vampires_BloodEfficiencyTotal[vampIndex] + "% -> " + newEfficiency + "%\n"
-                + "Cost (Blood): " + cost_SharpenFang[vampIndex];
+                + "Cost (Blood): " + sn.shortenNumber(cost_SharpenFang[vampIndex], sn.shortenMethod, 2);
             }
             else
             {
@@ -69,9 +75,8 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
                 buttonDescription.text = "Sharpen Fangs:" + "\n"
                 + "Increase Feed Efficiency and Infection Chance by 5%" + "\n"
                 + VampireManager.vampires_BloodEfficiencyTotal[vampIndex] + "% -> " + newEfficiency + "%\n"
-                + "Cost (Blood): " + cost_SharpenFang[vampIndex];
+                + "Cost (Blood): " + sn.shortenNumber(cost_SharpenFang[vampIndex], sn.shortenMethod, 2);
             }
-            
         }
         else
         if (hovered_TrainAgility)
@@ -81,7 +86,7 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
             buttonDescription.text = "Train Agility:" + "\n"
             + "Halve your vampire's completion time." + "\n"
             + VampireManager.vampires_CompletionTimeTotal[vampIndex] + " seconds -> " + newSpeed + " seconds" + "\n"
-            + "Cost (Blood): " + cost_TrainAgility[vampIndex];
+            + "Cost (Blood): " + sn.shortenNumber(cost_TrainAgility[vampIndex], sn.shortenMethod, 2);
         }
         else
         {
@@ -93,7 +98,7 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
 
     public void BuyUpgrade_SharpenFang()
     {
-        if(GameManager.res_Blood >= cost_SharpenFang[vampIndex])
+        if (GameManager.res_Blood >= cost_SharpenFang[vampIndex])
         {
             GameManager.res_Blood -= cost_SharpenFang[vampIndex];
             level_SharpenFang[vampIndex]++;
@@ -102,7 +107,7 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
 
     public void BuyUpgrade_TrainAgility()
     {
-        if(GameManager.res_Blood >= cost_TrainAgility[vampIndex])
+        if (GameManager.res_Blood >= cost_TrainAgility[vampIndex])
         {
             GameManager.res_Blood -= cost_TrainAgility[vampIndex];
             level_TrainAgility[vampIndex]++;

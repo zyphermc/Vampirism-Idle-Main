@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using TMPro;
 
 public class NewsItem : MonoBehaviour //Persistent
 {
@@ -28,10 +26,10 @@ public class NewsItem : MonoBehaviour //Persistent
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         rt.position += Vector3.left * pixelsPerSecond * Time.deltaTime;
-        if(getXPos() <= 0 - itemWidth - getWidth())
+        if (getXPos() <= 0 - itemWidth - getWidth())
         {
             Destroy(gameObject);
         }

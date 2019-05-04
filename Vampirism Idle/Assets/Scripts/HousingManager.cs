@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using NumberShortening;
 
 public class HousingManager : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class HousingManager : MonoBehaviour
     public VampireManager VampireManager;
 
     public TextMeshProUGUI textBox_housingLair;
+
+    public ShortenNumber sn = new ShortenNumber();
 
     //Declaration of housing variables
     public double housing_amountAvailable;
@@ -73,6 +76,6 @@ public class HousingManager : MonoBehaviour
             + VampireManager.vampires_amount_Total[9];
 
         //Update UI Text [Lair]
-        textBox_housingLair.text = housing_amountUsed + "/" + housing_amountTotal;
+        textBox_housingLair.text = sn.shortenNumber(housing_amountUsed, sn.shortenMethod, 2) + "/" + sn.shortenNumber(housing_amountTotal, sn.shortenMethod, 2);
     }
 }

@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using NumberShortening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,9 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
     public StatisticsWindow StatisticsWindow; //window of statistics
 
     public AscendManager AscendManager; //manages the ascend info and backend
+
+    //Shorten Number Object
+    public ShortenNumber sn = new ShortenNumber();
 
     //Ascend Button (to turn off and on)
     public Button button_Ascend;
@@ -59,7 +63,7 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
 
             if (page == 1) //kill methods page
             {
-                textBox_vampAvailable.text = "Available: " + VampireManager.vampires_amount_Available_Total[vampIndex].ToString(); //update available vamps
+                textBox_vampAvailable.text = "Available: " + sn.shortenNumber(VampireManager.vampires_amount_Available_Total[vampIndex], sn.shortenMethod, 2); //update available vamps
 
                 //Vamp Stats info
                 if (AscendManager.showAscendInfo == true)
@@ -68,16 +72,16 @@ public class VampInfoWindow : MonoBehaviour //Local (UI only)
                 }
                 else if (vampIndex >= 1) //if not fledgeling (since fledgeling can't infect so should not have any infection related shit)
                 {
-                    textBox_vampStats.text = "Blood per Feed: " + VampireManager.vampires_bloodPerKill[vampIndex].ToString("F2") + "\n"
-                    + "Blood per Infect: " + VampireManager.vampires_bloodPerInfect[vampIndex].ToString("F2") + "\n"
+                    textBox_vampStats.text = "Blood per Feed: " + sn.shortenNumber(VampireManager.vampires_bloodPerKill[vampIndex], sn.shortenMethod, 2) + "\n"
+                    + "Blood per Infect: " + sn.shortenNumber(VampireManager.vampires_bloodPerInfect[vampIndex], sn.shortenMethod, 2) + "\n"
                     + "Infection Chance: " + VampireManager.vampires_InfectionChanceTotal[vampIndex] + "%" + "\n"
-                    + "Feed Efficiency: " + VampireManager.vampires_BloodEfficiencyTotal[vampIndex] + "%" + "\n"
+                    + "Feed Efficiency: " + sn.shortenNumber(VampireManager.vampires_BloodEfficiencyTotal[vampIndex], sn.shortenMethod, 1) + "%" + "\n"
                     + "Completion Time: " + VampireManager.vampires_CompletionTimeTotal[vampIndex] + " seconds";
                 }
                 else if (vampIndex == 0)
                 {
-                    textBox_vampStats.text = "Blood per Feed: " + VampireManager.vampires_bloodPerKill[vampIndex].ToString("F2") + "\n"
-                    + "Feed Efficiency: " + VampireManager.vampires_BloodEfficiencyTotal[vampIndex] + "%" + "\n"
+                    textBox_vampStats.text = "Blood per Feed: " + sn.shortenNumber(VampireManager.vampires_bloodPerKill[vampIndex], sn.shortenMethod, 2) + "\n"
+                    + "Feed Efficiency: " + sn.shortenNumber(VampireManager.vampires_BloodEfficiencyTotal[vampIndex], sn.shortenMethod, 1) + "%" + "\n"
                     + "Completion Time: " + VampireManager.vampires_CompletionTimeTotal[vampIndex] + " seconds";
                 }
                 /////////////////////
