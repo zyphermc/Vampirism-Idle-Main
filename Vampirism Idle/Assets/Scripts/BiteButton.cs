@@ -53,7 +53,7 @@ public class BiteButton : MonoBehaviour //Local
         {
             textBox_biteButton.text = "Bite";
 
-            if (HousingManager.housing_amountAvailable <= 0)
+            if (HousingManager.vamp_housing_amountAvailable <= 0)
             {
                 button_biteButton.interactable = false;
             }
