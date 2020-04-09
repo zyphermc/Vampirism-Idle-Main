@@ -30,7 +30,7 @@ namespace NumberShortening
                 {
                     suffixIndex = (Mathf.FloorToInt(zeroAmount / 3f) * 3) / 3; //Calculate index to be the lowest multiple of three divided by three
 
-                    return (Math.Floor(value / Mathf.Pow(10, suffixIndex * 3))).ToString("N" + decimalPlaces) + numberSuffix[suffixIndex - 1]; //return value in two decimal places with a post fix
+                    return (/*Math.Floor*/(value / Mathf.Pow(10, suffixIndex * 3))).ToString("N" + decimalPlaces) + numberSuffix[suffixIndex - 1]; //return value in two decimal places with a post fix
                 }
                 else
                 {
@@ -40,7 +40,7 @@ namespace NumberShortening
             else if (method == 1) //if scientific notation method
             {
                 /* Scientific Notation */
-                return Math.Floor(value).ToString("0.000e0"); //scientific notation
+                return Math.Floor(value).ToString("0.00e0"); //scientific notation
             }
             else //if neither, return it unedited
             {

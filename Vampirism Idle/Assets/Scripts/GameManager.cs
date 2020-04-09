@@ -46,18 +46,18 @@ public class GameManager : MonoBehaviour //Persistent (contains game stats)
     {
         //Update Resource UI
         textBox_Blood.text = sn.shortenNumber(res_Blood, sn.shortenMethod, 2);
-        textBox_HumanPop.text = sn.shortenNumber(res_HumanPop, sn.shortenMethod, 3);
+        textBox_HumanPop.text = sn.shortenNumber(res_HumanPop, sn.shortenMethod, 2);
 
-        //Update Panel Buttons
+        //Update Panel Buttons (Selected or not selected - Panel Buttons e.g. Lair, Buildings, Labor, etc.)
         for (int a = 0; a < panel_Button.Length; a++)
         {
-            if (panelNum == a)
+            if (panelNum == a) //if selected
             {
                 panel_Button[a].enabled = false;
                 panel_Button[a].interactable = false;
                 panel_Content[a].SetActive(true);
             }
-            else
+            else //if not selected
             {
                 panel_Button[a].enabled = true;
                 panel_Button[a].interactable = true;
@@ -76,9 +76,9 @@ public class GameManager : MonoBehaviour //Persistent (contains game stats)
         }
     }
 
-    public void addHumans()
+    public void addHumans() //to be revised
     {
-        res_HumanPop += 1;
+        res_HumanPop += 10000;
     }
 
     /* Panel Button Methods */

@@ -29,7 +29,7 @@ public class BloodGatherManager : MonoBehaviour //Persistent
 
     public void CommenceInfect()
     {
-        //If Vamps less than or equal to 10, Human more than Vamps (Condition 1)
+        //If Vamps less than or equal to 10 & Human more than Vamps (Condition 1)
         if (VampireManager.vampires_amount_Used_Infect[vampIndex] <= 10 && GameManager.res_HumanPop >= VampireManager.vampires_amount_Used_Infect[vampIndex])
         {
             for (int a = 0; a < VampireManager.vampires_amount_Used_Infect[vampIndex]; a++) //If less than 10, calculate chance for each vamp
@@ -43,7 +43,7 @@ public class BloodGatherManager : MonoBehaviour //Persistent
             }
         }
         else
-        //If Vamps less than or equal to 10, Human less than Vamps (Condition 2)
+        //If Vamps less than or equal to 10 & Human less than Vamps (Condition 2)
         if (VampireManager.vampires_amount_Used_Infect[vampIndex] <= 10 && GameManager.res_HumanPop < VampireManager.vampires_amount_Used_Infect[vampIndex])
         {
             for (int a = 0; a < GameManager.res_HumanPop; a++) //If less than 10, calculate chance for each vamp
