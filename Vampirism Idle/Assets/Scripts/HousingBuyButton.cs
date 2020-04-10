@@ -21,7 +21,16 @@ public class HousingBuyButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        amount = AmountButton.amountNumber;
+        if(AmountButton.amountIndex == 6)
+        {
+
+        }
+        else
+        {
+            amount = AmountButton.amountNumber;
+        }
+        
+
         textbox_buy_amount.text = "Build " + amount;
 
         if(descSwitch == 0)
@@ -81,5 +90,10 @@ public class HousingBuyButton : MonoBehaviour
                 HousingManager.human_housing_buildingAmount[housing_infoNum] += amount;
             }
         }
+    }
+
+    private void getBuyable()
+    {
+
     }
 }
