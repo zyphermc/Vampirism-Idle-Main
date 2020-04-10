@@ -23,7 +23,7 @@ public class HousingBuyButton : MonoBehaviour
     {
         if(AmountButton.amountIndex == 6)
         {
-
+            amount = GetBuyable();
         }
         else
         {
@@ -36,7 +36,7 @@ public class HousingBuyButton : MonoBehaviour
         if(descSwitch == 0)
         {
             //Check if buyable
-            if((GameManager.res_Wood >= (HousingManager.vamp_housing_buildingCost_wood[housing_infoNum]) * amount) && (GameManager.res_Stone >= (HousingManager.vamp_housing_buildingCost_stone[housing_infoNum]) * amount))
+            if((GameManager.res_Wood >= (HousingManager.vamp_housing_buildingCost_wood[housing_infoNum]) * amount) && (GameManager.res_Stone >= (HousingManager.vamp_housing_buildingCost_stone[housing_infoNum]) * amount) && amount != 0)
             {
                 buyable = true;
                 buyButton.interactable = true;
@@ -54,7 +54,7 @@ public class HousingBuyButton : MonoBehaviour
         else if(descSwitch == 1)
         {
             //Check if buyable
-            if ((GameManager.res_Wood >= (HousingManager.human_housing_buildingCost_wood[housing_infoNum]) * amount) && (GameManager.res_Stone >= (HousingManager.human_housing_buildingCost_stone[housing_infoNum]) * amount))
+            if ((GameManager.res_Wood >= (HousingManager.human_housing_buildingCost_wood[housing_infoNum]) * amount) && (GameManager.res_Stone >= (HousingManager.human_housing_buildingCost_stone[housing_infoNum]) * amount) && amount != 0)
             {
                 buyable = true;
                 buyButton.interactable = true;
@@ -92,8 +92,32 @@ public class HousingBuyButton : MonoBehaviour
         }
     }
 
-    private void getBuyable()
+    private int GetBuyable()
     {
+        int buildable_wood = 0;
+        int buildable_stone = 0;
 
+        if (descSwitch == 0)
+        {
+            buildable_wood = Mathf.FloorToInt((float)(GameManager.res_Wood / HousingManager.vamp_housing_buildingCost_wood[housing_infoNum]));
+            buildable_stone = Mathf.FloorToInt((float)(GameManager.res_Stone / HousingManager.vamp_housing_buildingCost_stone[housing_infoNum]));
+        }
+        else
+
+        if (descSwitch == 1)
+        {
+            buildable_wood = Mathf.FloorToInt((float)(GameManager.res_Wood / HousingManager.human_housing_buildingCost_wood[housing_infoNum]));
+            buildable_stone = Mathf.FloorToInt((float)(GameManager.res_Stone / HousingManager.human_housing_buildingCost_stone[housing_infoNum]));
+        }
+
+        //return which is less
+        if (buildable_wood >= buildable_stone)
+        {
+            return buildable_stone;
+        }
+        else
+        {
+            return buildable_wood;
+        }
     }
 }
