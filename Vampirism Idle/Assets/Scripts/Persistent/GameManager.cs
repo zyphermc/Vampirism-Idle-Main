@@ -13,9 +13,13 @@ public class GameManager : MonoBehaviour //Persistent (contains game stats)
 
     public TextMeshProUGUI textBox_HumanPop;
 
-    public TextMeshProUGUI textBox_Wood;
+    public TextMeshProUGUI textBox_Wood; //in building tab
 
-    public TextMeshProUGUI textBox_Stone;
+    public TextMeshProUGUI textBox_Stone; //in building tab
+
+    public TextMeshProUGUI textBox2_Wood; //in labor tab
+
+    public TextMeshProUGUI textBox2_Stone;  //in labor tab
 
     //Class Objects
     private ShortenNumber sn = new ShortenNumber();
@@ -49,10 +53,18 @@ public class GameManager : MonoBehaviour //Persistent (contains game stats)
     private void Update()
     {
         //Update Resource UI
+
+        //Persistent
         textBox_Blood.text = sn.shortenNumber(res_Blood, sn.shortenMethod, 2);
         textBox_HumanPop.text = sn.shortenNumber(res_HumanPop, sn.shortenMethod, 2);
+
+        //Building tab
         textBox_Wood.text = sn.shortenNumber(res_Wood, sn.shortenMethod, 2);
         textBox_Stone.text = sn.shortenNumber(res_Stone, sn.shortenMethod, 2);
+
+        //Labor tab
+        textBox2_Wood.text = sn.shortenNumber(res_Wood, sn.shortenMethod, 2);
+        textBox2_Stone.text = sn.shortenNumber(res_Stone, sn.shortenMethod, 2);
 
         //Update Panel Buttons (Selected or not selected - Panel Buttons e.g. Lair, Buildings, Labor, etc.)
         for (int a = 0; a < panel_Button.Length; a++)
