@@ -108,7 +108,7 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
 
             VampireManager.vampires_amount_Total[vampIndex + 1] += GetAscendableAmount();
             VampireManager.vampires_amount_Total[vampIndex] -= 100 * GetAscendableAmount();
-            GameManager.res_Blood -= VampireManager.vampires_cost_ascend[vampIndex] * GetAscendableAmount();          
+            GameManager.res_Blood -= VampireManager.vampires_cost_ascend[vampIndex] * GetAscendableAmount();
         }
         else
         {

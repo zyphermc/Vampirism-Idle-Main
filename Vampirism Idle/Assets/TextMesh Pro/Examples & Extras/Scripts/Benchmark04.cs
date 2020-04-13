@@ -1,13 +1,9 @@
 using UnityEngine;
-using System.Collections;
-
 
 namespace TMPro.Examples
 {
-    
     public class Benchmark04 : MonoBehaviour
     {
-
         public int SpawnType = 0;
 
         public int MinPointSize = 12;
@@ -15,11 +11,11 @@ namespace TMPro.Examples
         public int Steps = 4;
 
         private Transform m_Transform;
+
         //private TextMeshProFloatingText floatingText_Script;
         //public Material material;
 
-
-        void Start()
+        private void Start()
         {
             m_Transform = transform;
 
@@ -65,7 +61,7 @@ namespace TMPro.Examples
                     //if (lineHeight > orthoSize * 2 * 0.9f) return;
 
                     go.transform.position = m_Transform.position + new Vector3(ratio * -orthoSize * 0.975f, orthoSize * 0.975f - lineHeight, 1);
-                                       
+
                     TextMesh textMesh = go.AddComponent<TextMesh>();
                     textMesh.font = Resources.Load("Fonts/ARIAL", typeof(Font)) as Font;
                     textMesh.renderer.sharedMaterial = textMesh.font.material;
@@ -80,6 +76,5 @@ namespace TMPro.Examples
                 }
             }
         }
-
     }
 }

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using NumberShortening;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using NumberShortening;
 
 public class EfficiencyUpgrades : MonoBehaviour //Local
 {
@@ -59,9 +59,9 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
         //Update Description Box
         if (hovered_SharpenFang)
         {
-            if(level_SharpenFang[vampIndex] == 10)
+            if (level_SharpenFang[vampIndex] == 10)
             {
-                buttonDescription.text = "Sharpen Fang Upgrade Maxed" + "\n" 
+                buttonDescription.text = "Sharpen Fang Upgrade Maxed" + "\n"
                                          + "Efficiency: " + VampireManager.vampires_BloodEfficiencyTotal[vampIndex] + "%";
             }
             else
@@ -85,12 +85,11 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
                     + "Cost (Blood): " + sn.shortenNumber(cost_SharpenFang[vampIndex], sn.shortenMethod, 2);
                 }
             }
-           
         }
         else
         if (hovered_TrainAgility)
         {
-            if(level_TrainAgility[vampIndex] == 5)
+            if (level_TrainAgility[vampIndex] == 5)
             {
                 buttonDescription.text = "Train Agility Upgrade Maxed" + "\n"
                                          + "Speed: " + VampireManager.vampires_CompletionTimeTotal[vampIndex] + "seconds";
@@ -104,7 +103,6 @@ public class EfficiencyUpgrades : MonoBehaviour //Local
                 + VampireManager.vampires_CompletionTimeTotal[vampIndex] + " seconds -> " + newSpeed + " seconds" + "\n"
                 + "Cost (Blood): " + sn.shortenNumber(cost_TrainAgility[vampIndex], sn.shortenMethod, 2);
             }
-            
         }
         else
         {

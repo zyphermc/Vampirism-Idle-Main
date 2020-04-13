@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+﻿using NumberShortening;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
-using NumberShortening;
 
 public class HousingBuyButton : MonoBehaviour
 {
@@ -19,9 +19,9 @@ public class HousingBuyButton : MonoBehaviour
     public int amount;
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(AmountButton.amountIndex == 6)
+        if (AmountButton.amountIndex == 6)
         {
             amount = GetBuyable();
         }
@@ -29,14 +29,13 @@ public class HousingBuyButton : MonoBehaviour
         {
             amount = AmountButton.amountNumber;
         }
-        
 
         textbox_buy_amount.text = "Build " + amount;
 
-        if(descSwitch == 0)
+        if (descSwitch == 0)
         {
             //Check if buyable
-            if((GameManager.res_Wood >= (HousingManager.vamp_housing_buildingCost_wood[housing_infoNum]) * amount) && (GameManager.res_Stone >= (HousingManager.vamp_housing_buildingCost_stone[housing_infoNum]) * amount) && amount != 0)
+            if ((GameManager.res_Wood >= (HousingManager.vamp_housing_buildingCost_wood[housing_infoNum]) * amount) && (GameManager.res_Stone >= (HousingManager.vamp_housing_buildingCost_stone[housing_infoNum]) * amount) && amount != 0)
             {
                 buyable = true;
                 buyButton.interactable = true;
@@ -51,7 +50,7 @@ public class HousingBuyButton : MonoBehaviour
             textbox_buy_cost.text = sn.shortenNumber((HousingManager.vamp_housing_buildingCost_wood[housing_infoNum] * amount), sn.shortenMethod, 2) + " wood" + " - "
             + sn.shortenNumber((HousingManager.vamp_housing_buildingCost_stone[housing_infoNum] * amount), sn.shortenMethod, 2) + " stone";
         }
-        else if(descSwitch == 1)
+        else if (descSwitch == 1)
         {
             //Check if buyable
             if ((GameManager.res_Wood >= (HousingManager.human_housing_buildingCost_wood[housing_infoNum]) * amount) && (GameManager.res_Stone >= (HousingManager.human_housing_buildingCost_stone[housing_infoNum]) * amount) && amount != 0)
@@ -69,21 +68,21 @@ public class HousingBuyButton : MonoBehaviour
             textbox_buy_cost.text = (HousingManager.human_housing_buildingCost_wood[housing_infoNum] * amount) + " wood" + " - "
             + (HousingManager.human_housing_buildingCost_stone[housing_infoNum] * amount) + " stone";
         }
-        
     }
 
     public void buyBuilding()
     {
-        if(buyable == true)
+        if (buyable == true)
         {
-            if(descSwitch == 0)
+            if (descSwitch == 0)
             {
                 GameManager.res_Wood -= HousingManager.vamp_housing_buildingCost_wood[housing_infoNum] * amount;
                 GameManager.res_Stone -= HousingManager.vamp_housing_buildingCost_stone[housing_infoNum] * amount;
                 HousingManager.vamp_housing_buildingAmount[housing_infoNum] += amount;
-            }else 
-            
-            if(descSwitch == 1)
+            }
+            else
+
+            if (descSwitch == 1)
             {
                 GameManager.res_Wood -= HousingManager.human_housing_buildingCost_wood[housing_infoNum] * amount;
                 GameManager.res_Stone -= HousingManager.human_housing_buildingCost_stone[housing_infoNum] * amount;

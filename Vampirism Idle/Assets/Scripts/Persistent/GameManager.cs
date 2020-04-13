@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour //Persistent (contains game stats)
 
     //Content GameObjects (for mass enabling and disabling)
     public Button[] panel_Button;
+
     public GameObject[] panel_Content;
 
     public GameObject resourcePanel; //move accordingly to fit panel layout
@@ -82,7 +83,6 @@ public class GameManager : MonoBehaviour //Persistent (contains game stats)
                 panel_Content[a].SetActive(false);
             }
         }
-        
     }
 
     private IEnumerator UpdateResources()
@@ -100,26 +100,32 @@ public class GameManager : MonoBehaviour //Persistent (contains game stats)
     }
 
     /* Panel Button Methods */
+
     public void SwitchLair()
     {
         panelNum = 0;
     }
+
     public void SwitchBuildings()
     {
         panelNum = 1;
     }
+
     public void SwitchLabor()
     {
         panelNum = 2;
     }
+
     public void SwitchUpgrades()
     {
         panelNum = 3;
     }
+
     public void SwitchBattle()
     {
         panelNum = 4;
     }
+
     public void SwitchOptions()
     {
         panelNum = 5;

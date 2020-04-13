@@ -27,7 +27,7 @@ public class AmountButton : MonoBehaviour //Local
         if (amountIndex < 6)
         {
             textBox_AmountButton.text = (amountArray[amountIndex] + "x");
-            
+
             Debug.Log("Amount Number: " + amountNumber);
         }
         else

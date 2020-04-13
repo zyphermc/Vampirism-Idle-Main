@@ -15,6 +15,7 @@ public class StatisticsWindow : MonoBehaviour //Local (UI)
 
     //String list
     private List<int> hourList = new List<int>();
+
     private List<int> minuteList = new List<int>();
     private List<string> eventList = new List<string>(); //contains each line of text
 
@@ -87,7 +88,6 @@ public class StatisticsWindow : MonoBehaviour //Local (UI)
             hourList.RemoveAt(0);
             minuteList.RemoveAt(0);
         }
-            
 
         //Update Log Text
         textBox_Log.text = "";
@@ -97,12 +97,11 @@ public class StatisticsWindow : MonoBehaviour //Local (UI)
             textBox_Log.text += logEvent;
             textBox_Log.text += "\n";
         }*/
-        
-        for(int a = 0; a < eventList.Count; a++)
+
+        for (int a = 0; a < eventList.Count; a++)
         {
             textBox_Log.text += "[" + hourList[a].ToString("00") + ":" + minuteList[a].ToString("00") + "] " + eventList[a];
             textBox_Log.text += "\n";
         }
-
     }
 }
