@@ -15,6 +15,9 @@ public class HousingManager : MonoBehaviour
     public Button[] vamp_house_button;
     public Button[] human_house_button;
 
+    public GameObject obj_vampDesc;
+    public GameObject obj_humanDesc;
+
     /*Declaration of housing variables*/
 
     //Vampire Housing Variables
@@ -72,7 +75,7 @@ public class HousingManager : MonoBehaviour
         vamp_housing_buildingAmount[1] = 0;
         vamp_housing_buildingCost_stone[1] = 100;
         vamp_housing_buildingCost_wood[1] = 100;
-        vamp_building_unlocked[1] = true;
+        vamp_building_unlocked[1] = false;
 
         vamp_housing_buildingName[2] = "Big Shack";
         vamp_housing_buildingDesc[2] = "A big shack built with sticks";
@@ -154,7 +157,7 @@ public class HousingManager : MonoBehaviour
         human_housing_buildingAmount[1] = 0;
         human_housing_buildingCost_stone[1] = 100;
         human_housing_buildingCost_wood[1] = 100;
-        human_building_unlocked[1] = true;
+        human_building_unlocked[1] = false;
 
         human_housing_buildingName[2] = "HumanBuilding3";
         human_housing_buildingDesc[2] = "HumanDesc3";
@@ -219,10 +222,31 @@ public class HousingManager : MonoBehaviour
         human_housing_buildingCost_stone[9] = 10000000000;
         human_housing_buildingCost_wood[9] = 10000000000;
         human_building_unlocked[9] = false;
+
+        //Disable house description at start
+        obj_vampDesc.SetActive(false);
+        obj_humanDesc.SetActive(false);
     }
 
     private void Update()
     {
+        //Turn on house description once a button is clicked
+        if (vamp_housing_infoNum > -1)
+        {
+            if (!obj_vampDesc.activeSelf)
+            {
+                obj_vampDesc.SetActive(true);
+            }
+        }
+
+        if (human_housing_infoNum > -1)
+        {
+            if (!obj_humanDesc.activeSelf)
+            {
+                obj_humanDesc.SetActive(true);
+            }
+        }
+
         //Update the capacities of the buildings
         for (int a = 0; a < vamp_housing_buildingName.Length; a++)
         {
@@ -302,5 +326,7 @@ public class HousingManager : MonoBehaviour
                 human_house_button[a].gameObject.SetActive(false);
             }
         }
+
+        
     }
 }

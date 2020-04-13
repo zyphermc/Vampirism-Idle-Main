@@ -15,7 +15,7 @@ public class HousingBuyButton : MonoBehaviour
 
     public int descSwitch; //0 for vampire related, 1 for human related
     public int housing_infoNum;
-    public bool buyable;
+    public bool buyable = false;
     public int amount;
 
     // Update is called once per frame
@@ -34,6 +34,10 @@ public class HousingBuyButton : MonoBehaviour
 
         if (descSwitch == 0)
         {
+            //Update Buy Button Text
+            textbox_buy_cost.text = sn.shortenNumber((HousingManager.vamp_housing_buildingCost_wood[housing_infoNum] * amount), sn.shortenMethod, 2) + " wood" + " - "
+            + sn.shortenNumber((HousingManager.vamp_housing_buildingCost_stone[housing_infoNum] * amount), sn.shortenMethod, 2) + " stone";
+
             //Check if buyable
             if ((GameManager.res_Wood >= (HousingManager.vamp_housing_buildingCost_wood[housing_infoNum]) * amount) && (GameManager.res_Stone >= (HousingManager.vamp_housing_buildingCost_stone[housing_infoNum]) * amount) && amount != 0)
             {
@@ -45,13 +49,13 @@ public class HousingBuyButton : MonoBehaviour
                 buyable = false;
                 buyButton.interactable = false;
             }
-
-            //Update Buy Button Text
-            textbox_buy_cost.text = sn.shortenNumber((HousingManager.vamp_housing_buildingCost_wood[housing_infoNum] * amount), sn.shortenMethod, 2) + " wood" + " - "
-            + sn.shortenNumber((HousingManager.vamp_housing_buildingCost_stone[housing_infoNum] * amount), sn.shortenMethod, 2) + " stone";
         }
         else if (descSwitch == 1)
         {
+            //Update Buy Button Text
+            textbox_buy_cost.text = (HousingManager.human_housing_buildingCost_wood[housing_infoNum] * amount) + " wood" + " - "
+            + (HousingManager.human_housing_buildingCost_stone[housing_infoNum] * amount) + " stone";
+
             //Check if buyable
             if ((GameManager.res_Wood >= (HousingManager.human_housing_buildingCost_wood[housing_infoNum]) * amount) && (GameManager.res_Stone >= (HousingManager.human_housing_buildingCost_stone[housing_infoNum]) * amount) && amount != 0)
             {
@@ -63,10 +67,6 @@ public class HousingBuyButton : MonoBehaviour
                 buyable = false;
                 buyButton.interactable = false;
             }
-
-            //Update Buy Button Text
-            textbox_buy_cost.text = (HousingManager.human_housing_buildingCost_wood[housing_infoNum] * amount) + " wood" + " - "
-            + (HousingManager.human_housing_buildingCost_stone[housing_infoNum] * amount) + " stone";
         }
     }
 
