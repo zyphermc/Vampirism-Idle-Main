@@ -56,10 +56,13 @@ public class HousingManager : MonoBehaviour
 
     public int human_housing_infoNum = -1;
 
+    //Amount of building types
+    private int buildingTypes = 10;
+
     private void Start()
     {
         /* VAMPIRE HOUSING INITIALIZATION */
-        vamp_housing_baseCap = 50; //Starting housing for vampires
+        vamp_housing_baseCap = 10; //Starting housing for vampires
 
         vamp_housing_buildingName[0] = "Tent";
         vamp_housing_buildingDesc[0] = "A small tent built with sticks";
@@ -145,7 +148,7 @@ public class HousingManager : MonoBehaviour
         /* HUMAN HOUSING INITIALIZATION */
         human_housing_buildingName[0] = "HumanBuilding1";
         human_housing_buildingDesc[0] = "HumanDesc1";
-        human_housing_buildingBaseProduction[0] = 100;
+        human_housing_buildingBaseProduction[0] = 1;
         human_housing_buildingAmount[0] = 0;
         human_housing_buildingCost_stone[0] = 10;
         human_housing_buildingCost_wood[0] = 10;
@@ -153,7 +156,7 @@ public class HousingManager : MonoBehaviour
 
         human_housing_buildingName[1] = "HumanBuilding2";
         human_housing_buildingDesc[1] = "HumanDesc2";
-        human_housing_buildingBaseProduction[1] = 100;
+        human_housing_buildingBaseProduction[1] = 10;
         human_housing_buildingAmount[1] = 0;
         human_housing_buildingCost_stone[1] = 100;
         human_housing_buildingCost_wood[1] = 100;
@@ -169,7 +172,7 @@ public class HousingManager : MonoBehaviour
 
         human_housing_buildingName[3] = "HumanBuilding4";
         human_housing_buildingDesc[3] = "HumanDesc4";
-        human_housing_buildingBaseProduction[3] = 100;
+        human_housing_buildingBaseProduction[3] = 1000;
         human_housing_buildingAmount[3] = 0;
         human_housing_buildingCost_stone[3] = 10000;
         human_housing_buildingCost_wood[3] = 10000;
@@ -177,7 +180,7 @@ public class HousingManager : MonoBehaviour
 
         human_housing_buildingName[4] = "HumanBuilding5";
         human_housing_buildingDesc[4] = "HumanDesc5";
-        human_housing_buildingBaseProduction[4] = 100;
+        human_housing_buildingBaseProduction[4] = 10000;
         human_housing_buildingAmount[4] = 0;
         human_housing_buildingCost_stone[4] = 100000;
         human_housing_buildingCost_wood[4] = 100000;
@@ -185,7 +188,7 @@ public class HousingManager : MonoBehaviour
 
         human_housing_buildingName[5] = "HumanBuilding6";
         human_housing_buildingDesc[5] = "HumanDesc6";
-        human_housing_buildingBaseProduction[5] = 100;
+        human_housing_buildingBaseProduction[5] = 100000;
         human_housing_buildingAmount[5] = 0;
         human_housing_buildingCost_stone[5] = 1000000;
         human_housing_buildingCost_wood[5] = 1000000;
@@ -193,7 +196,7 @@ public class HousingManager : MonoBehaviour
 
         human_housing_buildingName[6] = "HumanBuilding7";
         human_housing_buildingDesc[6] = "HumanDesc7";
-        human_housing_buildingBaseProduction[6] = 100;
+        human_housing_buildingBaseProduction[6] = 1000000;
         human_housing_buildingAmount[6] = 0;
         human_housing_buildingCost_stone[6] = 10000000;
         human_housing_buildingCost_wood[6] = 10000000;
@@ -201,7 +204,7 @@ public class HousingManager : MonoBehaviour
 
         human_housing_buildingName[7] = "HumanBuilding8";
         human_housing_buildingDesc[7] = "HumanDesc8";
-        human_housing_buildingBaseProduction[7] = 100;
+        human_housing_buildingBaseProduction[7] = 10000000;
         human_housing_buildingAmount[7] = 0;
         human_housing_buildingCost_stone[7] = 100000000;
         human_housing_buildingCost_wood[7] = 100000000;
@@ -209,7 +212,7 @@ public class HousingManager : MonoBehaviour
 
         human_housing_buildingName[8] = "HumanBuilding9";
         human_housing_buildingDesc[8] = "HumanDesc9";
-        human_housing_buildingBaseProduction[8] = 100;
+        human_housing_buildingBaseProduction[8] = 100000000;
         human_housing_buildingAmount[8] = 0;
         human_housing_buildingCost_stone[8] = 1000000000;
         human_housing_buildingCost_wood[8] = 1000000000;
@@ -217,7 +220,7 @@ public class HousingManager : MonoBehaviour
 
         human_housing_buildingName[9] = "HumanBuilding10";
         human_housing_buildingDesc[9] = "HumanDesc10";
-        human_housing_buildingBaseProduction[9] = 100;
+        human_housing_buildingBaseProduction[9] = 1000000000;
         human_housing_buildingAmount[9] = 0;
         human_housing_buildingCost_stone[9] = 10000000000;
         human_housing_buildingCost_wood[9] = 10000000000;
@@ -248,12 +251,13 @@ public class HousingManager : MonoBehaviour
         }
 
         //Update the capacities of the buildings
-        for (int a = 0; a < vamp_housing_buildingName.Length; a++)
+        for (int a = 0; a < buildingTypes; a++)
         {
             vamp_housing_buildingTotalCap[a] = vamp_housing_buildingBaseCap[a] * vamp_housing_buildingAmount[a];
         }
 
-        for (int a = 0; a < human_housing_buildingName.Length; a++)
+        //Update total human production of each human building
+        for (int a = 0; a < buildingTypes; a++)
         {
             human_housing_buildingTotalProduction[a] = human_housing_buildingBaseProduction[a] * human_housing_buildingAmount[a];
         }
@@ -292,14 +296,25 @@ public class HousingManager : MonoBehaviour
         textBox_housingLair.text = sn.shortenNumber(vamp_housing_amountUsed, sn.shortenMethod, 2) + "/" + sn.shortenNumber(vamp_housing_amountTotal, sn.shortenMethod, 2);
 
         //Update all houses' button lock
-        for (int a = 0; a < 10; a++)
+        for (int a = 0; a < buildingTypes - 1; a++)
         {
             //vamp house buttons
-            if (vamp_housing_buildingAmount[a] > 0 && vamp_building_unlocked[a] == false)
+            if (vamp_housing_buildingAmount[a] > 0 && vamp_building_unlocked[a + 1] == false)
             {
-                vamp_building_unlocked[a] = true;
+                vamp_building_unlocked[a + 1] = true;
             }
 
+            //-------------------------------------------
+            //human house buttons
+            if (human_housing_buildingAmount[a] > 0 && human_building_unlocked[a + 1] == false)
+            {
+                human_building_unlocked[a + 1] = true;
+            }
+        }
+
+        //Update all houses' visibility depending on lock
+        for (int a = 0; a < buildingTypes; a++)
+        {
             //Check if button is unlocked, if yes show it, if no, hide it.
             if (vamp_building_unlocked[a])
             {
@@ -308,12 +323,6 @@ public class HousingManager : MonoBehaviour
             else
             {
                 vamp_house_button[a].gameObject.SetActive(false);
-            }
-            //-------------------------------------------
-            //human house buttons
-            if (human_housing_buildingAmount[a] > 0 && human_building_unlocked[a] == false)
-            {
-                human_building_unlocked[a] = true;
             }
 
             //Check if button is unlocked, if yes show it, if no, hide it.
@@ -326,7 +335,19 @@ public class HousingManager : MonoBehaviour
                 human_house_button[a].gameObject.SetActive(false);
             }
         }
+    }
 
-        
+    //Getters
+
+    public double getHumanProduction()
+    {
+        double totalHumanProduction = 0;
+
+        for (int a = 0; a < buildingTypes; a++)
+        {
+            totalHumanProduction += human_housing_buildingTotalProduction[a];
+        }
+        Debug.Log("Total Human Production: " + totalHumanProduction + " per second");
+        return totalHumanProduction;
     }
 }

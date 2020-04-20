@@ -7,6 +7,7 @@ public class VampInputManager : MonoBehaviour //Local (Slider and Input field fo
 {
     public GameManager GameManager;
     public VampireManager VampireManager;
+    public LaborManager LaborManager;
 
     public Slider slider;
 
@@ -29,7 +30,15 @@ public class VampInputManager : MonoBehaviour //Local (Slider and Input field fo
             VampireManager.slider_usedFeed[vampIndex] = (int)slider.value; //update the set percentage in vamp manager
 
             //Set vampires used for feeding in vamp manager
-            VampireManager.vampires_amount_Used_Feed[vampIndex] = Math.Floor(VampireManager.vampires_amount_Total[vampIndex] * (slider.value / 100));
+            if(vampIndex == 0)// if fledgelings, subtract the vamps in labor from the total amount of vampires
+            {
+                VampireManager.vampires_amount_Used_Feed[vampIndex] = Math.Floor((VampireManager.vampires_amount_Total[vampIndex] - (LaborManager.fledgelings_used_total)) * (slider.value / 100));
+            }
+            else
+            {
+                VampireManager.vampires_amount_Used_Feed[vampIndex] = Math.Floor(VampireManager.vampires_amount_Total[vampIndex] * (slider.value / 100));
+            }
+            
 
             //Set the percentage text
             textBox_TitlePercentage.text = "Feed (" + slider.value + "%)";

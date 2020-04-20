@@ -29,6 +29,9 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
     //Vampire Progress Bars (Lair)
     public TextMeshProUGUI[] Lair_ProgressBars;
 
+    //Labor Manager
+    public LaborManager LaborManager;
+
     //Vampire Stats
     public string[] vampires_name;
 
@@ -150,7 +153,15 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
 
             //Update Vampire Stats
             vampires_amount_Available_Total[a] = vampires_amount_Total[a] - vampires_amount_Used_Total[a];
-            vampires_amount_Used_Total[a] = vampires_amount_Used_Feed[a] + vampires_amount_Used_Infect[a];
+
+            if (a == 0) //If vampire is a fledgeling, add those in labor tab (wood and stone)
+            {
+                vampires_amount_Used_Total[a] = vampires_amount_Used_Feed[a] + vampires_amount_Used_Infect[a] + LaborManager.fledgelings_used_total;
+            }
+            else //if not, don't
+            {
+                vampires_amount_Used_Total[a] = vampires_amount_Used_Feed[a] + vampires_amount_Used_Infect[a];
+            }
 
             vampires_BloodEfficiencyTotal[a] = vampires_base_BloodEfficiency[a] + (5 * EfficiencyUpgrades.level_SharpenFang[a]);
             vampires_InfectionChanceTotal[a] = vampires_base_InfectionChance[a] + (5 * EfficiencyUpgrades.level_SharpenFang[a]);

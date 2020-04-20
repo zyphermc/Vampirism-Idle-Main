@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour //Persistent (contains game stats)
 
     public TextMeshProUGUI textBox2_Stone;  //in labor tab
 
+    public HousingManager HousingManager;
+
     //Class Objects
     private ShortenNumber sn = new ShortenNumber();
 
@@ -96,7 +98,7 @@ public class GameManager : MonoBehaviour //Persistent (contains game stats)
 
     public void addHumans() //to be revised
     {
-        res_HumanPop += 10000;
+        res_HumanPop += (1 + HousingManager.getHumanProduction());
     }
 
     /* Panel Button Methods */
