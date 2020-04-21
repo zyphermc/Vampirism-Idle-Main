@@ -6,6 +6,7 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
     //Managers
     public GameManager GameManager;
 
+    public LaborManager LaborManager;
     public VampireManager VampireManager;
     public AmountButton AmountButton;
     public StatisticsWindow StatisticsWindow;
@@ -24,6 +25,16 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
     //Vampire Index
     public int vampIndex;
 
+    //Amount deployed to labor and battle
+    private double labor_deployedFledgelings;
+
+    private double[] battle_deployedVamps = new double[10];
+
+    //Variables for available vamps (subtracting those deployed in labor and battle)
+    private double availableFledgelings;
+
+    private double[] availableVamps = new double[10];
+
     private void Start()
     {
         showAscendInfo = false;
@@ -32,6 +43,18 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
 
     private void Update()
     {
+        //Update deployed fledgelings in labor
+        labor_deployedFledgelings = LaborManager.fledgelings_used_total;
+
+        //Update available vampires
+        availableFledgelings = VampireManager.vampires_amount_Total[0] - labor_deployedFledgelings; // - battle_deployedVamps[0] also subtract those in battle
+
+        for (int a = 0; a < 10; a++)
+        {
+            availableVamps[a] = VampireManager.vampires_amount_Total[a]; // - battle_deployedVamps[0] also subtract those in battle
+        }
+
+        //Update ascend button info
         if (vampIndex != 9) //If vampire is not The Father
         {
             //If Max amount is chosen
@@ -61,25 +84,53 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
             {
                 if (AmountButton.amountIndex == 6) //MAX
                 {
-                    if (VampireManager.vampires_amount_Total[vampIndex] >= 100 && GameManager.res_Blood >= VampireManager.vampires_cost_ascend[vampIndex])
+                    if (vampIndex == 0) //If fledgelings use the variable with subtracted labor fledgelings
                     {
-                        ascendBuyable = true;
+                        if (availableFledgelings >= 100 && GameManager.res_Blood >= VampireManager.vampires_cost_ascend[vampIndex])
+                        {
+                            ascendBuyable = true;
+                        }
+                        else
+                        {
+                            ascendBuyable = false;
+                        }
                     }
                     else
                     {
-                        ascendBuyable = false;
+                        if (availableVamps[vampIndex] >= 100 && GameManager.res_Blood >= VampireManager.vampires_cost_ascend[vampIndex])
+                        {
+                            ascendBuyable = true;
+                        }
+                        else
+                        {
+                            ascendBuyable = false;
+                        }
                     }
                 }
                 else //if not max (1,10,25,50,100)
                 {
                     //Check if total cost is met
-                    if (VampireManager.vampires_amount_Total[vampIndex] >= 100 * AmountButton.amountNumber && GameManager.res_Blood >= VampireManager.vampires_cost_ascend[vampIndex] * AmountButton.amountNumber)
+                    if (vampIndex == 0) //If fledgelings use the variable with subtracted labor fledgelings
                     {
-                        ascendBuyable = true;
+                        if (availableFledgelings >= (100 * AmountButton.amountNumber) && GameManager.res_Blood >= (VampireManager.vampires_cost_ascend[vampIndex] * AmountButton.amountNumber))
+                        {
+                            ascendBuyable = true;
+                        }
+                        else
+                        {
+                            ascendBuyable = false;
+                        }
                     }
                     else
                     {
-                        ascendBuyable = false;
+                        if (availableVamps[vampIndex] >= (100 * AmountButton.amountNumber) && GameManager.res_Blood >= (VampireManager.vampires_cost_ascend[vampIndex] * AmountButton.amountNumber))
+                        {
+                            ascendBuyable = true;
+                        }
+                        else
+                        {
+                            ascendBuyable = false;
+                        }
                     }
                 }
             }
@@ -125,7 +176,16 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
     private int GetAscendableAmount()
     {
         int ascendable_Blood = Mathf.FloorToInt((float)(GameManager.res_Blood / VampireManager.vampires_cost_ascend[vampIndex]));
-        int ascendable_Vamps = Mathf.FloorToInt((float)(VampireManager.vampires_amount_Total[vampIndex] / 100));
+        int ascendable_Vamps = 0;
+
+        if (vampIndex == 0) //If fledgeling is selected, use the variable with the subtracted labor and battle fledgelings
+        {
+            ascendable_Vamps = Mathf.FloorToInt((float)(availableFledgelings / 100));
+        }
+        else //If not, use the variable that subtracts those vampires deployed in battle
+        {
+            ascendable_Vamps = Mathf.FloorToInt((float)(availableVamps[vampIndex] / 100));
+        }
 
         //return which is less
         if (ascendable_Blood >= ascendable_Vamps)
