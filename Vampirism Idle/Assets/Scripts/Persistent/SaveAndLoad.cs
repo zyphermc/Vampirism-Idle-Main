@@ -8,6 +8,11 @@ public class SaveAndLoad : MonoBehaviour
     public GameManager GameManager;
     public SaveSystem SaveSystem;
 
+    private void Start()
+    {
+        Load();
+    }
+
     //Save and Load Methods - Saves the current data to file, and Loads data from file then updating the current values
     public void Save()
     {

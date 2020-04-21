@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SaveSystem : MonoBehaviour
 {
-    //Object References for constructor
+    //Object References for constructor - add here the objects to reference to get values
     public GameManager GameManager;
 
     public void SaveData()
