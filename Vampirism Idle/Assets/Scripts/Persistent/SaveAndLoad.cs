@@ -10,7 +10,7 @@ public class SaveAndLoad : MonoBehaviour
 
     private void Start()
     {
-        Load();
+        //Load(); //Loads save at startup
     }
 
     //Save and Load Methods - Saves the current data to file, and Loads data from file then updating the current values

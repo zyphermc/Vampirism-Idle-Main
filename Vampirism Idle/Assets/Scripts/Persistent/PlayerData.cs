@@ -1,9 +1,21 @@
 ﻿[System.Serializable]
 public class PlayerData
 {
+    /// <summary>
+    /// Data to do:
+    /// VampireManager 
+    /// Slider values
+    /// EfficiencyUpgrades
+    /// HousingManager
+    /// LaborManager
+    ///
+    /// Done:
+    /// GameManager
+    /// </summary>
+
     #region Data Variables
 
-    #region Resources
+    #region Resources [GameManager]
 
     public float res_Blood;
     public float res_HumanPop;
@@ -11,6 +23,10 @@ public class PlayerData
     public float res_Stone;
 
     #endregion Resources
+
+    #region Vampires [VampireManager]
+
+    #endregion
 
     #endregion Data Variables
 

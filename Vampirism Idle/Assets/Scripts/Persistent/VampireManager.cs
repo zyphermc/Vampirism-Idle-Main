@@ -72,7 +72,7 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
     public double[] vampires_cost_ascend;
 
     //Vampire Slider Values (Lair)
-    public int slider_maxValue;
+    public int slider_maxValue; //default 100%
 
     public float[] slider_savedMaxValueFeed;
     public float[] slider_savedMaxValueInfect;
@@ -165,7 +165,6 @@ public class VampireManager : MonoBehaviour //Persistent (contains vamp stats)
 
             vampires_BloodEfficiencyTotal[a] = vampires_base_BloodEfficiency[a] + (5 * EfficiencyUpgrades.level_SharpenFang[a]);
             vampires_InfectionChanceTotal[a] = vampires_base_InfectionChance[a] + (5 * EfficiencyUpgrades.level_SharpenFang[a]);
-
             vampires_CompletionTimeTotal[a] = vampires_base_CompletionTime[a] / (Mathf.Pow(2, EfficiencyUpgrades.level_TrainAgility[a]));
 
             vampires_bloodPerKill[a] = vampires_maximumBloodGather[a] * (vampires_BloodEfficiencyTotal[a] / 100f); //% out of 100
