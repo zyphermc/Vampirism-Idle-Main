@@ -61,6 +61,8 @@ public class HousingManager : MonoBehaviour
 
     private void Start()
     {
+        #region Vampire and Human Housing Stats
+
         /* VAMPIRE HOUSING INITIALIZATION */
         vamp_housing_baseCap = 10; //Starting housing for vampires
 
@@ -229,6 +231,8 @@ public class HousingManager : MonoBehaviour
         //Disable house description at start
         obj_vampDesc.SetActive(false);
         obj_humanDesc.SetActive(false);
+
+        #endregion Vampire and Human Housing Stats
     }
 
     private void Update()
@@ -347,7 +351,7 @@ public class HousingManager : MonoBehaviour
         {
             totalHumanProduction += human_housing_buildingTotalProduction[a];
         }
-        Debug.Log("Total Human Production: " + totalHumanProduction + " per second");
+        //Debug.Log("Total Human Production: " + totalHumanProduction + " per second");
         return totalHumanProduction;
     }
 }

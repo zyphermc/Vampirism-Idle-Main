@@ -28,13 +28,13 @@ public class AmountButton : MonoBehaviour //Local
         {
             textBox_AmountButton.text = (amountArray[amountIndex] + "x");
 
-            Debug.Log("Amount Number: " + amountNumber);
+            //Debug.Log("Amount Number: " + amountNumber);
         }
         else
         {
             textBox_AmountButton.text = ("MAX");
         }
 
-        Debug.Log("Amount Index: " + amountIndex);
+        //Debug.Log("Amount Index: " + amountIndex);
     }
 }
