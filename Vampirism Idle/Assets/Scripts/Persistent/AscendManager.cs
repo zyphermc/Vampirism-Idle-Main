@@ -76,7 +76,7 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
                 if (!ascendAvailable[vampIndex] && vampIndex != 9) //If ascend button is not available and vamps is more than 100, make it available
                 {
                     ascendAvailable[vampIndex] = true;
-                    Debug.Log("Ascend Available");
+                    //Debug.Log("Ascend Available");
                 }
             }
 
@@ -140,13 +140,13 @@ public class AscendManager : MonoBehaviour //Local (calculates the cost, info te
     public void ShowAscendInfo()
     {
         showAscendInfo = true;
-        Debug.Log("showAscendInfo = true");
+        //Debug.Log("showAscendInfo = true");
     }
 
     public void HideAscendInfo()
     {
         showAscendInfo = false;
-        Debug.Log("showAscendInfo = false");
+        //Debug.Log("showAscendInfo = false");
     }
 
     public void ascendVamp() //Function for ascending vampires  (TO DO: incorporate multiple ascensions in one click)

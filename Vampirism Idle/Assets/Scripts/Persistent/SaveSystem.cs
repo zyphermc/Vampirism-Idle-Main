@@ -5,7 +5,12 @@ using UnityEngine;
 public class SaveSystem : MonoBehaviour
 {
     //Object References for constructor - add here the objects to reference to get values
-    public GameManager GameManager;
+    public GameManager gameManager;
+
+    public VampireManager vampireManager;
+    public EfficiencyUpgrades efficiencyUpgrades;
+
+    //------------------------------------
 
     public void SaveData()
     {
@@ -14,7 +19,7 @@ public class SaveSystem : MonoBehaviour
 
         using (FileStream stream = new FileStream(path, FileMode.Create)) //automatically closes the filestream after code block is run
         {
-            PlayerData data = new PlayerData(GameManager); //create an instance of PlayerData to access its content (so that I don't have to drag it as a component reference)
+            PlayerData data = new PlayerData(gameManager, vampireManager, efficiencyUpgrades); //create an instance of PlayerData to access its content (so that I don't have to drag it as a component reference)
 
             formatter.Serialize(stream, data);
         }
