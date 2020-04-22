@@ -53,6 +53,9 @@ public class SaveAndLoad : MonoBehaviour
             VampireManager.slider_savedMaxValueInfect[a] = data.slider_savedMaxValueInfect[a];
             VampireManager.slider_usedFeed[a] = data.slider_usedFeed[a];
             VampireManager.slider_usedInfect[a] = data.slider_usedInfect[a];
+
+            EfficiencyUpgrades.level_SharpenFang[a] = data.level_SharpenFang[a];
+            EfficiencyUpgrades.level_TrainAgility[a] = data.level_TrainAgility[a];
         }
 
         #endregion Vampire Data

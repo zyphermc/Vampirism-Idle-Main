@@ -3,14 +3,14 @@ public class PlayerData
 {
     /// <summary>
     /// Data to do:
-    /// VampireManager
-    /// Slider values
-    /// EfficiencyUpgrades
     /// HousingManager
     /// LaborManager
     ///
     /// Done:
     /// GameManager
+    /// VampireManager
+    /// Slider Values
+    /// EfficiencyUpgrades
     /// </summary>
 
     #region Data Variables
@@ -33,6 +33,9 @@ public class PlayerData
     public float[] slider_savedMaxValueInfect = new float[10];
     public int[] slider_usedFeed = new int[10];
     public int[] slider_usedInfect = new int[10];
+
+    public int[] level_SharpenFang = new int[10];
+    public int[] level_TrainAgility = new int[10];
 
     #endregion Vampires [VampireManager & Slider Values & Efficiency Upgrades]
 
@@ -62,6 +65,9 @@ public class PlayerData
             slider_savedMaxValueInfect[a] = vampireManager.slider_savedMaxValueInfect[a]; //Saved max slider value of infect of each vampire window
             slider_usedFeed[a] = vampireManager.slider_usedFeed[a]; //Current allocated slider value of feed
             slider_usedInfect[a] = vampireManager.slider_usedInfect[a]; //Current allocated slider value of infect
+
+            level_SharpenFang[a] = efficiencyUpgrades.level_SharpenFang[a];
+            level_TrainAgility[a] = efficiencyUpgrades.level_TrainAgility[a];
         }
 
         #endregion Vampire Data
