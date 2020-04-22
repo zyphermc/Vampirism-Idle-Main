@@ -3,14 +3,8 @@ public class PlayerData
 {
     /// <summary>
     /// Data to do:
-    /// HousingManager
     /// LaborManager
     ///
-    /// Done:
-    /// GameManager
-    /// VampireManager
-    /// Slider Values
-    /// EfficiencyUpgrades
     /// </summary>
 
     #region Data Variables
@@ -39,9 +33,23 @@ public class PlayerData
 
     #endregion Vampires [VampireManager & Slider Values & Efficiency Upgrades]
 
+    #region Housing [HousingManager]
+
+    public double[] vamp_housing_buildingAmount = new double[10];
+    public double[] human_housing_buildingAmount = new double[10];
+
+    #endregion Housing [HousingManager]
+
+    #region Labor [LaborManager]
+
+    public double fledgelings_used_wood;
+    public double fledgelings_used_stone;
+
+    #endregion Labor [LaborManager]
+
     #endregion Data Variables
 
-    public PlayerData(GameManager gameManager, VampireManager vampireManager, EfficiencyUpgrades efficiencyUpgrades)
+    public PlayerData(GameManager gameManager, VampireManager vampireManager, EfficiencyUpgrades efficiencyUpgrades, HousingManager housingManager, LaborManager laborManager)
     {
         //Data is commented for easy tracing and readability
 
@@ -71,5 +79,22 @@ public class PlayerData
         }
 
         #endregion Vampire Data
+
+        #region Housing
+
+        for (int a = 0; a < 10; a++)
+        {
+            vamp_housing_buildingAmount[a] = housingManager.vamp_housing_buildingAmount[a];
+            human_housing_buildingAmount[a] = housingManager.human_housing_buildingAmount[a];
+        }
+
+        #endregion Housing
+
+        #region Labor
+
+        fledgelings_used_wood = laborManager.fledgelings_used_wood;
+        fledgelings_used_stone = laborManager.fledgelings_used_stone;
+
+        #endregion Labor
     }
 }

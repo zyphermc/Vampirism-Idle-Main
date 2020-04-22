@@ -9,6 +9,8 @@ public class SaveSystem : MonoBehaviour
 
     public VampireManager vampireManager;
     public EfficiencyUpgrades efficiencyUpgrades;
+    public HousingManager housingManager;
+    public LaborManager laborManager;
 
     //------------------------------------
 
@@ -19,7 +21,7 @@ public class SaveSystem : MonoBehaviour
 
         using (FileStream stream = new FileStream(path, FileMode.Create)) //automatically closes the filestream after code block is run
         {
-            PlayerData data = new PlayerData(gameManager, vampireManager, efficiencyUpgrades); //create an instance of PlayerData to access its content (so that I don't have to drag it as a component reference)
+            PlayerData data = new PlayerData(gameManager, vampireManager, efficiencyUpgrades, housingManager, laborManager); //create an instance of PlayerData to access its content (so that I don't have to drag it as a component reference)
 
             formatter.Serialize(stream, data);
         }

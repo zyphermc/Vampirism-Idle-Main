@@ -33,7 +33,7 @@ public class labor_arrowBehavior : MonoBehaviour
         /* Update arrow states */
 
         //Update Wood arrows
-        if (LaborManager.fledgelings_used_wood - amount < 0)
+        if (LaborManager.fledgelings_used_wood - amount < 0 || LaborManager.field_selected_wood == true)
         {
             wood_arrowLeft.interactable = false;
         }
@@ -42,7 +42,7 @@ public class labor_arrowBehavior : MonoBehaviour
             wood_arrowLeft.interactable = true;
         }
 
-        if (amount > LaborManager.fledgelings_available)
+        if (amount > LaborManager.fledgelings_available || LaborManager.field_selected_wood == true)
         {
             wood_arrowRight.interactable = false;
         }
@@ -52,7 +52,7 @@ public class labor_arrowBehavior : MonoBehaviour
         }
 
         //Update Stone arrows
-        if (LaborManager.fledgelings_used_stone - amount < 0)
+        if (LaborManager.fledgelings_used_stone - amount < 0 || LaborManager.field_selected_stone == true)
         {
             stone_arrowLeft.interactable = false;
         }
@@ -61,7 +61,7 @@ public class labor_arrowBehavior : MonoBehaviour
             stone_arrowLeft.interactable = true;
         }
 
-        if (amount > LaborManager.fledgelings_available)
+        if (amount > LaborManager.fledgelings_available || LaborManager.field_selected_stone == true)
         {
             stone_arrowRight.interactable = false;
         }

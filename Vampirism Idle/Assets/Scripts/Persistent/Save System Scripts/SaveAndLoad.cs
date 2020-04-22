@@ -7,6 +7,8 @@ public class SaveAndLoad : MonoBehaviour
 
     public VampireManager VampireManager;
     public EfficiencyUpgrades EfficiencyUpgrades;
+    public HousingManager HousingManager;
+    public LaborManager LaborManager;
 
     public SaveSystem SaveSystem; //Save System Object
 
@@ -30,6 +32,7 @@ public class SaveAndLoad : MonoBehaviour
         PlayerData data = SaveSystem.LoadData();
         Debug.Log("Data loaded successfully.");
 
+        //Switches for updating slider values in feed and infect
         updatedSliderValueFeed = false;
         updatedSliderValueInfect = false;
 
@@ -59,5 +62,20 @@ public class SaveAndLoad : MonoBehaviour
         }
 
         #endregion Vampire Data
+
+        #region Housing
+        for (int a = 0; a < 10; a++)
+        {
+            HousingManager.vamp_housing_buildingAmount[a] = data.vamp_housing_buildingAmount[a];
+            HousingManager.human_housing_buildingAmount[a] = data.human_housing_buildingAmount[a];
+        }
+        #endregion
+
+        #region Labor
+
+        LaborManager.fledgelings_used_wood = data.fledgelings_used_wood;
+        LaborManager.fledgelings_used_stone = data.fledgelings_used_stone;
+
+        #endregion Labor
     }
 }
