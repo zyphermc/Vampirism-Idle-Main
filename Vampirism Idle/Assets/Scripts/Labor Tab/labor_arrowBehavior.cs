@@ -33,7 +33,7 @@ public class labor_arrowBehavior : MonoBehaviour
         /* Update arrow states */
 
         //Update Wood arrows
-        if (LaborManager.fledgelings_used_wood - amount < 0 || LaborManager.field_selected_wood == true)
+        if (LaborManager.fledgelings_used_wood - amount < 0 || LaborManager.field_selected_wood == true || LaborManager.fledgelings_used_wood == 0)
         {
             wood_arrowLeft.interactable = false;
         }
@@ -42,7 +42,7 @@ public class labor_arrowBehavior : MonoBehaviour
             wood_arrowLeft.interactable = true;
         }
 
-        if (amount > LaborManager.fledgelings_available || LaborManager.field_selected_wood == true)
+        if (amount > LaborManager.fledgelings_available || LaborManager.field_selected_wood == true || LaborManager.fledgelings_available == 0)
         {
             wood_arrowRight.interactable = false;
         }
@@ -52,7 +52,7 @@ public class labor_arrowBehavior : MonoBehaviour
         }
 
         //Update Stone arrows
-        if (LaborManager.fledgelings_used_stone - amount < 0 || LaborManager.field_selected_stone == true)
+        if (LaborManager.fledgelings_used_stone - amount < 0 || LaborManager.field_selected_stone == true || LaborManager.fledgelings_used_stone == 0)
         {
             stone_arrowLeft.interactable = false;
         }
@@ -61,7 +61,7 @@ public class labor_arrowBehavior : MonoBehaviour
             stone_arrowLeft.interactable = true;
         }
 
-        if (amount > LaborManager.fledgelings_available || LaborManager.field_selected_stone == true)
+        if (amount > LaborManager.fledgelings_available || LaborManager.field_selected_stone == true || LaborManager.fledgelings_available == 0)
         {
             stone_arrowRight.interactable = false;
         }
@@ -79,6 +79,15 @@ public class labor_arrowBehavior : MonoBehaviour
 
     public void subtract_fledgeling_wood()
     {
+        if (AmountButton.amountIndex == 6)
+        {
+            amount = (int)LaborManager.fledgelings_used_wood;
+        }
+        else
+        {
+            amount = AmountButton.amountNumber;
+        }
+
         LaborManager.fledgelings_used_wood -= amount;
     }
 
@@ -89,6 +98,15 @@ public class labor_arrowBehavior : MonoBehaviour
 
     public void subtract_fledgeling_stone()
     {
+        if (AmountButton.amountIndex == 6)
+        {
+            amount = (int)LaborManager.fledgelings_used_stone;
+        }
+        else
+        {
+            amount = AmountButton.amountNumber;
+        }
+
         LaborManager.fledgelings_used_stone -= amount;
     }
 }

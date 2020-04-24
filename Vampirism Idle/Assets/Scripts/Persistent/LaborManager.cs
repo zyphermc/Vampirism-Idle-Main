@@ -152,7 +152,7 @@ public class LaborManager : MonoBehaviour
 
         field_selected_wood = false;
         UpdateInputText();
-        EventSystem.current.SetSelectedGameObject(null);
+        //EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void onDeselectStone() //Update value of miners and textfield
@@ -162,7 +162,7 @@ public class LaborManager : MonoBehaviour
 
         field_selected_stone = false;
         UpdateInputText();
-        EventSystem.current.SetSelectedGameObject(null);
+        //EventSystem.current.SetSelectedGameObject(null);
     }
 
     #endregion Customizable Input Field Value Methods
